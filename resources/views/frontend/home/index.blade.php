@@ -15,17 +15,16 @@
 					</a>
 				</div>
 				<div id="signInForm">
-					<form name="sign_in" id="sign_in" action="https://www.goodreads.com/user/sign_in?source=home" accept-charset="UTF-8" method="post">
-						<input name="utf8" type="hidden" value="✓">
-						<input type="hidden" name="authenticity_token" value="W0lvwvKqcs99VS11Jpub3v8hjM3lgLZPy6fZVx7BdZWC8lsmKV3Og6euUk6TF6WoJD+L/vUd5gF7xF9CeNLcyQ==">
+					<form method="POST" action="{{ route('login') }}">
+                        @csrf
 					  	<div class="formBox">
-						    <input id="userSignInFormEmail" type="email" name="user[email]" placeholder="Email address" tabindex="1"><br>
+						    <input id="userSignInFormEmail" type="email" name="email" placeholder="Email address" tabindex="1"><br>
 						    <input type="checkbox" id="remember_me" name="remember_me" checked="" tabindex="3">
 						    <label for="remember_me" class="greyText">Remember me</label>
 					    </div>
 				  		<div class="formBox">
 						    <div style="position:relative">
-						      <input value="" placeholder="Password" tabindex="2" type="password" name="user[password]" id="user_password">
+						      <input value="" placeholder="Password" tabindex="2" type="password" name="password" id="user_password">
 						      <label for="user_password" id="userPasswordLabel" class="greyText">Password</label>
 						      <br>
 						      <a class="greyText" id="userForgotPassword" rel="nofollow" href="/user/forgot_password">Forgot it?</a>
@@ -33,7 +32,6 @@
 				  		</div>
 					    <div class="formBox">
 						    <input type="submit" value="Sign in" tabindex="4" class="gr-button gr-button--dark">
-						    <input type="hidden" name="n" value="229100">
 					    </div>
 
 					</form>
@@ -47,20 +45,26 @@
 					<h2>
 					New here? Create a free account!
 					</h2>
-					<form name="createForm" id="userSignupForm" autocomplete="off" action="https://www.goodreads.com/user/create" accept-charset="UTF-8" method="post">
-						<input name="utf8" type="hidden" value="✓">
-						<input type="hidden" name="authenticity_token" value="W0lvwvKqcs99VS11Jpub3v8hjM3lgLZPy6fZVx7BdZWC8lsmKV3Og6euUk6TF6WoJD+L/vUd5gF7xF9CeNLcyQ==">
+					@if (session('status'))
+                                    <span class="invalid-feedback" >
+                                        <h3 style="color: #00CC00">{{ session('status') }}</h3>
+                                    </span>
+                    @endif  
+					<form method="POST" action="{{ route('register') }}">
+						@csrf
 		  				<div class="fieldPara">
-		    				<input placeholder="Name" type="text" name="user[first_name]" id="user_first_name">
+		    				<input placeholder="Name" type="text" name="name">
 		 				</div>
 					    <div class="fieldPara">
-					    	<input placeholder="Email Address" type="email" name="user[email]" id="user_email">
+					    	<input placeholder="Email Address" type="email" name="email">
 					    </div>
 					    <div class="fieldPara">
-					      <input id="user_password_signup" placeholder="Password" maxlength="128" size="128" type="password" name="user[password]">
-					      <label id="userPasswordSignupLabel" for="user_password_signup" class="greyText">Password</label>
+					      <input id="user_password_signup" placeholder="Password" maxlength="128" size="128" type="password" name="password">
 					    </div>
-
+					    <div class="fieldPara">
+					    	<input type="checkbox" name="check_author" tabindex="3" value="1">
+					    	<label for="remember_me">Author or a publisher?</label>
+					    </div>
 		  				<div class="fieldPara">
 						    <div id="homePageSignupBlurb">
 						      By clicking “Sign up”
@@ -68,7 +72,7 @@
 						      <a target="_blank" href="/about/terms">Terms of Service</a>
 						      and confirm that I am at least 13 years old.
 						    </div>
-						    <input type="submit" name="next" class="button" value="Sign up">
+						    <input type="submit" name="signup" class="button" value="Sign up">
 		  				</div>
 					</form>
 				</div>
@@ -153,60 +157,28 @@
 
 	        			<div class="u-defaultType">
 	          
+									@foreach($categories as $category)
 		      				<div class="left" style="width: 25%">
-				                <a class="gr-hyperlink" href="/genres/art">Art</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/biography">Biography</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/business">Business</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/children-s">Children's</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/christian">Christian</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/classics">Classics</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/comics">Comics</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/cookbooks">Cookbooks</a><br>
+				            <a class="gr-hyperlink" href="{{ route('topics.index')}}">{{ $category->title}}</a><br>
 		      				</div>
-		      				<div class="left" style="width: 25%">
-				                <a class="gr-hyperlink" href="/genres/ebooks">Ebooks</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/fantasy">Fantasy</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/fiction">Fiction</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/graphic-novels">Graphic Novels</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/historical-fiction">Historical Fiction</a><br>
-
-				                <a class="gr-hyperlink" href="/genres/history">History</a><br>
-		      				</div>
-		      				<div class="left" style="width: 25%">
-			                	<a class="gr-hyperlink" href="/genres/music">Music</a><br>
-			                	<a class="gr-hyperlink" href="/genres/mystery">Mystery</a><br>
-		      				</div>
-		      				<div class="left" style="width: 25%">
-			                <a class="gr-hyperlink" href="/genres/self-help">Self Help</a><br>
-			                <a class="gr-hyperlink" href="/genres">More genres</a>
-		      				</div>
+									@endforeach
 	      				</div>
 	      			</div>
 	      		</div>
       			<div class="rightContainer">
 			        <div id="listsTeaserBox" class="featureTeaserBox">
-			          <h2>Những cuốn sách theo tên tác giả</h2>
+			          <h3 style="margin-bottom: 15px;">LIST BOOKS BY AUTHOR</h3>
 			            <div class="listTeaser">
 						  <div class="listImg">
 						      <a href="/book/show/2657.To_Kill_a_Mockingbird"><img alt="To Kill a Mockingbird by Harper Lee" title="To Kill a Mockingbird by Harper Lee" src="https://images.gr-assets.com/books/1361975680s/2657.jpg"></a>
 						      <a href="/book/show/5470.1984"><img alt="1984 by George Orwell" title="1984 by George Orwell" src="https://images.gr-assets.com/books/1348990566s/5470.jpg"></a>
 						      <a href="/book/show/4671.The_Great_Gatsby"><img alt="The Great Gatsby by F. Scott Fitzgerald" title="The Great Gatsby by F. Scott Fitzgerald" src="https://images.gr-assets.com/books/1490528560s/4671.jpg"></a>
 						      <a href="/book/show/3.Harry_Potter_and_the_Sorcerer_s_Stone"><img alt="Harry Potter and the Sorcerer's Stone by J.K. Rowling" title="Harry Potter and the Sorcerer's Stone by J.K. Rowling" src="https://images.gr-assets.com/books/1474154022s/3.jpg"></a>
-						  </div>
+							</div>
 						  <div class="listTitle">
-						    <a href="/list/show/6.Best_Books_of_the_20th_Century">Best Books of the 20th Century</a>
-						  </div>
+								
+						    <a href="#">ahihi</a>
+							</div>
 						</div>
 						<div class="listTeaser">
 						  <div class="listImg">
@@ -231,22 +203,6 @@
 						  </div>
 						</div>
 			        </div>
-
-			      	<div id="authorsTeaserBox" class="featureTeaserBox">
-				        <h2>
-				          Are you an author or a publisher?
-				        </h2>
-				        <p>
-				          Gain access to a massive audience of more than
-				          65 million book lovers.
-				          Goodreads is a great place to promote your books.
-				        </p>
-				        <div style="text-align: center">
-				          <a class="gr-button gr-button--small" href="/author/program">Author program</a>
-				          &nbsp;&nbsp;
-				          <!-- <a class="gr-button gr-button--small" href="/advertisers">Advertise</a> -->
-				        </div>
-			      	</div>
 				</div>
         	</div>
       	</div>
@@ -261,13 +217,13 @@
 			<div class='adminLinksContainer'>
 				<ul class='adminLinks'>
 					<li>
-					<a rel="nofollow" class="first" href="/about/us">about us</a>
+					<a rel="nofollow" class="first" href="{{ route('home')}}">home</a>
 					</li>
 					<li>
 					<a rel="nofollow" href="/advertisers">author</a>
 					</li>
 					<li>
-					<a rel="nofollow" href="/author/program">home</a>
+					<a rel="nofollow" href="#">about us</a>
 					</li>
 					<li>
 					<a rel="nofollow" href="/jobs">privacy</a>

@@ -10,7 +10,7 @@
 		<div class="signedOutHomeMastheadContainer">
 			<div id="navBar">
 				<div id="logo">
-					<a href="/">
+					<a href="{{ route('home')}}">
 						<h1 style="color: #81593d; font-style: cursive;font-size: 37px; padding-top:12px">READBOOK</h1>
 					</a>
 				</div>

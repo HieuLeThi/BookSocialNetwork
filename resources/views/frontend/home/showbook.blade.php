@@ -8,92 +8,16 @@
 	<!-- <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-479eda3f659b065fab977d3b90262b48.css" /> -->
 	<link rel="stylesheet" media="screen,print" href="https://s.gr-assets.com/assets/review/list-999f3695f560f96c8637b3d3bb2677dc.css" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
-  	<link rel="canonical" href="https://www.goodreads.com/review/list/78270916" />
+	  <link rel="canonical" href="https://www.goodreads.com/review/list/78270916" />
 	<script src="https://s.gr-assets.com/assets/react_client_side/sprockets_dependencies-30f123719317f85caddeb01ca7b5493c.js"></script>
 	<script src="https://s.gr-assets.com/assets/react_client_side/external_dependencies-48241921bf.js"></script>
 	<script src="https://s.gr-assets.com/assets/react_client_side/home-41a67ed5b8.js"></script>
 	<script src="https://use.fontawesome.com/079150a0fc.js"></script>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	<div class="content">
-		<div class="siteHeader__topLine gr-box gr-box--withShadow">
-		<div class="siteHeader__contents">
-			<div class="siteHeader__topLevelItem siteHeader__topLevelItem--searchIcon">
-				<button class="siteHeader__searchIcon gr-iconButton" aria-label="Toggle search" type="button""></button>
-			</div>
-			<a href="/" class="siteHeader__logo" aria-label="Goodreads Home" title="Goodreads Home"></a>
-			<nav class="siteHeader__primaryNavInline">
-				<ul role="menu" class="siteHeader__menuList">
-					<li class="siteHeader__topLevelItem siteHeader__topLevelItem--home">
-						<a href="/" class="siteHeader__topLevelLink">Home</a></li>
-					<li class="siteHeader__topLevelItem">
-						<a href="/review/list/78270916" class="siteHeader__topLevelLink">My Books</a></li>
-				</ul>
-			</nav>
-			<div accept-charset="UTF-8" class="searchBox searchBox--navbar">
-				<form autocomplete="off" action="/search" class="searchBox__form" role="search" aria-label="Search for books to add to your shelves">
-				    <input class="searchBox__input searchBox__input--navbar" autocomplete="off" name="q" type="text" placeholder="Search books" aria-label="Search books" aria-controls="searchResults"/>
-				    <button type="submit" class="searchBox__icon--magnifyingGlass gr-iconButton searchBox__icon searchBox__icon--navbar" aria-label="Search"></button>
-				</form>
-			</div>
-			<div class="siteHeader__personal">
-				<ul class="personalNav">
-	    			<li class="personalNav__listItem">
-	      			<!-- <div> -->
-        				<div class="dropdown dropdown--notifications">
-					        <a class="dropdown__trigger dropdown__trigger--notifications dropdown__trigger--personalNav" href="/notifications" role="button" aria-haspopup="true" aria-expanded="false" title="Notifications">
-					            <span class="headerPersonalNav__icon
-					                       headerPersonalNav__icon--notifications" aria-label="Notifications">
-					            </span>
-					        </a>
-					    </div>
-		                <!-- <div class="dropdown__menu dropdown__menu--notifications gr-box gr-box--withShadowLarge" role="menu"">
-	                       	<div class="dropdown__container gr-notifications gr-notifications--sparse">
-	                        <div class="spinnerContainer">
-	                        	<div class="spinner">
-	                        		<div class="spinner__mask">
-                        				<div class="spinner__maskedCircle">
-                        				
-                        			</div>
-                        		</div>
-                        	</div>
-                        	<div class="spinnerFallbackText">Loading…</div>
-                        </div> -->
-                    <!-- </div> -->
-                	</li>
-                    <li class="personalNav__listItem">
-                    	<a href="/message/inbox" title="Messages" class="headerPersonalNav">
-                    		<span class="headerPersonalNav__icon headerPersonalNav__icon--inbox" aria-label="Inbox">
-                    		</span>
-                    	</a>
-                    </li>
-                    <li class="personalNav__listItem">
-                    	<a href="/friend" title="Friends" class="headerPersonalNav">
-                    		<span class="headerPersonalNav__icon headerPersonalNav__icon--friendRequests" aria-label="Friend Requests"></span>
-                   		</a>
-                    </li>
-                    <li class="personalNav__listItem">
-                    	<div class="dropdown dropdown--profileMenu" data-reactid=".7ozs989eyo.0.0.4.0.4.0">
-                    		<a class="dropdown__trigger dropdown__trigger--profileMenu dropdown__trigger--personalNav" href="/user/show/78270916-tom" role="button" aria-haspopup="true" aria-expanded="false" data-reactid=".7ozs989eyo.0.0.4.0.4.0.0">
-                    			<span class="headerPersonalNav__icon" data-reactid=".7ozs989eyo.0.0.4.0.4.0.0.0">
-                    				<img class="circularIcon circularIcon--border" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1519716830i/78270916._UY60_CR8,0,60,60_.jpg" alt="Tom" data-reactid=".7ozs989eyo.0.0.4.0.4.0.0.0.1"/>
-                    			</span>
-                    		</a>
-                    		<div class="dropdown__menu dropdown__menu--profileMenu gr-box gr-box--withShadowLarge" role="menu" data-reactid=".7ozs989eyo.0.0.4.0.4.0.1">
-                    			<div class="siteHeader__subNav siteHeader__subNav--profile gr-box gr-box--withShadowLarge" data-reactid=".7ozs989eyo.0.0.4.0.4.0.1.0">
-                    				<span class="siteHeader__subNavLink gr-h3 gr-h3--noMargin">
-                    					<div class="personalNavDrawer__profileAndLinksContainer">
-                    					</div>
-                    				</span>
-                    			</div>
-                    		</div>
-                    	</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-		</div>
+		@include('frontend.layouts.header')
 		<div class="mainContentContainer">
 	    	<div class="mainContent">
 	    		<div class="mainContentFloat">
@@ -103,7 +27,7 @@
 							  	<div class="bookCoverContainer">
 								    <div class="bookCoverPrimary">
 								          <a rel="nofollow" itemprop="image" href="/book/photo/1137215.Boneshaker">
-								          	<img id="coverImage" alt="Boneshaker (The Clockwork Century, #1)" src="https://images.gr-assets.com/books/1433161048l/1137215.jpg" />
+								          	<img id="coverImage" alt="Boneshaker (The Clockwork Century, #1)" src="../images/books/{{$book->picture}}" />
 								          </a>
 								    </div>
 							    </div>
@@ -120,10 +44,7 @@
 							</div>
 							<div id="metacol" class="last col" style="width: 435px;margin-left: 10px">
 								<h1 id="bookTitle" class="bookTitle" itemprop="name">
-								      Boneshaker
-								      	<a class="greyText" href="/series/43930-the-clockwork-century">
-								          (The Clockwork Century #1)
-										</a>
+								      {{ $book->title}}
 								</h1>
 
 								<div id="bookAuthors" class="stacked">
@@ -138,9 +59,9 @@
 	  
 	      							<div id="description" class="readable stacked" style="right:0;font-size: 16px;">
 	        
-										<span id="freeTextContainer8227207913880771659">In the early days of the Civil War, rumors of gold in the frozen Klondike brought hordes of newcomers to the Pacific Northwest. Anxious to compete, Russian prospectors commissioned inventor Leviticus Blue to create a great machine that could mine through Alaska’s ice. Thus was Dr. Blue’s Incredible Bone-Shaking Drill Engine born.<br /><br />But on its first test run the Boneshaker wen</span>
-	  									<span id="freeText8227207913880771659" style="display:none">In the early days of the Civil War, rumors of gold in the frozen Klondike brought hordes of newcomers to the Pacific Northwest. Anxious to compete, Russian prospectors commissioned inventor Leviticus Blue to create a great machine that could mine through Alaska’s ice. Thus was Dr. Blue’s Incredible Bone-Shaking Drill Engine born.<br /><br />But on its first test run the Boneshaker went terribly awry, destroying several blocks of downtown Seattle and unearthing a subterranean vein of blight gas that turned anyone who breathed it into the living dead.<br /><br />Now it is sixteen years later, and a wall has been built to enclose the devastated and toxic city. Just beyond it lives Blue’s widow, Briar Wilkes. Life is hard with a ruined reputation and a teenaged boy to support, but she and Ezekiel are managing. Until Ezekiel undertakes a secret crusade to rewrite history.<br /><br />His quest will take him under the wall and into a city teeming with ravenous undead, air pirates, criminal overlords, and heavily armed refugees. And only Briar can bring him out alive.</span>
-	  									<a data-text-id="8227207913880771659" href="#" onclick="swapContent($(this));; return false;">...more</a>
+										<span id="freeTextContainer8227207913880771659">{{ $book->description}}<br /></span>
+	  									<span id="more_description" style="display:none">{{ $book->more_description}}</span>
+	  									<a id="more" href="#" onclick="swapContent($(this));; return false;">...more</a>
 	      							</div>
 								</div>
 								<br>

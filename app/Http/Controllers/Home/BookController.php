@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Topic;
 use App\Book;
 
-class TopicController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        // return view('frontend.home.showbookbytopic');
+        //
     }
 
     /**
@@ -48,18 +47,8 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        $fields = [
-            'topics.id',
-            'topics.title',
-        ];
-        $book = Book::select('id', 'title','picture')
-                ->where('topic_id', '=', $id)
-                ->get();
-        $categories = Topic::select($fields)
-                    ->where('id', $id)
-                    ->firstOrFail();
-                    // dd($book);
-        return view('frontend.home.showbookbytopic', compact('book', 'categories'));
+        $book = Book::find($id);
+        return view('frontend.home.showbook', compact('book'));
     }
 
     /**

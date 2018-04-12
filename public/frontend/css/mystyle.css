@@ -1,0 +1,13 @@
+#siteheader 
+{
+    
+    background-image: url("../../images/masthead_background.jpg");
+   
+}
+#signedOutHome .mainContentContainer {
+	height: 800px;
+} 
+#leadercol {
+    width: 960px;
+    height: 30px;
+}

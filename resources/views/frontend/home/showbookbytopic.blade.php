@@ -37,10 +37,10 @@
 			<div class="siteHeader__personal">
 				<ul class="personalNav">
                     <li class="personalNav__listItem">
-                        <a href="/user/sign_in" rel="nofollow" class="siteHeader__topLevelLink">Sign In</a>
+                        <a href="{{ route('home')}}" rel="nofollow" class="siteHeader__topLevelLink">Sign In</a>
                     </li>
                     <li class="personalNav__listItem">
-                    <a href="/user/sign_in" rel="nofollow" class="siteHeader__topLevelLink">Sign Up</a>
+                    <a href="{{ route('home')}}" rel="nofollow" class="siteHeader__topLevelLink">Sign Up</a>
                     </li>
                 </ul>
             </div>
@@ -49,24 +49,25 @@
 		<div class="mainContentContainer">
 	    	<div class="mainContent">
 	    		<div class="mainContent">
-                <div class="leftContainer">
+                <div class="row">
                     
                     <div class="genreHeader">
                         <h1 class="left">
-                            Art
+                            {{ $categories->title}}
                         </h1>
                     </div>
                     <br/>
-                    <div class="coverBigBox clearFloats bigBox" show_header="true"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/genres/new_releases/art">New Releases Tagged &quot;Art&quot;</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+                    <div class="coverBigBox clearFloats bigBox" show_header="true"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/genres/new_releases/art">New Releases Tagged &quot; {{ $categories->title}} &quot;</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
 
                         <div class="coverRow   ">
 
                             <div class="leftAlignedImage bookBox">
-              
-                                <div class="coverWrapper" id="bookCover498942_35540804">
-                                    <a href="/book/show/35540804-blood-water-paint"><img alt="Blood Water Paint" title="" width="115" class="bookImage" src="https://images.gr-assets.com/books/1499696476l/35540804.jpg" /></a>
-                                </div>
-
+							@foreach($book as $boook)
+								<div class="coverWrapper" id="bookCover498942_35540804">
+										<a href="/book/show/35540804-blood-water-paint"><img alt="Blood Water Paint" title="" width="115" class="bookImage" src="../images/books/{{$boook->picture}}" /></a>
+									</div>
+								</div>
+							@endforeach
                             </div>
 			            </div>
 		            </div>

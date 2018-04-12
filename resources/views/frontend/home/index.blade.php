@@ -11,7 +11,7 @@
 			<div id="navBar">
 				<div id="logo">
 					<a href="/">
-						<img alt="READ" src="https://s.gr-assets.com/assets/home/header_logo-8d96d7078a3d63f9f31d92282fd67cf4.png">
+						<h1 style="color: #81593d; font-style: cursive;font-size: 37px; padding-top:12px">READBOOK</h1>
 					</a>
 				</div>
 				<div id="signInForm">
@@ -46,10 +46,10 @@
 					New here? Create a free account!
 					</h2>
 					@if (session('status'))
-                                    <span class="invalid-feedback" >
-                                        <h3 style="color: #00CC00">{{ session('status') }}</h3>
-                                    </span>
-                    @endif  
+						<span class="invalid-feedback" >
+								<h3 style="color: #00CC00">{{ session('status') }}</h3>
+						</span>
+            @endif  
 					<form method="POST" action="{{ route('register') }}">
 						@csrf
 		  				<div class="fieldPara">
@@ -101,40 +101,26 @@
 				      <h2>What will <em>you</em> discover?</h2>
 				        <div class="discoveryBoxDiscovery sourceBooks4">
 				          <div class="discoverySourceBooks">
-				            <p class="discoverySourceActionText">Because Deborah liked…</p>
-				              <a href="/book/show/1137215.Boneshaker"><img alt="Boneshaker by Cherie Priest" title="Boneshaker by Cherie Priest" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1433161048m/1137215.jpg"></a>
+				            <p class="discoverySourceActionText">List Top Books Rating ...</p>
+				              <a  style="margin-right:25px" href="/book/show/1137215.Boneshaker"><img alt="Boneshaker by Cherie Priest" title="Boneshaker by Cherie Priest" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1433161048m/1137215.jpg"></a>
 				              <a href="/book/show/142296.The_Anubis_Gates"><img alt="The Anubis Gates by Tim Powers" title="The Anubis Gates by Tim Powers" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1344409006m/142296.jpg"></a>
 				              <a href="/book/show/7670800-clementine"><img alt="Clementine by Cherie Priest" title="Clementine by Cherie Priest" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1277163268m/7670800.jpg"></a>
 				              <a href="/book/show/8253037-the-buntline-special"><img alt="The Buntline Special by Mike Resnick" title="The Buntline Special by Mike Resnick" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1284431932m/8253037.jpg"></a>
+											<a href="/book/show/8253037-the-buntline-special"><img alt="The Buntline Special by Mike Resnick" title="The Buntline Special by Mike Resnick" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1442953450l/420297.jpg"></a>
+											<a href="/book/show/8253037-the-buntline-special"><img alt="The Buntline Special by Mike Resnick" title="The Buntline Special by Mike Resnick" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1442953450l/420297.jpg"></a>
 				          </div>
-				          <div class="discoveryBoxResultBook">
-				            <p class="discoveryBoxResultActionText">She discovered:</p>
-				            <p class="discoveryBoxResultDescriptors">Steam Punk, Science Fiction, Fantasy</p>
-				            <a href="/book/show/9222475-infernal-devices"><span class="bookImgDiscovered" style="width: 80px; height: 147px; overflow: hidden;"><img alt="Infernal Devices by K.W. Jeter" title="Infernal Devices by K.W. Jeter" width="80" class="reflected" src="https://images.gr-assets.com/books/1320437674m/9222475.jpg" style="display: block; border: 0px;"><canvas width="80" height="15" style="display: block; border: 0px;"></canvas></span></a>
-				          </div>
-
-				          <div class="discoveryBoxArrow">
-				            <img alt="&amp;rarr;" src="https://s.gr-assets.com/assets/home/discovery_arrow.png">
-				          </div>
+				          
 				        </div>
 				        <div class="discoveryBoxDiscovery sourceBooks4">
 				          <div class="discoverySourceBooks">
-				            <p class="discoverySourceActionText">Because Deborah liked…</p>
+				            <p class="discoverySourceActionText">List New Books ...</p>
 				              <a href="/book/show/9648068-the-first-days"><img alt="The First Days by Rhiannon Frater" title="The First Days by Rhiannon Frater" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1388800064m/9648068.jpg"></a>
 				              <a href="/book/show/7094569-feed"><img alt="Feed by Mira Grant" title="Feed by Mira Grant" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1408500437m/7094569.jpg"></a>
+				              <a href="/book/show/7157310-rot-ruin"><img alt="Rot &amp; Ruin by Jonathan Maberry" title="Rot &amp; Ruin by Jonathan Maberry" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1348805097l/10361330.jpg"></a>
 				              <a href="/book/show/7157310-rot-ruin"><img alt="Rot &amp; Ruin by Jonathan Maberry" title="Rot &amp; Ruin by Jonathan Maberry" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1264898635m/7157310.jpg"></a>
-				              <a href="/book/show/7716140-married-with-zombies"><img alt="Married with Zombies by Jesse Petersen" title="Married with Zombies by Jesse Petersen" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1265814659m/7716140.jpg"></a>
-				          </div>
-
-
-				          <div class="discoveryBoxResultBook">
-				            <p class="discoveryBoxResultActionText">She discovered:</p>
-				            <p class="discoveryBoxResultDescriptors">Zombies, Post Apocalyptic, Dystopia, Urban Fantasy</p>
-				            <a href="/book/show/8051458-the-reapers-are-the-angels"><span class="bookImgDiscovered" style="width: 80px; height: 135px; overflow: hidden;"><img alt="The Reapers are the Angels by Alden Bell" title="The Reapers are the Angels by Alden Bell" width="80" class="reflected" src="https://images.gr-assets.com/books/1388716938m/8051458.jpg" style="display: block; border: 0px;"><canvas width="80" height="15" style="display: block; border: 0px;"></canvas></span></a>
-				          </div>
-
-				          <div class="discoveryBoxArrow">
-				            <img alt="&amp;rarr;" src="https://s.gr-assets.com/assets/home/discovery_arrow.png">
+				              <a href="/book/show/7157310-rot-ruin"><img alt="Rot &amp; Ruin by Jonathan Maberry" title="Rot &amp; Ruin by Jonathan Maberry" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1503066414l/19501.jpg"></a>
+											
+											<a href="/book/show/7716140-married-with-zombies"><img alt="Married with Zombies by Jesse Petersen" title="Married with Zombies by Jesse Petersen" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1265814659m/7716140.jpg"></a>
 				          </div>
 				        </div>
 				    </div>
@@ -159,7 +145,7 @@
 	          
 									@foreach($categories as $category)
 		      				<div class="left" style="width: 25%">
-				            <a class="gr-hyperlink" href="{{ route('topics.index')}}">{{ $category->title}}</a><br>
+				            <a class="gr-hyperlink" href="{{ route('topics.show', ['id' => $category->id]) }}">{{ $category->title}}</a><br>
 		      				</div>
 									@endforeach
 	      				</div>
@@ -220,7 +206,7 @@
 					<a rel="nofollow" class="first" href="{{ route('home')}}">home</a>
 					</li>
 					<li>
-					<a rel="nofollow" href="/advertisers">author</a>
+					<a rel="nofollow" href="{{ route('home')}}">author</a>
 					</li>
 					<li>
 					<a rel="nofollow" href="#">about us</a>

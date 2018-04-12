@@ -38,5 +38,5 @@ Route::group(['namespace' => 'Author', 'prefix' => 'author'], function(){
 Route::group(['namespace' => 'User', 'prefix' => 'user'], function(){
 	Route::get('/', 'UserController@index')->name('user');
 });
-Route::resource('/topics', 'TopicController');
+Route::resource('/topics', 'Home\TopicController');
 

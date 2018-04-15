@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Book;
+use DB;
 
 class BookController extends Controller
 {
@@ -15,7 +16,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        dd('vo');
+        return view('user.index');
     }
 
     /**
@@ -47,7 +49,22 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $book = Book::find($id);
+        $fields = [
+            'books.id',
+            'books.topic_id',
+            'books.title',
+            'books.description',
+            'books.more_description',
+            'books.picture',
+            DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author"),
+            DB::raw("(SELECT users.avatar_url FROM users where books.author = users.id) AS avatar_author"),
+            DB::raw("(SELECT users.liking FROM users where books.author = users.id) AS liking_author")
+            // DB::raw("(COUNT(book.id) FROM books WHRE book.author = users.id) AS count_book_author")
+
+        ];
+        $book = Book::select($fields)
+                ->where('id', $id)
+                ->firstOrFail();
         return view('frontend.home.showbook', compact('book'));
     }
 

@@ -15,28 +15,34 @@
 Route::get('mybook', function () {
 	return view('user.mybook');
 });
-Route::get('bookdetail', function () {
-	return view('frontend.home.showbook');
-});
 Route::get('/admin', function() {
 	return view('backend.admin.index');
-});
-Route::get('/showtopic', function() {
-	return view('frontend.home.showbookbytopic');
 });
 
 Auth::routes();
 Route::get('/', 'Home\HomeController@index')->name('home');
-// Route::get('/', 'Home\HomeController@showListTopics');
 Route::post('/register', 'Auth\RegisterController@store')->name('register');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['namespace' => 'Author', 'prefix' => 'author'], function(){
-	Route::get('/', 'AuthorController@index')->name('author');
+	// Route::get('/', 'AuthorController@index')->name('author');
 	Route::resource('/books', 'BookController');
 });
-Route::group(['namespace' => 'User', 'prefix' => 'user'], function(){
-	Route::get('/', 'UserController@index')->name('user');
+Route::resource('/author', 'Author\AuthorController');
+Route::group(['namespace' => 'User'], function(){
+	Route::resource('/user', 'UserController');
+	// Route::get('user/mybook', function () {
+	// 	return view('user.mybook');
+	// })->name('mybook');
+
+	// Route::get('/review/{$id}','PostController@getReview');
+	Route::post('/review/{$id}', 'PostController@postReview')->name('postreview');
+	// Route::resource('/review', 'PostController');
+
+
 });
 Route::resource('/topics', 'Home\TopicController');
+Route::resource('/showbook', 'Home\BookController');
+
+
 

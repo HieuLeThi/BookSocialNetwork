@@ -7,12 +7,12 @@
 @endsection 
 @section('side-bar') 
 <li class="active treeview">
-          <a href="{{ route('author') }}">
+          <a href="{{ route('author.index') }}">
             <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
           </a>
         </li>
         <li>
-          <a href="pages/widgets.html">
+          <a href="{{route('author.edit', ['id' => Auth::user()->id])}}>
             <i class="fa fa-user"></i> <span>PROFILE</span>
           </a>
         </li>
@@ -104,7 +104,7 @@
                   <div class="form-group">
                     <label for="exampleInputFile">{{ __('Picture') }}</label>
                     <div>
-                        <img style="margin:0px 0px 15px 15px" width="50px" height="70px" alt="ahihi" src="../images/books/{{$book->picture}}">
+                        <img style="margin:0px 0px 15px 15px" width="50px" height="70px" alt="ahihi" src="../images/books/{{ $book->picture}}">
                     </div>
                     <input type="file" name="picture">
                     @if($errors->first('picture')) 

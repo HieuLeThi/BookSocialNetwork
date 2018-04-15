@@ -51,7 +51,7 @@
 								  <span class='by smallText'>by</span>
 									<span itemprop='author' itemscope='' itemtype='http://schema.org/Person'>
 										<a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/221253.Cherie_Priest">
-											<span itemprop="name">Cherie Priest</span></a>
+											<span itemprop="name">{{ $book->name_author}}</span></a>
 									</span>
 
 								</div>
@@ -61,19 +61,71 @@
 	        
 										<span id="freeTextContainer8227207913880771659">{{ $book->description}}<br /></span>
 	  									<span id="more_description" style="display:none">{{ $book->more_description}}</span>
-	  									<a id="more" href="#" onclick="swapContent($(this));; return false;">...more</a>
+	  									<a id="more">...more</a>
+										<a id="less" style="display:none" >(less)</a>
 	      							</div>
 								</div>
+								<script>
+									$(document).ready(function(){
+										$("#more").click(function(){
+											$("#more_description").css("display", "inline");
+											$("#more").css("display", "none");
+											$("#less").css("display", "inline");
+										});
+										$("#less").click(function(){
+											$("#more_description").css("display", "none");
+											$("#more").css("display", "inline");
+											$("#less").css("display", "none");
+										});
+										$("#add_review").click(function(){
+											$("#show_form_review").css("display", "inline");
+										});
+										$("#cancel_review").click(function(){
+											$("#show_form_review").css("display", "none");
+										});
+									});
+								</script>
 								<br>
 								<div style="font-size: 17px;">
-								<span>Rate this book</span>
-								<i class="fa fa-star" style="color: yellow"></i>
-								<i class="fa fa-star" style="color: yellow"></i>
-								<i class="fa fa-star" style="color: yellow"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<a href="/review/edit/1137215" style="margin-left: 70px;">Add a review</a>
+									<span>Rate this book</span>
+									<i class="fa fa-star" style="color: yellow"></i>
+									<i class="fa fa-star" style="color: yellow"></i>
+									<i class="fa fa-star" style="color: yellow"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									@if(Auth::check())
+										<a id="add_review" style="margin-left: 70px;">Add a review</a>
+									@else
+										<a href="{{ route('home') }}" style="margin-left: 70px;">Add a review</a>
+									@endif
 								</div>
+								<br>
+								<form method="POST" action="{{ route('postreview', ['id' => $book->id]) }}">
+			                        {{ csrf_field() }}
+									<div id="show_form_review"class="readable stacked" style="display:none">
+									<span>What do you think?</span>
+									<textarea class="textBox largeTextBox reviewUserText js-reviewUserText" id="review_review_usertext" maxlength="20000" name="content" placeholder="Enter your review" rows="6" cols="60" style="display: block; height: auto;"></textarea>
+									@if($errors->first('content')) 
+			                            <span class="text-danger">{{ $errors->first('content') }}</span>
+			                        @endif
+									<div>
+										<input type="checkbox" value="0" name="check_post" id="review_spoiler_flag">
+											<span>Add to the post</span>
+											<div class="right" style="text-align: right; font-size: 12px;">
+												<span id="review_edit_characterCount"></span>
+											</div>
+									</div>
+									<div class="formAction gr-form__actions">
+										<button class="primaryAction submitAction gr-form__submitButton" type="submit">
+										Review
+										</button>
+										<div id="cancel_review" class="secondaryAction cancelAction gr-form__secondaryAction">
+										Cancel
+										</div>
+									</div>
+								</div>
+								</form>
+								
 							</div>
 		    			</div>
 		    			<br>
@@ -177,7 +229,7 @@
 							</div>
 						</div>
 					</div>
-	    			<div class="rightContainer">
+	    			<div class="rightContainer" style="padding-left: 30px">
 	    				<div class=" clearFloats bigBox">
 	    					<div class="h2Container gradientHeaderContainer">
 	    						<h2 class="brownBackground">
@@ -187,17 +239,7 @@
 	    					<div class="bigBoxBody">
 	    						<div class="bigBoxContent containerWithHeaderContent">
 	    							<br>
-	    							<!-- vong lap o day ne -->
-							        <div class="js-tooltipTrigger tooltipTrigger">
-							          <a href="/book/show/7911067-dreadnought">
-							          	<img id="more_book_7911067" alt="Dreadnought (The Clockwork Century, #2)" title="Dreadnought (The Clockwork Century, #2)" width="50" src="https://images.gr-assets.com/books/1389139447m/7911067.jpg" />
-							          </a>
-							        </div>
-							        <div class="js-tooltipTrigger tooltipTrigger">
-							          <a href="/book/show/7911067-dreadnought">
-							          	<img id="more_book_7911067" alt="Dreadnought (The Clockwork Century, #2)" title="Dreadnought (The Clockwork Century, #2)" width="50" src="https://images.gr-assets.com/books/1389139447m/7911067.jpg" />
-							          </a>
-							        </div>
+							        
 							        <div class="js-tooltipTrigger tooltipTrigger">
 							          <a href="/book/show/7911067-dreadnought">
 							          	<img id="more_book_7911067" alt="Dreadnought (The Clockwork Century, #2)" title="Dreadnought (The Clockwork Century, #2)" width="50" src="https://images.gr-assets.com/books/1389139447m/7911067.jpg" />
@@ -209,7 +251,7 @@
     					<br>
 	    				<div id="aboutAuthor" class=" clearFloats bigBox">
 	    					<div class="h2Container gradientHeaderContainer">
-	    						<h2 class="brownBackground"><a href="/author/show/221253.Cherie_Priest">About Cherie Priest</a></h2>
+	    						<h2 class="brownBackground"><a href="/author/show/221253.Cherie_Priest">About {{ $book->name_author}}</a></h2>
 	    					</div>
 	    					<div class="bigBoxBody">
 	    						<div class="bigBoxContent containerWithHeaderContent">
@@ -218,24 +260,21 @@
 										<div class="bookAuthorProfile__topContainer">
 											<div class="bookAuthorProfile__photoContainer">
 											<a href="/author/show/221253.Cherie_Priest">
-												<div class="bookAuthorProfile__photo" style="background-image: url(https://images.gr-assets.com/authors/1405811775p3/221253.jpg);">
+												<div class="bookAuthorProfile__photo" style="background-image: url({{ $book->avatar_author }});">
 												</div>
 											</a>
 											</div>
 											<div class="bookAuthorProfile__widgetContainer">
 												<div class="bookAuthorProfile__name">
-												Cherie Priest
+												{{ $book->name_author}}
 												</div>
 												<div class="bookAuthorProfile__followerCount">
-												3125 followers
+												{{ $book->count_book_author}}
 												</div>
 											</div>
 										</div>
 										<div class="bookAuthorProfile__about">
-											<span id="freeTextContainer17471756927507434106">CHERIE PRIEST is the author of over a dozen novels, including the steampunk pulp adventures The Inexplicables, Ganymede, Dreadnought, Clementine, and Boneshaker. Boneshaker was nominated for both the Hugo Award and the Nebula Award; it was a PNBA Award winner, and winner of the Locus Award for Best Science Fiction Novel. Cherie also wrote Bloodshot and Hellbent from Bantam Spectra; Fathom and the</span>
-  											<span id="freeText17471756927507434106" style="display:none">CHERIE PRIEST is the author of over a dozen novels, including the steampunk pulp adventures The Inexplicables, Ganymede, Dreadnought, Clementine, and Boneshaker. Boneshaker was nominated for both the Hugo Award and the Nebula Award; it was a PNBA Award winner, and winner of the Locus Award for Best Science Fiction Novel. Cherie also wrote Bloodshot and Hellbent from Bantam Spectra; Fathom and the Eden Moore series from Tor; and three novellas published by Subterranean Press. In addition to all of the above, her first foray into George R. R. Martin’s superhero universe, Fort Freak (for which she wrote the interstitial mystery), debuted in the summer of 2011. Cherie’s short stories and nonfiction articles have appeared in such fine publications as Weird Tales, Publishers Weekly, and numerous anthologies. She lives in Chattanooga, TN, with her husband, a big shaggy dog, and a fat black cat.</span>
-  											<a data-text-id="17471756927507434106" href="#" onclick="swapContent($(this));; return false;">...more</a>
-
+											<span id="freeTextContainer17471756927507434106">{{ $book->name_author}} {{ $book->liking_author}}</span>
 										</div>
 									</div>
 								</div>

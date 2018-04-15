@@ -14,72 +14,7 @@
 </head>
 <body>
 	<div class="content">
-		<div class="siteHeader__topLine gr-box gr-box--withShadow">
-		<div class="siteHeader__contents">
-			<div class="siteHeader__topLevelItem siteHeader__topLevelItem--searchIcon">
-				<button class="siteHeader__searchIcon gr-iconButton" aria-label="Toggle search" type="button""></button>
-			</div>
-			<a href="/" class="siteHeader__logo" aria-label="Goodreads Home" title="Goodreads Home"></a>
-			<nav class="siteHeader__primaryNavInline">
-				<ul role="menu" class="siteHeader__menuList">
-					<li class="siteHeader__topLevelItem siteHeader__topLevelItem--home">
-						<a href="/" class="siteHeader__topLevelLink">Home</a></li>
-					<li class="siteHeader__topLevelItem">
-						<a href="/review/list/78270916" class="siteHeader__topLevelLink">My Books</a></li>
-				</ul>
-			</nav>
-			<div accept-charset="UTF-8" class="searchBox searchBox--navbar">
-				<form autocomplete="off" action="/search" class="searchBox__form" role="search" aria-label="Search for books to add to your shelves">
-				    <input class="searchBox__input searchBox__input--navbar" autocomplete="off" name="q" type="text" placeholder="Search books" aria-label="Search books" aria-controls="searchResults"/>
-				    <button type="submit" class="searchBox__icon--magnifyingGlass gr-iconButton searchBox__icon searchBox__icon--navbar" aria-label="Search"></button>
-				</form>
-			</div>
-			<div class="siteHeader__personal">
-				<ul class="personalNav">
-	    			<li class="personalNav__listItem">
-	      			<!-- <div> -->
-        				<div class="dropdown dropdown--notifications">
-					        <a class="dropdown__trigger dropdown__trigger--notifications dropdown__trigger--personalNav" href="/notifications" role="button" aria-haspopup="true" aria-expanded="false" title="Notifications">
-					            <span class="headerPersonalNav__icon
-					                       headerPersonalNav__icon--notifications" aria-label="Notifications">
-					            </span>
-					        </a>
-					    </div>
-		               
-                    <!-- </div> -->
-                	</li>
-                    <li class="personalNav__listItem">
-                    	<a href="/message/inbox" title="Messages" class="headerPersonalNav">
-                    		<span class="headerPersonalNav__icon headerPersonalNav__icon--inbox" aria-label="Inbox">
-                    		</span>
-                    	</a>
-                    </li>
-                    <li class="personalNav__listItem">
-                    	<a href="/friend" title="Friends" class="headerPersonalNav">
-                    		<span class="headerPersonalNav__icon headerPersonalNav__icon--friendRequests" aria-label="Friend Requests"></span>
-                   		</a>
-                    </li>
-                    <li class="personalNav__listItem">
-                    	<div class="dropdown dropdown--profileMenu" data-reactid=".7ozs989eyo.0.0.4.0.4.0">
-                    		<a class="dropdown__trigger dropdown__trigger--profileMenu dropdown__trigger--personalNav" href="/user/show/78270916-tom" role="button" aria-haspopup="true" aria-expanded="false" data-reactid=".7ozs989eyo.0.0.4.0.4.0.0">
-                    			<span class="headerPersonalNav__icon" data-reactid=".7ozs989eyo.0.0.4.0.4.0.0.0">
-                    				<img class="circularIcon circularIcon--border" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1519716830i/78270916._UY60_CR8,0,60,60_.jpg" alt="Tom" data-reactid=".7ozs989eyo.0.0.4.0.4.0.0.0.1"/>
-                    			</span>
-                    		</a>
-                    		<div class="dropdown__menu dropdown__menu--profileMenu gr-box gr-box--withShadowLarge" role="menu" data-reactid=".7ozs989eyo.0.0.4.0.4.0.1">
-                    			<div class="siteHeader__subNav siteHeader__subNav--profile gr-box gr-box--withShadowLarge" data-reactid=".7ozs989eyo.0.0.4.0.4.0.1.0">
-                    				<span class="siteHeader__subNavLink gr-h3 gr-h3--noMargin">
-                    					<div class="personalNavDrawer__profileAndLinksContainer">
-                    					</div>
-                    				</span>
-                    			</div>
-                    		</div>
-                    	</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-		</div>
+		@include('frontend.layouts.header')
 		<div class="mainContentContainer">
 	    	<div class="mainContent">
 	    		<div class="mainContentFloat">

@@ -43,7 +43,7 @@
 				<button class="siteHeader__searchIcon gr-iconButton" aria-label="Toggle search" type="button""></button>
             </div>
             @if(Auth::check())
-                <a href="{{ route('user')}}" class="siteHeader__primaryNavInline"><h3 style="color: #81593d; font-style: cursive; margin-top:10px">ReadBook</h3></a>
+                <a href="{{ route('user.index')}}" class="siteHeader__primaryNavInline"><h3 style="color: #81593d; font-style: cursive; margin-top:10px">ReadBook</h3></a>
             @else
                 <a href="{{ route('home')}}" class="siteHeader__primaryNavInline"><h3 style="color: #81593d; font-style: cursive; margin-top:10px">ReadBook</h3></a>
             @endif            
@@ -51,9 +51,9 @@
 				<ul role="menu" class="siteHeader__menuList">
                     @if(Auth::check())
                         <li class="siteHeader__topLevelItem siteHeader__topLevelItem--home">
-                            <a href="{{ route('user')}}" class="siteHeader__topLevelLink">Home</a></li>
+                            <a href="{{ route('user.index')}}" class="siteHeader__topLevelLink">Home</a></li>
                         <li class="siteHeader__topLevelItem">
-                        <a href="/mybook" class="siteHeader__topLevelLink">My Books</a></li>
+                        <a href="#" class="siteHeader__topLevelLink">My Books</a></li>
                     @else
                         <li class="siteHeader__topLevelItem siteHeader__topLevelItem--home">
                             <a href="{{ route('home')}}" class="siteHeader__topLevelLink">Home</a></li>
@@ -118,12 +118,13 @@
                     <li class="personalNav__listItem">
 
                     	<div class="dropdown dropdown--profileMenu">
-                    		<button onclick="myFunction()" class="dropbtn">
-                    			<span class="headerPersonalNav__icon" data-reactid=".2fvgd7ogb28.1.0.5.0.4.0.0.0"><img class="circularIcon circularIcon--border" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1519716830i/78270916._UY60_CR8,0,60,60_.jpg" alt="Tom"></span>
-                    		</button>
+                           <button onclick="myFunction()" class="dropbtn">
+                                <span class="headerPersonalNav__icon" data-reactid=".2fvgd7ogb28.1.0.5.0.4.0.0.0"><img class="circularIcon circularIcon--border" src="{{ Auth::user()->avatar_url}}" alt="{{Auth::user()->name}}"></span>
+                            </button>
+                    		
 							  <div id="myDropdown" class="dropdown-content">
 							  	<span class="siteHeader__subNavLink gr-h3 gr-h3--noMargin" style="padding-top: 10px">{{ Auth::user()->name }}</span>
-							    <a href="#about">Profile</a>
+							    <a href="{{ route('user.show', ['id' => Auth::user()->id]) }}">Profile</a>
 							    <a href="#about">My Book</a>
 							    <a href="#contact">Friend</a>
 							    <a href="{{ route('logout') }}"

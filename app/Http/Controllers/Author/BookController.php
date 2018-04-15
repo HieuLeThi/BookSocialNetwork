@@ -27,7 +27,6 @@ class BookController extends Controller
             // Time read
             //  total_rating'),
         ];
-        // dd(Auth::user()->id);
         $author = Auth::user()->id;
         $books = Book::select($fields)
             // ->leftJoin('books', 'books.category_id', '=', 'books.id')

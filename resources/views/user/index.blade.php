@@ -8,7 +8,8 @@
 	<script src="https://s.gr-assets.com/assets/react_client_side/external_dependencies-48241921bf.js"></script>
 	<script src="https://s.gr-assets.com/assets/react_client_side/home-41a67ed5b8.js"></script>
 	<script src="https://use.fontawesome.com/079150a0fc.js"></script>
-
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	
@@ -56,50 +57,28 @@
 	<script src="https://s.gr-assets.com/assets/webfontloader-f2373eb97b67c818c1db5c9392e387af.js"></script>
 </head>
 <body style="background: #f9f7f4">
-	@include('frontend.layouts.header')			
+	@include('frontend.layouts.header')	
 	<main>
 		<div class='homeSecondaryColumn'>
 			<section class='gr-homePageRailContainer u-paddingBottomMedium'>
 				<section class="currentlyReadingShelf">
 					<h3 class="gr-h3 gr-h3--noTopMargin">Currently Reading</h3>
-						<!-- bo vong lap o day ne -->
+						@foreach($books as $book)
 						<div class="gr-mediaBox gr-book--medium gr-book">
-							<a href="/book/show/34273236-little-fires-everywhere">
-								<img alt="Little Fires Everywhere" class="gr-mediaBox__media gr-book__image" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1490351351i/34273236._SY180_.jpg" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.0.0"/>
+							<a href="{{ route('showbook.show', ['id' => $book->id]) }}">
+								<img alt="{{ $book->title}}" class="gr-mediaBox__media gr-book__image" src="images/books/{{ $book->picture}}"/>
 							</a>
 							<div class="gr-mediaBox__desc gr-mediaBox__desc--clearfixOverflow" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1">
-								<div class="gr-book__title" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1"><a href="/book/show/34273236-little-fires-everywhere" class="gr-book__titleLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1.0">Little Fires Everywhere</a>
+								<div class="gr-book__title" ><a href="{{ route('showbook.show', ['id' => $book->id]) }}" class="gr-book__titleLink gr-hyperlink gr-hyperlink--naked">{{ $book->title}}</a>
 								</div>
-								<div class="gr-book__author" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2">
+								<div class="gr-book__author">
 									<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by </span>
-									<a href="https://www.goodreads.com/author/show/164692.Celeste_Ng" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.1">Celeste Ng</a>
-								</div>
-								<div class="gr-book__additionalContent" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.3">
-									<div aria-live="polite" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.3.1">
-										<button class="gr-buttonAsLink u-marginTopTiny" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.3.1.0">Update Progress</button>
-									</div>
+									<a href="https://www.goodreads.com/author/show/164692.Celeste_Ng" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.1">{{$book->name_author}}</a>
 								</div>
 							</div>
 						</div>
-						<!-- kết thúc ở đây nè -->
-						<div class="gr-mediaBox gr-book--medium gr-book">
-							<a href="/book/show/34273236-little-fires-everywhere">
-								<img alt="Little Fires Everywhere" class="gr-mediaBox__media gr-book__image" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1490351351i/34273236._SY180_.jpg" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.0.0"/>
-							</a>
-							<div class="gr-mediaBox__desc gr-mediaBox__desc--clearfixOverflow" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1">
-								<div class="gr-book__title" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1"><a href="/book/show/34273236-little-fires-everywhere" class="gr-book__titleLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1.0">Rosario+Vampire, Vol. 1 (Rosario+Vampire, #1)</a>
-								</div>
-								<div class="gr-book__author" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2">
-									<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by </span>
-									<a href="https://www.goodreads.com/author/show/164692.Celeste_Ng" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.1">Celeste Ng</a>
-								</div>
-								<div class="gr-book__additionalContent" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.3">
-									<div aria-live="polite" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.3.1">
-										<button class="gr-buttonAsLink u-marginTopTiny" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.3.1.0">Update Progress</button>
-									</div>
-								</div>
-							</div>
-						</div>
+						@endforeach
+						
 				</section>
 				<footer data-reactid=".1yh1fdqpgxs.1">
 					<div class="u-marginTopXSmall" data-reactid=".1yh1fdqpgxs.1.0">
@@ -107,7 +86,7 @@
 					</div>
 					<span data-reactid=".1yh1fdqpgxs.1.1">
 						<span data-reactid=".1yh1fdqpgxs.1.1.$0">
-							<a href="/review/list/78270916-tom?shelf=currently-reading" data-reactid=".1yh1fdqpgxs.1.1.$0.0">View all books</a>
+							<a href="/review/list/78270916-tom?shelf=currently-reading">View all books</a>
 						</span>
 						<span data-reactid=".1yh1fdqpgxs.1.1.$1">
 							<span data-reactid=".1yh1fdqpgxs.1.1.$1.0"> · </span>
@@ -124,12 +103,9 @@
 			<section class='gr-homePageRailContainer u-paddingBottomMedium showForLargeWidth'>
             <h3 class="gr-h3 gr-h3--noTopMargin">Want to Read</h3>
 				<div class="shelfDisplay" data-reactid=".3p3gp8bitc" data-react-checksum="1359373285">
-					<a class="shelfDisplay__bookCoverLink" href="/book/show/28504537-a-field-guide-to-lies" data-reactid=".3p3gp8bitc.0:$28504537">
-						<img alt="A Field Guide to Lies: Critical Thinking in the Information Age" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1458497081i/28504537._UX96_CR0,25,96,96_.jpg" class="gr-bookCover gr-bookCover--thumbnailSmall" data-reactid=".3p3gp8bitc.0:$28504537.0"/>
-					</a>
 					<a class="shelfDisplay__bookCoverLink" href="/book/show/10361330-html-and-css" data-reactid=".3p3gp8bitc.0:$10361330">
-						<img alt="HTML and CSS: Design and Build Websites" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348805097i/10361330._UX96_CR0,12,96,96_.jpg" class="gr-bookCover gr-bookCover--thumbnailSmall" data-reactid=".3p3gp8bitc.0:$10361330.0"/></a>
-						<div class="u-marginTopXSmall" data-reactid=".3p3gp8bitc.1">
+						<img alt="ahihi" src="http://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348805097i/10361330._UX96_CR0,12,96,96_.jpg" class="gr-bookCover gr-bookCover--thumbnailSmall"/></a>
+						<div class="u-marginTopXSmall">
 							<a href="https://www.goodreads.com/review/list?shelf=to-read" aria-label="View your to-read shelf" data-reactid=".3p3gp8bitc.1.0">View all books</a>
 						</div>
 				</div>
@@ -274,29 +250,20 @@
 			<div class="rightContainer">
 			        <div id="listsTeaserBox" class="featureTeaserBox">
 			          <h2 class="gr-h3">List books by category</h2>
-						<div class="listTeaser">
-							<div class="listTitle" style="padding: 5px 0px 10px">
-						    <a href="/list/show/11.Best_Crime_Mystery_Books">Best Crime &amp; Mystery Books</a>
-						  </div>
-						  <div class="listImg">
-						      <a href="/book/show/2429135.The_Girl_with_the_Dragon_Tattoo"><img alt="The Girl with the Dragon Tattoo by Stieg Larsson" title="The Girl with the Dragon Tattoo by Stieg Larsson" src="https://images.gr-assets.com/books/1327868566s/2429135.jpg"></a>
-						      <a href="/book/show/16299.And_Then_There_Were_None"><img alt="And Then There Were None by Agatha Christie" title="And Then There Were None by Agatha Christie" src="https://images.gr-assets.com/books/1391120695s/16299.jpg"></a>
-						      <a href="/book/show/960.Angels_Demons"><img alt="Angels &amp; Demons by Dan Brown" title="Angels &amp; Demons by Dan Brown" src="https://images.gr-assets.com/books/1303390735s/960.jpg"></a>
-						      <a href="/book/show/17899948-rebecca"><img alt="Rebecca by Daphne du Maurier" title="Rebecca by Daphne du Maurier" src="https://images.gr-assets.com/books/1386605169s/17899948.jpg"></a>
-						  </div>
-						  
-						</div>
-						<div class="listTeaser">
-							<div class="listTitle" style="padding: 5px 0px 10px">
-						    <a href="/list/show/11.Best_Crime_Mystery_Books">Best Crime &amp; Mystery Books</a>
-						  </div>
-						  <div class="listImg" style="margin-bottom: 16px">
-						      <a href="/book/show/4667024-the-help"><img alt="The Help by Kathryn Stockett" title="The Help by Kathryn Stockett" src="https://images.gr-assets.com/books/1346100365s/4667024.jpg"></a>
-						      <a href="/book/show/77203.The_Kite_Runner"><img alt="The Kite Runner by Khaled Hosseini" title="The Kite Runner by Khaled Hosseini" src="https://images.gr-assets.com/books/1484565687s/77203.jpg"></a>
-						      <a href="/book/show/43641.Water_for_Elephants"><img alt="Water for Elephants by Sara Gruen" title="Water for Elephants by Sara Gruen" src="https://images.gr-assets.com/books/1494428973s/43641.jpg"></a>
-						      <a href="/book/show/19063.The_Book_Thief"><img alt="The Book Thief by Markus Zusak" title="The Book Thief by Markus Zusak" src="https://images.gr-assets.com/books/1390053681s/19063.jpg"></a>
-						  </div>
-						</div>
+						@foreach($categories as $category)
+							@if(count($category->relateBook) > 0 )
+							<div class="listTeaser">
+								<div class="listTitle" style="padding: 5px 0px 10px">
+							    <a href="{{ route('topics.show', ['id' => $category->id]) }}">{{ $category->title }}</a>
+							</div>
+								  <div class="listImg" style="margin-bottom: 16px">
+							  @foreach($category->relateBook as $relatebook)
+								      <a href="{{ route('showbook.show', ['id' => $relatebook->id]) }}"><img width="49" height="75" alt="{{ $relatebook->title}}" title="{{$relatebook->title}}" src="images/books/{{$relatebook->picture}}"></a>
+							  @endforeach
+								  </div>
+							</div>
+							@endif
+						@endforeach
 			        </div>
 			    <section class='gr-homePageRailContainer u-paddingBottomMedium' style="border-top: 1px solid #D8D8D8;padding-top: 16px;">
 				<section class="currentlyReadingShelf">
@@ -330,7 +297,7 @@
 							</div>
 						</div>
 				</section>
-				<footer data-reactid=".1yh1fdqpgxs.1">
+				<!-- <footer data-reactid=".1yh1fdqpgxs.1">
 					<div class="u-marginTopXSmall" data-reactid=".1yh1fdqpgxs.1.0">
 						
 					</div>
@@ -339,7 +306,7 @@
 							<a href="/review/list/78270916-tom?shelf=currently-reading" data-reactid=".1yh1fdqpgxs.1.1.$0.0">View all books</a>
 						</span>
 					</span>
-				</footer>
+				</footer> -->
 			</section>
 				</div>
 

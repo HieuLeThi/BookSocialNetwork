@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
 {
@@ -50,8 +51,9 @@ class RegisterController extends Controller
     //     else $role = '3';
     // }
 
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
+        $arrUrl = asset('images/users/user_default.png');
         if($request->check_author == null) {
             $role = '3';
         }
@@ -61,7 +63,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $role,
-            'avatar_url' => 'https://s.gr-assets.com/assets/nophoto/user/u_225x300-c928cbb998d4ac6dd1f0f66f31f74b81.png',
+            'avatar_url' => $arrUrl,
         ]
         );
         // $check_account = $user['role'];

@@ -4,21 +4,20 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PostRequest;
+use App\Post;
+use App\Book;
 use Illuminate\Support\Facades\Auth;
-use Post;
-use Book;
 
 class PostController extends Controller
 {
-    /**
+	/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('frontend.home.showbook');
     }
 
     /**
@@ -26,55 +25,27 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        
-        // return view('frontend.home.showbook', compact('id'));
+        return view('frontend.home.showbook');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\PostRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(PostRequest $request)
+    public function store(Request $request)
     {
-        // dd('vv');
-        // $postFields = $request->all();
-        // $postFields['user_id'] = Auth::user()->id;
-        // $postFields['book_id'] = 1;
-        // if($request->check_post == null) {
-        //     $role_post = '0';
-        // }
-        // else $role_post = '1';
-        // $postFields['role_post'] = $role_post;
-        // $post = Post::create($postFields);
-        // return view('frontend.home.showbook');
+        if($request->check_post == null) {
+            $role_post = '0';
+        }
+        else $role_post = '1';
+    	$post = Post::create([
+            'user_id' => Auth::user()->id,
+            'content' => $request->content,
+            'book_id' => $request->id,
+            'role_post' => $role_post,
+        ]);
+        return redirect()->route('showbook.show', ['id' => $request->id]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -84,38 +55,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function getReview($id)
-    {
-        dd('ahihi');
-        $book = Book::find($id);
-        return view('showbook.show', ['id' => $book->id]);
-    }
-    public function postReview($id, Request $request)
-    {
-        $book = Book::find($id);
-        $postFields['user_id'] = Auth::user()->id;
-        $postFields['book_id'] = $id;
-        if($request->check_post == null) {
-            $role_post = '0';
-        }
-        else $role_post = '1';
-        $postFields['role_post'] = $role_post;
-        $postFields['content'] = $request->content;
-        $post = Post::create($postFields);
-        return redirect()->route('showbook.show', ['id' => $book->id]);
+       dd('ahihi');
+        return view('frontend.home.showbook');
     }
 }

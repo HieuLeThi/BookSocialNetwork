@@ -31,18 +31,10 @@ Route::group(['namespace' => 'Author', 'prefix' => 'author'], function(){
 Route::resource('/author', 'Author\AuthorController');
 Route::group(['namespace' => 'User'], function(){
 	Route::resource('/user', 'UserController');
-	// Route::get('user/mybook', function () {
-	// 	return view('user.mybook');
-	// })->name('mybook');
-
-	// Route::get('/review/{$id}','PostController@getReview');
-	Route::post('/review/{$id}', 'PostController@postReview')->name('postreview');
-	// Route::resource('/review', 'PostController');
-
-
 });
 Route::resource('/topics', 'Home\TopicController');
+// Route::post('/review',)
 Route::resource('/showbook', 'Home\BookController');
-
+Route::resource('review', 'User\PostController');
 
 

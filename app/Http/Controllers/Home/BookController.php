@@ -16,8 +16,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        dd('vo');
-        return view('user.index');
+        return view('frontend.home.showbook');
     }
 
     /**
@@ -76,7 +75,7 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('frontend.home.showbook');
     }
 
     /**
@@ -88,7 +87,9 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $book = Book::find($id);
+        return view('frontend.home.showbook');
     }
 
     /**

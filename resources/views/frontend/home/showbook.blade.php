@@ -100,7 +100,7 @@
 									@endif
 								</div>
 								<br>
-								<form method="POST" action="{{ route('postreview', ['id' => $book->id]) }}">
+								<form method="POST" action="{{ route('review.store', ['id' =>$book->id])}}">
 			                        {{ csrf_field() }}
 									<div id="show_form_review"class="readable stacked" style="display:none">
 									<span>What do you think?</span>

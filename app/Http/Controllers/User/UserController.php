@@ -9,6 +9,7 @@ use App\Book;
 use App\StatusBook;
 use DB;
 use App\User;
+use App\Post;
 use App\Libraries\Image;
 use App\Topic;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,29 @@ class UserController extends Controller
                        ->where('statusbooks.user_id', '=', Auth::user()->id)->where('statusbooks.status','=', $status)
                        ->get();
         $categories = Topic::all();
-    	return view('user.index', compact('books', 'categories'));
+        $wtr = Book::select($fields)
+                       ->join('statusbooks', 'statusbooks.book_id', '=', 'books.id')
+                       ->where('statusbooks.user_id', '=', Auth::user()->id)->where('statusbooks.status','=', 1)
+                       ->get();
+        $newbook = Book::select($fields)
+                ->orderBy('created_at', 'desc')
+                ->limit(2)
+                ->get();
+        // $book = StatusBook::where('', $id)->count(); 
+            //     $posts = DB::table('posts')
+            // ->join('contacts', 'users.id', '=', 'contacts.user_id')
+            // ->join('orders', 'users.id', '=', 'orders.user_id')
+            // ->select('users.*', 'contacts.phone', 'orders.price')
+            // ->get();
+        $fieldss = [
+            'posts.*',
+            // DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
+        ]; 
+        $posts = Post::select($fieldss)
+                ->where('role_post', '=', 1)
+                ->orderBy('created_at', 'desc')
+                ->get();
+    	return view('user.index', compact('books', 'categories', 'wtr', 'newbook', 'posts'));
     }
 
     /**

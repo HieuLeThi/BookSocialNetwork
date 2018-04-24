@@ -137,62 +137,20 @@
 		    			</div>
 
 		    			<div class="friendReviews elementListBrown">
-    						<div class="section firstReview">
-								<div id="review_91338657" class="review" itemprop="reviews" itemscope="" itemtype="http://schema.org/Review">
-    								<a title="Michael" class="left imgcol" href="/user/show/1036930-michael">
-    								<img alt="Michael" src="https://images.gr-assets.com/users/1402947913p2/1036930.jpg"></a>
-
-									  	<div class="left bodycol" style="width: 510px;">
-										    <div class="reviewHeader uitext stacked">
-										        <a class="reviewDate createdAt right" href="/review/show/91338657?book_show_action=true">Feb 25, 2010</a>
-
-										      <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-										        <a title="Michael" class="user" itemprop="url" name="Michael" href="/user/show/1036930-michael">Michael</a>
-										      </span>
-
-										        rated it
-										    </div>
-	        								<div class="reviewText stacked">
-	              								<span id="reviewTextContainer91338657" class="readable" style="font-size: 15px;">
-	            
-													<span id="freeTextContainer1229566540314906503">``Miss Eliza Bennet, let me persuade you to follow my example, and take a turn about the room. -- I assure you the anti-gravity hoverchannel is very refreshing after sitting so long in one attitude.''<br><br>Eliza was surprised, but agreed to it immediately. She unstrapt herself from her leather seat restraints and stood, careful to maintain her balance as the airship encountered turbulence. When she entered the hoverchannel, she activated the polarity redistribution magnets within her combat suit and b</span>
-													  <span id="freeText1229566540314906503" style="display:none">``Miss Eliza Bennet, let me persuade you to follow my example, and take a turn about the room. -- I assure you the anti-gravity hoverchannel is very refreshing after sitting so long in one attitude.''<br><br>Eliza was surprised, but agreed to it immediately. She unstrapt herself from her leather seat restraints and stood, careful to maintain her balance as the airship encountered turbulence. When she entered the hoverchannel, she activated the polarity redistribution magnets within her combat suit and began floating comfortably around the perimeter of the foyer.<br><br>Miss Bingley's attention was quite engaged in watching Mr. Darcy's progress through his book, so much so that at one point she nearly navigated the ship into the side of Pemberley; and she was perpetually making some inquiry.<br><br>At length, finally exhausted by her tenacious attempts to force a conversation regarding his book, Darcy relented. "It's entitled Boneshaker. An American novel."<br><br>"What do you think of it?" Eliza said as she drifted by. <br><br>"A bit nonsensical, really. Steampunk claptrap about the Civil War going on much longer than it actually did, which caused technological advances that didn't really happen until much later. And a zombie-infested city called Seattle. It has been blocked off from the rest of the country, and our heroine must go in to rescue her foolish son." <br><br>Mr. Bingley crossed the room, his steam-powered mechanical legs stomping their way across the carpet to the cabinet where he refilled his glass. "Zombies in America? That does sound quite silly. Everyone knows that zombies are native to Britain. That's how I lost my legs."<br><br>"Please, Bingley, don't tell us that old story again," Mr. Hurst said, adjusting himself on the sofa before falling back asleep.<br><br>Darcy said, "The plot moves along at a good pace, but the characters are a bit uninspired. A teenage boy constantly doing something inadvisable; the protective mother, blasting zombies and trying to save him."<br><br>Eliza smiled. "Darcy, certainly you aren't saying literature is full of strong female characters who run around rescuing male characters."<br><br>"Nor should it be," Mr. Hurst said, drifting slowly in and out of consciousness.<br><br>Ignoring Mr. Hurst's interjection, Darcy said, "I suppose the fairer sex aren't shown in powerful roles that often, even in these books written in the far future about the distant past . . . er, or perhaps about the same time as now . . . When were we written?"<br><br>Miss Bingley inquired, "Are you sure the dinner agreed with you?"<br><br>"I feel fine, thank you," Darcy said. <br><br>"Admit it," Sherlock Holmes said, standing in the doorway, Watson at his side. "You enjoy all the fashionable gimmicks flying left and right, and the pace keeps you entertained. Yet you wonder why nothing surprising was done with any of these elements."<br><br>Darcy moved over as Holmes sat on the sofa beside him, lighting a pipe. "You're right, Holmes. The whole reinvention of the Civil War is fascinating in theory. Then the author does nothing with it. The book has nothing to say. No reflections on the civil war, racism, or politics. Nor does it say anything about the true nature of zombies. In fact, it says little about love, which is the very heart of the story."<br><br>J. K. Rowling, refilling her glass of zinfandel, said, "And it's practically a young adult novel, isn't it? Other than one or two mildly violent zombie moments and one four letter 'S' word, this could be the next film from Pixar. There's not even a gay sorcerer to throw off the prudes." <br><br>Darcy met Eliza's eyes as she orbited the room. "Have you read it as well, Miss Bennett?"<br><br>"Braaaains," Mr. Hurst moaned softly.<br><br>"I found it diverting," Eliza said. "I always read the books nominated for the Nebula awards. But, like you, I found the novel didn't meet my expectations. When you look beyond the stylish trappings, you have a run-of-the-mill adventure story written in a workmanlike fashion. I imagine the query letter was spectacular, though."<br><br>Darcy was on the verge of speaking when Mr. Hurst lunged up from the sofa, saliva splattering from his vicious maw, his eyes sunken in and rolled back into his head. He lurched across the room toward Bingley, whose back was facing him.<br><br>Eliza kicked off of the wall and rolled over to Darcy, pulling his pistol from his belt, and fired several rounds through Mr. Hurst's head. A splatter of blood, brain and skull chips showered down on Harold Bloom.<br><br>"Well," Mr. Harold Bloom said, wiping blood from his face and wiping it on the sofa, "that was entirely unnecessary, but what HASN'T been? The whole book review is sound and fury, signifying nothing. And how many times is this hack going to parody <u>Pride and Prejudice</u>? He seems to think it's much more funny than it is, just as Oscar Wilde thought himself hilarious, when he is in fact highly over-esteemed."<br><br>Holmes puffed his pipe, a gray cloud of smoke rising above him. "I can't believe I didn't notice Mr. Hurst was turning. Usually I'm so attentive to details."<br><br>"Nobody's perfect," Darcy said. "Would you mind putting that pipe out? We are in a zeppelin, you know."<br><br>Holmes sighed and stood up, pulling on his overcoat. "I'm going next door to the Kurt Vonnegut review. Pipe smoking is encouraged over there." <br><br>And as Holmes left the room, suddenly the review stopped.<br></span>
-	  												<a data-text-id="1229566540314906503" href="#" onclick="swapContent($(this));; return false;">...more</a>
-
-	          										</span>
-	        									</div>
-	      									<div class="reviewFooter uitext buttons">
-	    										<div class="updateActionLinks">
-	      											<span class="likeItContainer">
-	      												<a id="like_count_review_91338657" rel="nofollow" href="/rating/voters/91338657?resource_type=Review">
-	      													<span class="likesCount">317 likes</span>
-	      												</a>&nbsp;·&nbsp;
-	      													<span class="loadingLinkSpan"><a>Like</a>
-	      													</span>&nbsp;·&nbsp;
-	      												      <a id="commentLink_2344330972" href="#" onclick="comment_form_for(&#39;review&#39;, 2344330972, true, &#39;&#39;); return false;">comment</a>
-
-
-	      											</span>
-	   											 </div>
-											</div>
-											<div class="brown_comment" id="comments_form_review_91338657" style="display: none">
-												<textarea class="placeholder_text" onclick="expand_comment_form_for('review', 91338657, true, '')">Write a comment...</textarea>
-											</div>
-
-  									</div>
-								</div>
-							</div>
+							@foreach($review as $rv)
 							<div class="section firstReview">
+								@foreach($rv->user as $info_user)
 								<div id="review_91338657" class="review" itemprop="reviews" itemscope="" itemtype="http://schema.org/Review">
-    								<a title="Michael" class="left imgcol" href="/user/show/1036930-michael">
-    								<img alt="Michael" src="https://images.gr-assets.com/users/1402947913p2/1036930.jpg"></a>
+    								<a title="{{ $info_user->name }}" class="left imgcol" href="/user/show/1036930-michael" style="margin-top: 10px;">
+    								<img alt="" src="{{ $info_user->avatar_url }}"></a>
 
 									  	<div class="left bodycol" style="width: 510px;">
-										    <div class="reviewHeader uitext stacked">
-										        <a class="reviewDate createdAt right" href="/review/show/91338657?book_show_action=true">Feb 25, 2010</a>
+										    <div style="margin-top: 10px;" class="reviewHeader uitext stacked">
+										        <a class="reviewDate createdAt right" href="/review/show/91338657?book_show_action=true">
+										        	{{ date( 'd-m-Y', strtotime($rv->created_at)) }}</a>
 
 										      <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-										        <a title="Michael" class="user" itemprop="url" name="Michael" href="/user/show/1036930-michael">Michael</a>
+										        <a title="Michael" class="user" itemprop="url" name="Michael" href="/user/show/1036930-michael">{{ $info_user->name }}</a>
 										      </span>
 
 										        rated it
@@ -200,33 +158,40 @@
 	        								<div class="reviewText stacked">
 	              								<span id="reviewTextContainer91338657" class="readable" style="font-size: 15px;">
 	            
-													<span id="freeTextContainer1229566540314906503">``Miss Eliza Bennet, attitude.''<br><br>Eliza combat suit and b</span>
-													  <span id="freeText1229566540314906503" style="display:none">``Miss Eliza Bennet, let me persuade you to follow my example, and take a turn about the room. -- I assure you the anti-gravity hoverchannel is very refreshing after sitting so long in one attitude.''<br><br>Eliza was surprised, but agreed to it immediately. She unstrapt herself from her leather seat restraints and stood, careful to maintain her balance as the airship encountered turbulence. When she entered the hoverchannel, she activated the polarity redistribution magnets within her combat suit and began floating comfortably around the perimeter of the foyer.<br><br>Miss Bingley's attention was quite engaged in watching Mr. Darcy's progress through his book, so much so that at one point she nearly navigated the ship into the side of Pemberley; and she was perpetually making some inquiry.<br><br>At length, finally exhausted by her tenacious attempts to force a conversation regarding his book, Darcy relented. "It's entitled Boneshaker. An American novel."<br><br>"What do you think of it?" Eliza said as she drifted by. <br><br>"A bit nonsensical, really. Steampunk claptrap about the Civil War going on much longer than it actually did, which caused technological advances that didn't really happen until much later. And a zombie-infested city called Seattle. It has been blocked off from the rest of the country, and our heroine must go in to rescue her foolish son." <br><br>Mr. Bingley crossed the room, his steam-powered mechanical legs stomping their way across the carpet to the cabinet where he refilled his glass. "Zombies in America? That does sound quite silly. Everyone knows that zombies are native to Britain. That's how I lost my legs."<br><br>"Please, Bingley, don't tell us that old story again," Mr. Hurst said, adjusting himself on the sofa before falling back asleep.<br><br>Darcy said, "The plot moves along at a good pace, but the characters are a bit uninspired. A teenage boy constantly doing something inadvisable; the protective mother, blasting zombies and trying to save him."<br><br>Eliza smiled. "Darcy, certainly you aren't saying literature is full of strong female characters who run around rescuing male characters."<br><br>"Nor should it be," Mr. Hurst said, drifting slowly in and out of consciousness.<br><br>Ignoring Mr. Hurst's interjection, Darcy said, "I suppose the fairer sex aren't shown in powerful roles that often, even in these books written in the far future about the distant past . . . er, or perhaps about the same time as now . . . When were we written?"<br><br>Miss Bingley inquired, "Are you sure the dinner agreed with you?"<br><br>"I feel fine, thank you," Darcy said. <br><br>"Admit it," Sherlock Holmes said, standing in the doorway, Watson at his side. "You enjoy all the fashionable gimmicks flying left and right, and the pace keeps you entertained. Yet you wonder why nothing surprising was done with any of these elements."<br><br>Darcy moved over as Holmes sat on the sofa beside him, lighting a pipe. "You're right, Holmes. The whole reinvention of the Civil War is fascinating in theory. Then the author does nothing with it. The book has nothing to say. No reflections on the civil war, racism, or politics. Nor does it say anything about the true nature of zombies. In fact, it says little about love, which is the very heart of the story."<br><br>J. K. Rowling, refilling her glass of zinfandel, said, "And it's practically a young adult novel, isn't it? Other than one or two mildly violent zombie moments and one four letter 'S' word, this could be the next film from Pixar. There's not even a gay sorcerer to throw off the prudes." <br><br>Darcy met Eliza's eyes as she orbited the room. "Have you read it as well, Miss Bennett?"<br><br>"Braaaains," Mr. Hurst moaned softly.<br><br>"I found it diverting," Eliza said. "I always read the books nominated for the Nebula awards. But, like you, I found the novel didn't meet my expectations. When you look beyond the stylish trappings, you have a run-of-the-mill adventure story written in a workmanlike fashion. I imagine the query letter was spectacular, though."<br><br>Darcy was on the verge of speaking when Mr. Hurst lunged up from the sofa, saliva splattering from his vicious maw, his eyes sunken in and rolled back into his head. He lurched across the room toward Bingley, whose back was facing him.<br><br>Eliza kicked off of the wall and rolled over to Darcy, pulling his pistol from his belt, and fired several rounds through Mr. Hurst's head. A splatter of blood, brain and skull chips showered down on Harold Bloom.<br><br>"Well," Mr. Harold Bloom said, wiping blood from his face and wiping it on the sofa, "that was entirely unnecessary, but what HASN'T been? The whole book review is sound and fury, signifying nothing. And how many times is this hack going to parody <u>Pride and Prejudice</u>? He seems to think it's much more funny than it is, just as Oscar Wilde thought himself hilarious, when he is in fact highly over-esteemed."<br><br>Holmes puffed his pipe, a gray cloud of smoke rising above him. "I can't believe I didn't notice Mr. Hurst was turning. Usually I'm so attentive to details."<br><br>"Nobody's perfect," Darcy said. "Would you mind putting that pipe out? We are in a zeppelin, you know."<br><br>Holmes sighed and stood up, pulling on his overcoat. "I'm going next door to the Kurt Vonnegut review. Pipe smoking is encouraged over there." <br><br>And as Holmes left the room, suddenly the review stopped.<br></span>
-	  												<a data-text-id="1229566540314906503" href="#" onclick="swapContent($(this));; return false;">...more</a>
+													<span id="freeTextContainer1229566540314906503">`` {{ $rv->content}} ``<br></span>
+													  
 
 	          										</span>
 	        									</div>
 	      									<div class="reviewFooter uitext buttons">
 	    										<div class="updateActionLinks">
+	    											@if(Auth::check())
+		    											@if($info_user->name == Auth::user()->name)
+			    											<button class="gr-commentForm__submitButton gr-button gr-button--small loadingLinkSpan" type="submit">Edit</button>
+			    											<form method="POST" action="{{ route('review.destroy', $rv->id) }}" style="display: inline;">
+										                          {{ csrf_field() }}
+										                          {{ method_field('DELETE') }}
+										                          <button class="gr-commentForm__submitButton gr-button gr-button--small" type="submit">Delete</button>
+										                    </form>
+									                    @endif
+									                @endif
 	      											<span class="likeItContainer">
 	      												<a id="like_count_review_91338657" rel="nofollow" href="/rating/voters/91338657?resource_type=Review">
 	      													<span class="likesCount">317 likes</span>
 	      												</a>&nbsp;·&nbsp;
-	      													<span class="loadingLinkSpan"><a>Like</a>
+	      													<span class="loadingLinkSpan"><a>Edit</a>
 	      													</span>&nbsp;·&nbsp;
-	      												      <a id="commentLink_2344330972" href="#" onclick="comment_form_for(&#39;review&#39;, 2344330972, true, &#39;&#39;); return false;">comment</a>
-
-
 	      											</span>
 	   											 </div>
 											</div>
 											<div class="brown_comment" id="comments_form_review_91338657" style="display: none">
 												<textarea class="placeholder_text" onclick="expand_comment_form_for('review', 91338657, true, '')">Write a comment...</textarea>
 											</div>
-
-  									</div>
+  										</div>
 								</div>
+								@endforeach
 							</div>
+							@endforeach
 						</div>
 					</div>
 	    			<div class="rightContainer" style="padding-left: 30px">

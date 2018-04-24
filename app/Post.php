@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-     protected $fillable = [
+    // use SoftDeletes;
+
+    protected $fillable = [
         'user_id', 'book_id', 'content', 'role_post'
     ];
     public function book()
@@ -17,4 +19,27 @@ class Post extends Model
     {
     	return $this->hasMany('App\User', 'id', 'user_id');
     }
+
+     /**
+     * Relationship morphMany with Comment
+     *
+     * @return array
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');
+    }
+    /**
+     * Override parent boot and Call deleting borrows and comments
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($post) {
+            $post->comments()->delete();
+        });
+    }
+
 }

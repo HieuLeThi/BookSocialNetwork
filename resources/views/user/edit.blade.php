@@ -24,7 +24,7 @@
 		    					<div id="imagecol" class="col">
 							  	<div class="bookCoverContainer">
 								    <div class="bookCoverPrimary">
-								          <a rel="nofollow" itemprop="image" href="{{ route('user.show', ['id' => Auth::user()->id]) }}">
+								          <a rel="nofollow" itemprop="image" href="{{ Auth::user()->avatar_url}}">
 								          	<img id="coverImage" alt="{{ Auth::user()->name}}" src="{{ Auth::user()->avatar_url}}" />
 								          </a>
 								    </div>

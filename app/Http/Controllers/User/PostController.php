@@ -59,4 +59,18 @@ class PostController extends Controller
        dd('ahihi');
         return view('frontend.home.showbook');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+        $book_id = $post->book_id;
+        $post->delete();
+        return redirect()->route('showbook.show', ['id' => $book_id]);
+    }
 }

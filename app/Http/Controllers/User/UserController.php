@@ -12,6 +12,7 @@ use App\User;
 use App\Post;
 use App\Libraries\Image;
 use App\Topic;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,6 +20,7 @@ class UserController extends Controller
 {
     public function index()
     {   
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
     	$fields = [
             'books.*',
             DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
@@ -37,15 +39,8 @@ class UserController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->limit(2)
                 ->get();
-        // $book = StatusBook::where('', $id)->count(); 
-            //     $posts = DB::table('posts')
-            // ->join('contacts', 'users.id', '=', 'contacts.user_id')
-            // ->join('orders', 'users.id', '=', 'orders.user_id')
-            // ->select('users.*', 'contacts.phone', 'orders.price')
-            // ->get();
         $fieldss = [
             'posts.*',
-            // DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
         ]; 
         $posts = Post::select($fieldss)
                 ->where('role_post', '=', 1)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Book;
+use App\Post;
 use DB;
 
 class BookController extends Controller
@@ -64,7 +65,11 @@ class BookController extends Controller
         $book = Book::select($fields)
                 ->where('id', $id)
                 ->firstOrFail();
-        return view('frontend.home.showbook', compact('book'));
+        $review = Post::select('posts.*')
+                ->where('book_id', '=', $id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        return view('frontend.home.showbook', compact('book', 'review'));
     }
 
     /**

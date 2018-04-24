@@ -33,8 +33,9 @@ Route::group(['namespace' => 'User'], function(){
 	Route::resource('/user', 'UserController');
 });
 Route::resource('/topics', 'Home\TopicController');
-// Route::post('/review',)
 Route::resource('/showbook', 'Home\BookController');
 Route::resource('review', 'User\PostController');
+Route::resource('comment', 'User\CommentController');
+
 
 

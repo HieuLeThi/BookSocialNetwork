@@ -12,10 +12,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-	
-	
-
 	<script src="https://s.gr-assets.com/assets/webfontloader-f2373eb97b67c818c1db5c9392e387af.js"></script>
 </head>
 <body style="background: #f9f7f4">
@@ -106,11 +102,12 @@
 								<div class="gr-newsfeedItem__header gr-newsfeedItem__header--timestamp">
 									<a class="gr-hyperlink gr-hyperlink--bold gr-user__profileLink u-marginRightTiny" href="/user/show/78309217-hung" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;social&quot;}">{{ $puser->name}}</a>
 									<span class="gr-newsfeedItem__headerText">reviewed</span>
-									<a class="gr-hyperlink gr-hyperlink--bold" href="/book/show/2184798.Blood_River">{{ $pbook->title}}</a>
+									<a class="gr-hyperlink gr-hyperlink--bold" href="{{route('showbook.show',['id' => $pbook->id])}}">{{ $pbook->title}}</a>
 								</div>
 								<small class="gr-newsfeedItem__headerTimestamp">
-									<a href="https://www.goodreads.com/review/show/2310079643" class="gr-hyperlink gr-hyperlink--naked" aria-label="Permanent link to Hung’s review of Blood River: A Journey to Africa's Broken Heart">
-										<time datetime="2018-02-26T23:15:33.000-08:00" aria-label="19 days ago">{{ date( 'd-m-Y', strtotime($post->created_at)) }}</time></a>
+									<a href="#" class="gr-hyperlink gr-hyperlink--naked">
+										<time datetime="2018-02-26T23:15:33.000-08:00" aria-label="19 days ago">
+											{{ date( 'h:i a d-m', strtotime($post->created_at)) }}</time></a>
 								</small>
 								<div class="gr-newsfeedItem__socialBookUpdateDetails">
 								<div class="gr-newsfeedItem__readCountText">Read 3 times</div>
@@ -146,10 +143,9 @@
 									</a>
 									<div class="gr-mediaBox__desc">
 										<div class="gr-book__title">
-											<a href="/book/show/2184798.Blood_River" class="gr-book__titleLink gr-book__titleLink--large gr-hyperlink gr-hyperlink--naked" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;book_title&quot;}">{{ $pbook->title}}</a>
+											<a href="{{route('showbook.show',['id' => $pbook->id])}}" class="gr-book__titleLink gr-book__titleLink--large gr-hyperlink gr-hyperlink--naked" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;book_title&quot;}">{{ $pbook->title}}</a>
 										</div>
 										<div class="gr-book__author gr-book__author--large">
-											<span>by </span>
 											<a href="https://www.goodreads.com/author/show/534082.Tim_Butcher" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked" data-tracking-dfp="true">{{ $pbook->name_author}}</a>
 										</div>
 										<div class="gr-book__additionalContent">
@@ -204,13 +200,52 @@
 											<img class="circularIcon circularIcon--border" src="{{ Auth::user()->avatar_url }}" alt="Tom">
 										</a>
 									</div>
-										<form class="gr-mediaBox__desc" method="post" action="/comment"><input type="hidden" name="id" value="2310079643">
-											<input type="hidden" name="type" value="Review">
-											<textarea class="gr-textarea gr-commentForm__textarea" name="comment[body_usertext]" rows="1" placeholder="Write a comment…" aria-label="Write a comment…">
+										<form class="gr-mediaBox__desc" method="post" action="{{ route('comment.store', ['id' =>$post->id])}}">
+			                        		{{ csrf_field() }}
+											<textarea class="gr-textarea gr-commentForm__textarea" name="content" rows="1"  placeholder="Write a comment…" aria-label="Write a comment…">
 											</textarea>
+											@if($errors->first('content')) 
+                            					<p class="text-danger">{{ $errors->first('content') }}</p>
+                          					@endif
+											<button class="gr-commentForm__submitButton gr-button gr-button--small"  type="submit">Comment</button>
 										</form>
 									</div>
 								</div>
+								@foreach($post->comments as $cmt)
+								<div class="gr-commentForm gr-mediaBox">
+
+									<div class="gr-mediaBox__media">
+										<a href="{{ $cmt->userComment->avatar_url }}">
+											<img class="circularIcon circularIcon--border" src="{{ $cmt->userComment->avatar_url }}" alt="">
+										</a>
+									</div>
+									<div class="gr-mediaBox__desc gr-mediaBox__desc--clearfixOverflow">
+                              			<div class="gr-comment__rightSideInformation">
+                              				<small class="gr-comment__timestamp">
+                              					<time">{{ date( 'h:i a d-m', strtotime($cmt->created_at)) }}</time>
+                              					<p></p>
+                              				</small>
+                              				@if(Auth::check())
+		    									@if($cmt->userComment->name == Auth::user()->name)
+	                              				<form method="POST" action="{{ route('comment.destroy', $cmt->id) }}" style="display: inline;">
+						                          {{ csrf_field() }}
+						                          {{ method_field('DELETE') }}
+						                          <button type="submit" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+											    </form>
+                              					</button>
+                              					@endif
+                              				@endif	
+                              			</div>
+                              			<a class="gr-hyperlink gr-hyperlink--bold gr-user__profileLink" href="/user/show/78270916-tom" data-reactid=".1od8uww6bk0.2.0.$=1$Update_4730448877.0.1.2.2.1:$kca=2//comment/amzn1=1gr=1comment=1v1=14mSXlXrqBlHNjsqA0KN9ww.1.1" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;social&quot;}">{{ $cmt->userComment->name }}</a>
+                              			<div class="gr-comment__body">
+                              				<div class="expandableHtml">
+                              					<span data-reactid=".1od8uww6bk0.2.0.$=1$Update_4730448877.0.1.2.2.1:$kca=2//comment/amzn1=1gr=1comment=1v1=14mSXlXrqBlHNjsqA0KN9ww.1.3.0.0">{{ $cmt->content }}</span>
+                              				</div>
+                              			</div>
+                              		</div>
+                              		
+                              	</div>
+                              	@endforeach
 							</div>
 							@endforeach
 					</div>
@@ -253,10 +288,9 @@
 								<div class="gr-book__title" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1"><a href="/book/show/34273236-little-fires-everywhere" class="gr-book__titleLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1.0">{{ $nb->title}}</a>
 								</div>
 								<div class="gr-book__author" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2">
-									<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by </span>
+									<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by</span>
 									<a href="https://www.goodreads.com/author/show/164692.Celeste_Ng" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.1">{{ $nb->name_author}}</a>
 								</div>
-								
 							</div>
 						</div>
 						@endforeach

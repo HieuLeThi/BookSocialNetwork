@@ -8,6 +8,8 @@
 	<!-- <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-479eda3f659b065fab977d3b90262b48.css" /> -->
 	<link rel="stylesheet" media="screen,print" href="https://s.gr-assets.com/assets/review/list-999f3695f560f96c8637b3d3bb2677dc.css" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
+	  <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-802d4eb124676566447af5393fd9dbec.css" />
+
 	  <link rel="canonical" href="https://www.goodreads.com/review/list/78270916" />
 </head>
 <body>

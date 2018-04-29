@@ -29,11 +29,15 @@ class UserController extends Controller
         $books = Book::select($fields)
                        ->join('statusbooks', 'statusbooks.book_id', '=', 'books.id')
                        ->where('statusbooks.user_id', '=', Auth::user()->id)->where('statusbooks.status','=', $status)
+                       ->orderBy('updated_at', 'desc')
+                       ->limit(10)
                        ->get();
         $categories = Topic::all();
         $wtr = Book::select($fields)
                        ->join('statusbooks', 'statusbooks.book_id', '=', 'books.id')
                        ->where('statusbooks.user_id', '=', Auth::user()->id)->where('statusbooks.status','=', 1)
+                       ->orderBy('updated_at', 'desc')
+                       ->limit(10)
                        ->get();
         $newbook = Book::select($fields)
                 ->orderBy('created_at', 'desc')
@@ -57,7 +61,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user.profile');
+        $userProfile = User::findOrFail($id);
+        return view('user.profile', compact('userProfile'));
     }
 
     /**

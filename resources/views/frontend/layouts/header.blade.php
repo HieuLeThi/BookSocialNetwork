@@ -53,7 +53,7 @@
                         <li class="siteHeader__topLevelItem siteHeader__topLevelItem--home">
                             <a href="{{ route('user.index')}}" class="siteHeader__topLevelLink">Home</a></li>
                         <li class="siteHeader__topLevelItem">
-                        <a href="#" class="siteHeader__topLevelLink">My Books</a></li>
+                        <a href="{{route('showbook.index')}}" class="siteHeader__topLevelLink">My Books</a></li>
                     @else
                         <li class="siteHeader__topLevelItem siteHeader__topLevelItem--home">
                             <a href="{{ route('home')}}" class="siteHeader__topLevelLink">Home</a></li>
@@ -111,7 +111,7 @@
                     	</a>
                     </li>
                     <li class="personalNav__listItem">
-                    	<a href="/friend" title="Friends" class="headerPersonalNav">
+                    	<a href="{{ route('friend.index')}}" title="Friends" class="headerPersonalNav">
                     		<span class="headerPersonalNav__icon headerPersonalNav__icon--friendRequests" aria-label="Friend Requests"></span>
                    		</a>
                     </li>
@@ -125,8 +125,8 @@
 							  <div id="myDropdown" class="dropdown-content">
 							  	<span class="siteHeader__subNavLink gr-h3 gr-h3--noMargin" style="padding-top: 10px">{{ Auth::user()->name }}</span>
 							    <a href="{{ route('user.show', ['id' => Auth::user()->id]) }}">Profile</a>
-							    <a href="#about">My Book</a>
-							    <a href="#contact">Friend</a>
+							    <a href="{{route('showbook.index')}}">My Book</a>
+							    <a href="{{ route('friend.index')}}">Friend</a>
 							    <a href="{{ route('logout') }}"
 			                      onclick="event.preventDefault();
 			                               document.getElementById('logout-form').submit();">

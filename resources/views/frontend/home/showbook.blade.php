@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Book show</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
   <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-b4a91517aa00c2ede826962c83c1ea16.css" />
     
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,22 +28,69 @@
 		    				<div id="imagecol" class="col">
 							  	<div class="bookCoverContainer">
 								    <div class="bookCoverPrimary">
-								          <a rel="nofollow" itemprop="image" href="/book/photo/1137215.Boneshaker">
+								          <a rel="nofollow" itemprop="image" href="../images/books/{{$book->picture}}">
 								          	<img id="coverImage" alt="Boneshaker (The Clockwork Century, #1)" src="../images/books/{{$book->picture}}" />
 								          </a>
 								    </div>
 							    </div>
 							    <div class='wtrButtonContainer'>
+							    	@if($bookRole == null) 
 							    	<div class="form-group">
-							    		<select class="form-control" id="sel1"  style="background: #409D69">
-									        <option>Want to read</option>
-									        <option>Currently Reading</option>
-									        <option>Read</option>
-									    </select>
+							    		<form methord="{{ route('showbook.store', ['id' => $book->id]) }}" class="form">
+							    			<select name="status" class="form-control" id="sel1"  style="background: #409D69">
+										        <option value="0"> Select Status</option>
+								    			<option value="1" >Want to read</option>
+										        <option value="2"> Currently Reading</option>
+										        <option value="3"> Read</option>
+									    	</select>
+							    		</form>
 							    	</div>
+							    	
+							    	@else 
+							    	<div class="form-group">
+							    		<form methord="{{ route('showbook.store', ['id' => $book->id]) }}" class="form">
+							    			<select name="status" class="form-control" id="sel1"  style="background: #409D69">
+								    			<option value="1" @if($bookRole->status == 1) {{"selected"}} @endif>Want to read</option>
+										        <option value="2" @if($bookRole->status == 2) {{"selected"}} @endif> Currently Reading</option>
+										        <option value="3" @if($bookRole->status == 3) {{"selected"}} @endif> Read</option>
+									    	</select>
+							    		</form>
+							    	</div>
+							    	@endif
+
+							    	
 								</div>
 							    
 							</div>
+							<script>
+								 $.ajaxSetup({
+
+								        headers: {
+
+								            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								        }
+
+								    });
+
+									$('select').change(function() {
+										var status = $(this).val()
+								        var url = $('.form').attr('methord');
+										$.ajax({
+
+								           type:'POST',
+
+								           url:url,
+
+								           data: {'status': status},
+
+								           success:function(statusBook){
+								           	alert('Add book shelves success !');
+								           	}
+								        });
+								    });
+
+								</script>
+							</script>
 							<div id="metacol" class="last col" style="width: 435px;margin-left: 10px">
 								<h1 id="bookTitle" class="bookTitle" itemprop="name">
 								      {{ $book->title}}
@@ -147,13 +196,13 @@
 									  	<div class="left bodycol" style="width: 510px;">
 										    <div style="margin-top: 10px;" class="reviewHeader uitext stacked">
 										        <a class="reviewDate createdAt right" href="/review/show/91338657?book_show_action=true">
-										        	{{ date( 'd-m-Y', strtotime($rv->created_at)) }}</a>
+										        	{{ date( 'h:m a d-m-Y', strtotime($rv->created_at)) }}</a>
 
 										      <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 										        <a title="Michael" class="user" itemprop="url" name="Michael" href="/user/show/1036930-michael">{{ $info_user->name }}</a>
 										      </span>
 
-										        rated it
+										        reviewed
 										    </div>
 	        								<div class="reviewText stacked">
 	              								<span id="reviewTextContainer91338657" class="readable" style="font-size: 15px;">
@@ -175,13 +224,7 @@
 										                    </form>
 									                    @endif
 									                @endif
-	      											<span class="likeItContainer">
-	      												<a id="like_count_review_91338657" rel="nofollow" href="/rating/voters/91338657?resource_type=Review">
-	      													<span class="likesCount">317 likes</span>
-	      												</a>&nbsp;·&nbsp;
-	      													<span class="loadingLinkSpan"><a>Edit</a>
-	      													</span>&nbsp;·&nbsp;
-	      											</span>
+	      											
 	   											 </div>
 											</div>
 											<div class="brown_comment" id="comments_form_review_91338657" style="display: none">

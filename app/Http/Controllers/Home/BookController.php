@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Book;
 use App\Post;
 use DB;
+use App\StatusBook;
+use Illuminate\Support\Facades\Auth;
+
 
 class BookController extends Controller
 {
@@ -17,7 +20,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('frontend.home.showbook');
+        $books = Book::all();
+        return view('user.mybook', compact('books'));
     }
 
     /**
@@ -25,9 +29,9 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        dd($request); 
     }
 
     /**
@@ -38,7 +42,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $condition = ([
+            'user_id' => Auth::user()->id,
+            'book_id' => $request->id,
+        ]);
+        $statusBook = StatusBook::updateOrCreate($condition, ['status' => $request->status]);
+
+        return $statusBook;
     }
 
     /**
@@ -69,7 +79,11 @@ class BookController extends Controller
                 ->where('book_id', '=', $id)
                 ->orderBy('created_at', 'desc')
                 ->get();
-        return view('frontend.home.showbook', compact('book', 'review'));
+        $bookRole = StatusBook::select('status')
+                    ->where('book_id', '=', $id) 
+                    ->where('user_id', '=', Auth::user()->id)
+                    ->first(); 
+        return view('frontend.home.showbook', compact('book', 'review','bookRole'));
     }
 
     /**
@@ -93,8 +107,8 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
 
-        $book = Book::find($id);
-        return view('frontend.home.showbook');
+       
+       // 
     }
 
     /**

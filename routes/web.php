@@ -36,6 +36,7 @@ Route::resource('/topics', 'Home\TopicController');
 Route::resource('/showbook', 'Home\BookController');
 Route::resource('review', 'User\PostController');
 Route::resource('comment', 'User\CommentController');
-
+Route::resource('friend', 'User\FriendController');
+// Route::post('addFriend', 'User\FriendController@store');
 
 

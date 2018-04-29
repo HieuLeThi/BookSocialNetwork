@@ -46,15 +46,6 @@
 						<span data-reactid=".1yh1fdqpgxs.1.1.$0">
 							<a href="/review/list/78270916-tom?shelf=currently-reading">View all books</a>
 						</span>
-						<span data-reactid=".1yh1fdqpgxs.1.1.$1">
-							<span data-reactid=".1yh1fdqpgxs.1.1.$1.0"> · </span>
-						</span>
-						<span data-reactid=".1yh1fdqpgxs.1.1.$2">
-							<input class="gr-buttonAsLink currentlyReadingShelf__addBook" value="Add a book" type="button" autocomplete="off" data-reactid=".1yh1fdqpgxs.1.1.$2.0"/>
-						</span>
-						<span data-reactid=".1yh1fdqpgxs.1.1.$3">
-							<span data-reactid=".1yh1fdqpgxs.1.1.$3.0"> · </span>
-						</span>
 					</span>
 				</footer>
 			</section>
@@ -93,14 +84,14 @@
 						@foreach($post->user as $puser)
 						<div class="gr-newsfeedItem gr-mediaBox">
 							<div class="gr-newsfeedItem__headerIcon gr-mediaBox__media gr-mediaBox__media--marginSmall">
-								<a href="/user/show/78309217-hung">
+								<a href="{{route('user.show', ['id' => $puser->id])}}">
 									<img class="circularIcon circularIcon--medium circularIcon--border" src="{{ $puser->avatar_url}}" alt="{{ $puser->name}}">
 								</a>
 							</div>
 							<div class="gr-mediaBox__desc gr-newsfeedItem__body">
 								@foreach($post->book as $pbook)
 								<div class="gr-newsfeedItem__header gr-newsfeedItem__header--timestamp">
-									<a class="gr-hyperlink gr-hyperlink--bold gr-user__profileLink u-marginRightTiny" href="/user/show/78309217-hung" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;social&quot;}">{{ $puser->name}}</a>
+									<a class="gr-hyperlink gr-hyperlink--bold gr-user__profileLink u-marginRightTiny" href="{{route('user.show', ['id' => $puser->id])}}" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;social&quot;}">{{ $puser->name}}</a>
 									<span class="gr-newsfeedItem__headerText">reviewed</span>
 									<a class="gr-hyperlink gr-hyperlink--bold" href="{{route('showbook.show',['id' => $pbook->id])}}">{{ $pbook->title}}</a>
 								</div>
@@ -110,7 +101,6 @@
 											{{ date( 'h:i a d-m', strtotime($post->created_at)) }}</time></a>
 								</small>
 								<div class="gr-newsfeedItem__socialBookUpdateDetails">
-								<div class="gr-newsfeedItem__readCountText">Read 3 times</div>
 								<div class="gr-metaText u-marginBottomXSmall">
 									<span class="u-marginRightTiny">
 										<span>Rating </span>
@@ -150,26 +140,13 @@
 										</div>
 										<div class="gr-book__additionalContent">
 											<div data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;wtr_button&quot;}">
-											<div class='wtrButtonContainer'>
-										    	<div class="form-group" style="width: 160px;">
-										    		<select class="form-control" id="sel1"  style="background: #409D69">
-												        <option>Want to read</option>
-												        <option>Currently Reading</option>
-												        <option>Read</option>
-												    </select>
-										    	</div>
-											</div>
-												<div class="userRating">
-													<small class="userRating__label">Rate it:</small>
-													<div class="userRating__starsWrapper" tabindex="0" role="group">
-														<button class="userRating__star" title="Rate 1 star" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;rating&quot;}">
-														</button>
-														<button class="userRating__star" title="Rate 2 stars" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;rating&quot;}"></button>
-														<button class="userRating__star" title="Rate 3 stars" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;rating&quot;}"></button>
-														<button class="userRating__star" title="Rate 4 stars" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;rating&quot;}"></button>
-														<button class="userRating__star" title="Rate 5 stars" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;rating&quot;}"></button>
-													</div>
+
+											<div class="userRating" style="margin-left: 0px;">
+												<small class="userRating__label">Public at:</small>
+												<div class="userRating__starsWrapper" tabindex="0" role="group">
+													<small class="userRating__label">{{ date( 'd-m-Y', strtotime($pbook->created_at)) }}</small>
 												</div>
+											</div>
 												<div class="u-marginTopXSmall gr-book__description">
 													<span>{{ $pbook->description}}</span>
 													<a class="u-marginLeftTiny fullContentLink" href="{{ route('showbook.show', ['id' => $pbook->id])}}" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;body_click&quot;}">Continue reading</a>
@@ -196,7 +173,7 @@
 								<noscript></noscript>
 								<div class="gr-commentForm gr-mediaBox">
 									<div class="gr-mediaBox__media u-noLineHeight">
-										<a href="/user/show/78270916-tom">
+										<a href="{{route('user.show', ['id' => Auth::user()->id])}}">
 											<img class="circularIcon circularIcon--border" src="{{ Auth::user()->avatar_url }}" alt="Tom">
 										</a>
 									</div>
@@ -236,7 +213,7 @@
                               					@endif
                               				@endif	
                               			</div>
-                              			<a class="gr-hyperlink gr-hyperlink--bold gr-user__profileLink" href="/user/show/78270916-tom" data-reactid=".1od8uww6bk0.2.0.$=1$Update_4730448877.0.1.2.2.1:$kca=2//comment/amzn1=1gr=1comment=1v1=14mSXlXrqBlHNjsqA0KN9ww.1.1" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;social&quot;}">{{ $cmt->userComment->name }}</a>
+                              			<a class="gr-hyperlink gr-hyperlink--bold gr-user__profileLink" href="{{route('user.show', ['id' => $cmt->userComment->id])}}"" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;social&quot;}">{{ $cmt->userComment->name }}</a>
                               			<div class="gr-comment__body">
                               				<div class="expandableHtml">
                               					<span data-reactid=".1od8uww6bk0.2.0.$=1$Update_4730448877.0.1.2.2.1:$kca=2//comment/amzn1=1gr=1comment=1v1=14mSXlXrqBlHNjsqA0KN9ww.1.3.0.0">{{ $cmt->content }}</span>

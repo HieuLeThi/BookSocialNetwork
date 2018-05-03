@@ -4,11 +4,10 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Friend;
-use App\User;
+use App\Like;
 use Illuminate\Support\Facades\Auth;
 
-class FriendController extends Controller
+class LikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,8 @@ class FriendController extends Controller
      */
     public function index()
     {
-        return view('user.listfrieds');
+        dd('ahihi');
+        return view('user.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class FriendController extends Controller
      */
     public function create()
     {
-        // dd('vo');
+        //
     }
 
     /**
@@ -40,10 +40,10 @@ class FriendController extends Controller
     {
         $condition = ([
             'user_id' => Auth::user()->id,
-            'friend_id' => $request->id,
+            'post_id' => $request->id,
         ]);
-        $friend = Friend::updateOrCreate($condition, ['status' => '2']);
-        return $friend;
+        $like = Like::updateOrCreate($condition, ['like' => '1']);
+        return $like;
     }
 
     /**
@@ -54,7 +54,7 @@ class FriendController extends Controller
      */
     public function show($id)
     {
-        // 
+        //
     }
 
     /**
@@ -65,7 +65,7 @@ class FriendController extends Controller
      */
     public function edit($id)
     {
-        // 
+        //
     }
 
     /**
@@ -88,6 +88,8 @@ class FriendController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteLike = Like::find($id);
+        $deleteLike->delete();
+        return $deleteLike;
     }
 }

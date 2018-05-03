@@ -63,17 +63,16 @@
 				</ul>
 			</nav>
 			<div accept-charset="UTF-8" class="searchBox searchBox--navbar">
-				<form autocomplete="off" action="/search" class="searchBox__form" role="search" aria-label="Search for books to add to your shelves">
-				    <input class="searchBox__input searchBox__input--navbar" autocomplete="off" name="q" type="text" placeholder="Search books" aria-label="Search books" aria-controls="searchResults"/>
+				<form autocomplete="off" action="{{ route('review.index') }}" method="GET" class="searchBox__form" role="search" aria-label="Search for books to add to your shelves">
+				    <input class="searchBox__input searchBox__input--navbar" autocomplete="off" value="{{ request('search') }}" name="search" type="text" placeholder="Search books" aria-label="Search books" aria-controls="searchResults"/>
 				    <button type="submit" class="searchBox__icon--magnifyingGlass gr-iconButton searchBox__icon searchBox__icon--navbar" aria-label="Search"></button>
 				</form>
             </div>
             @if(Auth::check())
             <nav class="siteHeader__primaryNavInline">
 				<ul role="menu" class="siteHeader__menuList">
-					<li class="siteHeader__topLevelItem siteHeader__topLevelItem--home">
-						<!-- <a href="/" class="siteHeader__topLevelLink">Home</a></li> -->
-						<marquee  class="siteHeader__topLevelLink" >Welcome - Hi! {{ Auth::user()->name }}</marquee>
+					<li class="siteHeader__topLevelItem siteHeader__topLevelItem--home" style="width: 350px">
+						<marquee class="siteHeader__topLevelLink">Welcome - Hi! {{ Auth::user()->name }}</marquee>
 					
 				</ul>
 			</nav>
@@ -81,29 +80,6 @@
 			<div class="siteHeader__personal">
 				<ul class="personalNav">
                 @if(Auth::check())
-                <li class="personalNav__listItem">
-	      			<!-- <div> -->
-        				<div class="dropdown dropdown--notifications">
-					        <a class="dropdown__trigger dropdown__trigger--notifications dropdown__trigger--personalNav" href="/notifications" role="button" aria-haspopup="true" aria-expanded="false" title="Notifications">
-					            <span class="headerPersonalNav__icon
-					                       headerPersonalNav__icon--notifications" aria-label="Notifications">
-					            </span>
-					        </a>
-					    </div>
-		                <!-- <div class="dropdown__menu dropdown__menu--notifications gr-box gr-box--withShadowLarge" role="menu"">
-	                       	<div class="dropdown__container gr-notifications gr-notifications--sparse">
-	                        <div class="spinnerContainer">
-	                        	<div class="spinner">
-	                        		<div class="spinner__mask">
-                        				<div class="spinner__maskedCircle">
-                        				
-                        			</div>
-                        		</div>
-                        	</div>
-                        	<div class="spinnerFallbackText">Loading…</div>
-                        </div> -->
-                    <!-- </div> -->
-                	</li>
                     <li class="personalNav__listItem">
                     	<a href="/message/inbox" title="Messages" class="headerPersonalNav">
                     		<span class="headerPersonalNav__icon headerPersonalNav__icon--inbox" aria-label="Inbox">
@@ -119,7 +95,7 @@
 
                     	<div class="dropdown dropdown--profileMenu">
                            <button onclick="myFunction()" class="dropbtn">
-                                <span class="headerPersonalNav__icon" data-reactid=".2fvgd7ogb28.1.0.5.0.4.0.0.0"><img class="circularIcon circularIcon--border" src="{{ Auth::user()->avatar_url}}" alt="{{Auth::user()->name}}"></span>
+                                <span class="headerPersonalNav__icon"><img  class="circularIcon circularIcon--border" src="{{ Auth::user()->avatar_url}}" alt="{{Auth::user()->name}}"></span>
                             </button>
                     		
 							  <div id="myDropdown" class="dropdown-content">

@@ -13,6 +13,8 @@ use App\Post;
 use App\Libraries\Image;
 use App\Topic;
 use App\Comment;
+use App\Friend;
+use App\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -49,8 +51,15 @@ class UserController extends Controller
         $posts = Post::select($fieldss)
                 ->where('role_post', '=', 1)
                 ->orderBy('created_at', 'desc')
+                ->limit(3)
                 ->get();
-    	return view('user.index', compact('books', 'categories', 'wtr', 'newbook', 'posts'));
+        $count1 = StatusBook::where('status', '=', 1) 
+                ->where('user_id', '=', Auth::user()->id)->count();
+        $count2 = StatusBook::where('status', '=', 2) 
+                ->where('user_id', '=', Auth::user()->id)->count();
+        $count3 = StatusBook::where('status', '=', 3) 
+                ->where('user_id', '=', Auth::user()->id)->count();  
+    	return view('user.index', compact('books', 'categories', 'wtr', 'newbook', 'posts', 'count2' , 'count1', 'count3'));
     }
 
     /**
@@ -62,7 +71,17 @@ class UserController extends Controller
     public function show($id)
     {
         $userProfile = User::findOrFail($id);
-        return view('user.profile', compact('userProfile'));
+        $statusFriend = Friend::select('status')
+                    ->where('friend_id', '=', $id) 
+                    ->where('user_id', '=', Auth::user()->id )
+                    ->first();  
+                    // dd($statusFriend);
+        $friendCheck = Friend::select('status')
+                    ->where('user_id', '=', $id) 
+                    ->where('friend_id', '=', Auth::user()->id )
+                    ->first();
+                    // dd($friendCheck);
+        return view('user.profile', compact('userProfile', 'statusFriend', 'friendCheck'));
     }
 
     /**

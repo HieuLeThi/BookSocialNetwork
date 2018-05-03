@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Libraries\Traits\SearchTrait;
 
 class Book extends Model
 {
+    use SearchTrait;
     protected $fillable = [
         'title', 'topic_id', 'author', 'description', 'more_description', 'isbn' ,'picture'
     ];

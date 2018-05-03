@@ -5,10 +5,9 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Friend;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 
-class FriendController extends Controller
+class AcceptFriendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class FriendController extends Controller
      */
     public function index()
     {
-        return view('user.listfrieds');
+        //
     }
 
     /**
@@ -27,7 +26,7 @@ class FriendController extends Controller
      */
     public function create()
     {
-        // dd('vo');
+        //
     }
 
     /**
@@ -38,12 +37,12 @@ class FriendController extends Controller
      */
     public function store(Request $request)
     {
-        $condition = ([
-            'user_id' => Auth::user()->id,
-            'friend_id' => $request->id,
-        ]);
-        $friend = Friend::updateOrCreate($condition, ['status' => '2']);
-        return $friend;
+        $accept = Friend::where('user_id', '=', $request->id) 
+                ->where('friend_id', '=', Auth::user()->id)
+                ->first();
+        $accept->status = '1';
+        $accept->save();
+        return redirect()->route('user.show', ['id' => $request->id]);
     }
 
     /**
@@ -54,7 +53,7 @@ class FriendController extends Controller
      */
     public function show($id)
     {
-        // 
+        //
     }
 
     /**
@@ -65,7 +64,7 @@ class FriendController extends Controller
      */
     public function edit($id)
     {
-        // 
+        //
     }
 
     /**

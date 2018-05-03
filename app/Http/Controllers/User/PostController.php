@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Book;
+use App\Like;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -17,7 +18,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('frontend.home.showbook');
+        $bookSearch = Book::select('books.*')
+                    ->where('title', request('search'))
+                    ->orWhere('title', 'like', '%' . request('search') . '%')
+                    ->orderby('created_at', 'desc')
+                    ->get();
+        return view('frontend.home.showbookbysearch', compact('bookSearch'));
     }
 
     /**

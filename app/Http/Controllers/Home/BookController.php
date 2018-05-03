@@ -20,8 +20,27 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
-        return view('user.mybook', compact('books'));
+        $fields = [
+            'books.id',
+            'books.title',
+            'books.author',
+            'books.picture',
+            'statusbooks.status',
+            'statusbooks.updated_at',
+            DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
+        ];
+        $books = Book::join('statusbooks', 'books.id','=', 'statusbooks.book_id')
+                ->select($fields)
+                ->where('statusbooks.user_id', '=', Auth::user()->id)
+                ->get();
+        $count1 = StatusBook::where('status', '=', 1) 
+                ->where('user_id', '=', Auth::user()->id)->count();
+        $count2 = StatusBook::where('status', '=', 2) 
+                ->where('user_id', '=', Auth::user()->id)->count();
+        $count3 = StatusBook::where('status', '=', 3) 
+                ->where('user_id', '=', Auth::user()->id)->count();
+        // $shelf = $request->shelf ? $request->shelf : '';
+        return view('user.mybook', compact('books', 'count1', 'count3', 'count2'));
     }
 
     /**
@@ -79,10 +98,12 @@ class BookController extends Controller
                 ->where('book_id', '=', $id)
                 ->orderBy('created_at', 'desc')
                 ->get();
+        if(isset(Auth::user()->id)) {
         $bookRole = StatusBook::select('status')
                     ->where('book_id', '=', $id) 
-                    ->where('user_id', '=', Auth::user()->id)
-                    ->first(); 
+                    ->where('user_id', '=', Auth::user()->id )
+                    ->first();   
+        }
         return view('frontend.home.showbook', compact('book', 'review','bookRole'));
     }
 
@@ -119,6 +140,11 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = StatusBook::select('id')
+                ->where('book_id', '=', $id) 
+                ->where('user_id', '=', Auth::user()->id)
+                ->first(); 
+        $book->delete();
+        return redirect()->route('showbook.index');   
     }
 }

@@ -134,12 +134,12 @@
 			        	<h2>Search and browse books</h2>
 			        	<div id="searchBox">
 			          		<div id="sitesearch">
-								<form id="headerSearchForm" action="/search" accept-charset="UTF-8" method="get">
-									<input name="utf8" type="hidden" value="✓">
+								<form id="headerSearchForm" action="{{ route('review.index') }}" method="GET" accept-charset="UTF-8" >
 									<div class="auto_complete_field_wrapper">
-										<input type="text" name="query" id="sitesearch_field" placeholder="Title / Author / ISBN">
-										<div id="sitesearch_autocomplete"></div>
-										<img style="display: none" id="sitesearch_field_loading" class="loading" src="https://s.gr-assets.com/assets/loading-trans-ced157046184c3bc7c180ffbfc6825a4.gif" alt="Loading trans">
+										<form > 
+											<input type="text"  id="sitesearch_field" placeholder="Title" value="{{ request('search') }}" name="search">
+											<div id="sitesearch_autocomplete"></div>
+											<img style="display: none" id="sitesearch_field_loading" class="loading" src="https://s.gr-assets.com/assets/loading-trans-ced157046184c3bc7c180ffbfc6825a4.gif" alt="Loading trans">
 									</div>
 									<a class="submitLink" href="#" onclick="$j('#headerSearchForm').submit(); return false;"><img width="16" title="Title / Author / ISBN" alt="search" src="https://s.gr-assets.com/assets/layout/magnifying_glass-a2d7514d50bcee1a0061f1ece7821750.png"></a>
 								</form>

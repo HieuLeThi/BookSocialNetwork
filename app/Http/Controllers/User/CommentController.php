@@ -81,7 +81,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd('vo chac vui');
     }
 
     /**

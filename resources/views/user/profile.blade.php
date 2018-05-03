@@ -39,13 +39,31 @@
 							      @if($userProfile->name == Auth::user()->name)
 							        <a class="smallText" href="{{ route('user.edit', ['id' =>  Auth::user()->id]) }}">(edit profile)</a>
 							      @else 
-							    <form  style="display: inline" data-friend_id="{{$userProfile->id}}" class="form" methord="{{ route('friend.store', ['id' => $userProfile->id]) }}">
-							      	<button id="btn_add_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 47px;">Add As Friend</button>
-							      	
-							      	<button id="re_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 47px; background-color: pink;display: none"  type="submit">Friend Request</button>
-							      </form>
+								      	@if($statusFriend == null)
+										    @if($friendCheck == null)
+										    	<form  style="display: inline" data-friend_id="{{$userProfile->id}}" class="form" methord="{{ route('friend.store', ['id' => $userProfile->id]) }}">
+												    	<button id="btn_add_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 47px;">Add As Friend</button>
+												      	<button id="re_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 47px; background-color: pink;display: none"  type="submit">Friend Request</button>
+											    </form>
+									  		@elseif($friendCheck->status == '2')
+									  			<form style="display: inline" method="POST" action="{{ route('acceptFriend.store', ['id' =>$userProfile->id]) }}">
+					                				{{ csrf_field() }}
+									  				<button id="btn_ac_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 47px; background-color: red;"  type="submit">Tra loi loi moi di</button>
+									  			</form>
+							      				
+							      			@elseif($friendCheck->status == '1')
+									      		<button id="re_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 47px; background-color: yellow;"  type="submit">Friend</button>
+									      	@endif
+										@else
+								      			@if($statusFriend->status == '2')
+								      				<button id="re_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 47px; background-color: pink;"  type="submit">Friend Request</button>
+								      			@elseif($statusFriend->status == '1')
+								      				<button id="re_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 37px; background-color: yellow;"  type="submit">Friend</button>
 
+								      			@endif
+							      	@endif
 							      @endif
+
 							      <script>
 
 								    $.ajaxSetup({
@@ -124,5 +142,33 @@
 	    	</div>
 	    </div>
 	</div>
+	<!-- <script>
+		$.ajaxSetup({
+
+								        headers: {
+
+								            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								        }
+
+								    });
+
+								    $("#btn_ac_friend").click(function(e){
+								        e.preventDefault();
+								        var friend_id = $('.form-ac').attr('data-friend_id')
+								        var url = $('.form-ac').attr('linkadd');
+								        $.ajax({
+
+								           type:'POST',
+
+								           url:url,
+
+								           data: {'friend_id': friend_id},
+
+								           success:function(friend){
+								           	alert('okokoko');
+								        });
+
+									});
+	</script> -->
 </body>
 </html>

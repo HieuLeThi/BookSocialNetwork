@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>home - user</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/gr/application-2a8fdf619e08c24d5212446dd0848b94.css" />
     <link rel="stylesheet" href="{{ URL::asset('frontend/css/home_user.css')}}" />
     <link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/gr/application-e83211a8f70d3e6bb1ebad59d99d3736.css" />
@@ -13,6 +14,8 @@
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://s.gr-assets.com/assets/webfontloader-f2373eb97b67c818c1db5c9392e387af.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body style="background: #f9f7f4">
 	@include('frontend.layouts.header')	
@@ -31,7 +34,7 @@
 								</div>
 								<div class="gr-book__author">
 									<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by </span>
-									<a href="https://www.goodreads.com/author/show/164692.Celeste_Ng" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.1">{{$book->name_author}}</a>
+									<a href="#" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked">{{$book->name_author}}</a>
 								</div>
 							</div>
 						</div>
@@ -44,7 +47,7 @@
 					</div>
 					<span data-reactid=".1yh1fdqpgxs.1.1">
 						<span data-reactid=".1yh1fdqpgxs.1.1.$0">
-							<a href="/review/list/78270916-tom?shelf=currently-reading">View all books</a>
+							<a href="{{ route('showbook.index', ['shelf'=>2])}}">View all books</a>
 						</span>
 					</span>
 				</footer>
@@ -58,7 +61,7 @@
 					</a>
 					@endforeach
 						<div class="u-marginTopXSmall">
-							<a href="https://www.goodreads.com/review/list?shelf=to-read" aria-label="View your to-read shelf" data-reactid=".3p3gp8bitc.1.0">View all books</a>
+							<a href="{{ route('showbook.index', ['shelf'=>1])}}">View all books</a>
 						</div>
 				</div>
 			</section>
@@ -66,13 +69,13 @@
             <h3 class="gr-h3 gr-h3--noTopMargin">BOOKSHELVES</h3>
 				<div class="userShelvesBookCounts">
 					<div class="userShelvesBookCounts__counts" data-reactid=".1oycz45z9j4.0">
-					<a class="u-displayBlock" href="/user_shelves/255139600" aria-label="Read shelf. 1 books." data-reactid=".1oycz45z9j4.0.$read">1</a>
-					<a class="u-displayBlock" href="/user_shelves/255139599" aria-label="Currently Reading shelf. 3 books." data-reactid=".1oycz45z9j4.0.$currently-reading">3</a>
-					<a class="u-displayBlock" href="/user_shelves/255139598" aria-label="Want to Read shelf. 2 books." data-reactid=".1oycz45z9j4.0.$to-read">2</a>
+					<a class="u-displayBlock" href="{{ route('showbook.index', ['shelf'=>3])}}">{{$count3}}</a>
+					<a class="u-displayBlock" href="{{ route('showbook.index', ['shelf'=>2])}}">{{$count2}}</a>
+					<a class="u-displayBlock" href="{{ route('showbook.index', ['shelf'=>1])}}">{{$count1}}</a>
 				</div>
-				<div data-reactid=".1oycz45z9j4.1"><a class="userShelvesBookCounts__nameLink" href="/user_shelves/255139600" aria-label="Read shelf. 1 books." data-reactid=".1oycz45z9j4.1.$read">Read</a>
-					<a class="userShelvesBookCounts__nameLink" href="/user_shelves/255139599" aria-label="Currently Reading shelf. 3 books." data-reactid=".1oycz45z9j4.1.$currently-reading">Currently Reading</a>
-					<a class="userShelvesBookCounts__nameLink" href="/user_shelves/255139598" aria-label="Want to Read shelf. 2 books." data-reactid=".1oycz45z9j4.1.$to-read">Want to Read</a>
+				<div><a class="userShelvesBookCounts__nameLink" href="{{ route('showbook.index', ['shelf'=>3])}}">Read</a>
+					<a class="userShelvesBookCounts__nameLink" href="{{ route('showbook.index', ['shelf'=>2])}}">Currently Reading</a>
+					<a class="userShelvesBookCounts__nameLink" href="{{ route('showbook.index', ['shelf'=>1])}}">Want to Read</a>
 				</div>
 				</div>
 			</section>
@@ -80,7 +83,7 @@
 		<div class='homePrimaryColumn'>
 			<div class="u-clearBoth">
 				@foreach ($posts as $post)
-					<div class="gr-newsfeed u-defaultType">
+					<div class="gr-newsfeed u-defaultType" style="margin-bottom: 35px">
 						@foreach($post->user as $puser)
 						<div class="gr-newsfeedItem gr-mediaBox">
 							<div class="gr-newsfeedItem__headerIcon gr-mediaBox__media gr-mediaBox__media--marginSmall">
@@ -114,11 +117,6 @@
 										</div>
 									</span>
 								</div>
-								<!-- <a href="https://www.goodreads.com/review/show/2310079643" class="gr-hyperlink">
-									<span>Read </span>
-									<span>Hung</span>
-									<span>’s review</span>
-								</a> -->
 								<div class="gr-metaText">
 									<span">Read in Feb 2018</span>
 								</div>
@@ -160,34 +158,114 @@
 							</div>
 							<div class="gr-newsfeedItem__footer">
 								<div class="gr-newsfeedItem__footerActions">
-									<button aria-label="Unlike Hung’s review of Blood River: A Journey to Africa's Broken Heart" class="gr-buttonAsLink">Unlike</button>
-									<span> · </span>
-									<button class="gr-buttonAsLink">Comment</button>
+								@if(count($post->likeByUser) === 1)
+									<form data-post_id ="{{$post->id}}" class="form">
+										<button  style="display: inline" id="delete_like_{{$post->id}}" class="gr-buttonAsLink">UnLike</button>
+									</form>
+								@elseif(count($post->likeByUser) === 0)
+										<form data-post_id ="{{$post->id}}" class="form">
+											<button style="display: inline" id="btn_like_{{$post->id}}" class="gr-buttonAsLink">Like</button>
+											<button  style="display: none" id="btn_unlike_{{$post->id}}" class="gr-buttonAsLink">UnLike</button>
+										</form>	
+								@endif	
+								<script>
+
+								    $.ajaxSetup({
+
+								        headers: {
+
+								            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								        }
+
+								    });
+
+								    $("#btn_like_{{$post->id}}").click(function(e){
+								        e.preventDefault();
+								        var post_id = {{$post->id}};
+								        var url = window.location.origin + '/BookSocialNetwork/public/like?id=' + post_id;
+								        $.ajax({
+
+								           type:'POST',
+
+								           url:url,
+
+								           data: {'post_id': post_id},
+
+								           success:function(like){
+								           	if(like.like == 1) {
+									           	$('#user_like_{{$post->id}}').css('display','inline')
+									           	$('#btn_unlike_{{$post->id}}').css('display','inline')
+									           	$('#btn_like_{{$post->id}}').css('display','none')
+									           	}
+								           	}
+								        });
+
+									});
+
+
+
+									
+								</script>
 								</div>
 								<div class="likeInformation u-defaultType">
-									<span class="likeInformation__name">You</span>
-									<span > and </span>
-									<a href="/user/show/5527956" class="gr-hyperlink gr-hyperlink--bold likeInformation__name">Tim Butcher</a>
-									<span> liked this</span>
+									@if(count($post->likeByUser) === 1)
+										<span class="likeInformation__name" id="user_like_{{$post->id}}">You and </span>
+										<a href="/user/show/5527956"  class="gr-hyperlink gr-hyperlink--bold likeInformation__name">{{$post->like->count() -1 }}</a>
+									@endif
+									<span class="likeInformation__name" id="user_like_{{$post->id}}" style="display: none">You and </span>
+									@if(count($post->likeByUser) === 0)
+										<a href="/user/show/5527956"  class="gr-hyperlink gr-hyperlink--bold likeInformation__name">{{$post->like->count() }}</a>
+									@endif
+									
+									
+									<span>other people liked this</span>
 								</div>
-								<noscript></noscript>
+								<script>
+									$.ajaxSetup({
+
+								        headers: {
+
+								            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								        }
+
+								    });
+									$("#delete_like_{{$post->id}}").click(function(e){
+								        e.preventDefault();
+								        var post_id = {{$post->id}};
+								        debugger;
+								        var url = window.location.origin + '/BookSocialNetwork/public/like/' + post_id;
+								        $.ajax({
+
+								           type:'DELETE',
+
+								           url:url,
+
+								           data: {'post_id': post_id},
+
+								           success:function(deleteLike){
+								           	alert('xoa');
+								        });
+									});
+
+								</script>	
 								<div class="gr-commentForm gr-mediaBox">
 									<div class="gr-mediaBox__media u-noLineHeight">
 										<a href="{{route('user.show', ['id' => Auth::user()->id])}}">
 											<img class="circularIcon circularIcon--border" src="{{ Auth::user()->avatar_url }}" alt="Tom">
 										</a>
 									</div>
-										<form class="gr-mediaBox__desc" method="post" action="{{ route('comment.store', ['id' =>$post->id])}}">
-			                        		{{ csrf_field() }}
+										<form class="gr-mediaBox__desc form" method="post" action="{{ route('comment.store', ['id' =>$post->id])}}">
+			                				{{ csrf_field() }}
 											<textarea class="gr-textarea gr-commentForm__textarea" name="content" rows="1"  placeholder="Write a comment…" aria-label="Write a comment…">
 											</textarea>
 											@if($errors->first('content')) 
                             					<p class="text-danger">{{ $errors->first('content') }}</p>
                           					@endif
-											<button class="gr-commentForm__submitButton gr-button gr-button--small"  type="submit">Comment</button>
+											<button id="btn_cmt" class="gr-commentForm__submitButton gr-button gr-button--small"  type="submit">Comment</button>
 										</form>
 									</div>
 								</div>
+								
 								@foreach($post->comments as $cmt)
 								<div class="gr-commentForm gr-mediaBox">
 
@@ -227,6 +305,7 @@
 							@endforeach
 					</div>
 				@endforeach
+
 			</div>
 		</div>
 			
@@ -270,12 +349,14 @@
 								</div>
 							</div>
 						</div>
+			
 						@endforeach
 				</section>
 			</section>
-				</div>
-
+			</div>
 		</div>
+		
 	</main>
+
 </body>
 </html>

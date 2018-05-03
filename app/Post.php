@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -29,6 +30,16 @@ class Post extends Model
     {
         return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');
     }
+
+    public function like()
+     {
+        return $this->hasMany('App\Like');
+     } 
+     public function likeByUser()
+     {
+        return $this->hasMany('App\Like')->where('user_id', Auth::user()->id);
+     } 
+
     /**
      * Override parent boot and Call deleting borrows and comments
      *

@@ -33,12 +33,13 @@
 								          </a>
 								    </div>
 							    </div>
+							    @if(Auth::check())
 							    <div class='wtrButtonContainer'>
 							    	@if($bookRole == null) 
 							    	<div class="form-group">
 							    		<form methord="{{ route('showbook.store', ['id' => $book->id]) }}" class="form">
 							    			<select name="status" class="form-control" id="sel1"  style="background: #409D69">
-										        <option value="0"> Select Status</option>
+										        <option value="0"> Add to shelves</option>
 								    			<option value="1" >Want to read</option>
 										        <option value="2"> Currently Reading</option>
 										        <option value="3"> Read</option>
@@ -60,7 +61,7 @@
 
 							    	
 								</div>
-							    
+								@endif	    
 							</div>
 							<script>
 								 $.ajaxSetup({
@@ -88,8 +89,6 @@
 								           	}
 								        });
 								    });
-
-								</script>
 							</script>
 							<div id="metacol" class="last col" style="width: 435px;margin-left: 10px">
 								<h1 id="bookTitle" class="bookTitle" itemprop="name">

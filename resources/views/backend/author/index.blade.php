@@ -7,12 +7,12 @@
 @endsection 
 @section('side-bar') 
 <li class="active treeview">
-          <a href="{{ route('author') }}">
+          <a href="{{ route('author.index') }}">
             <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
           </a>
         </li>
         <li>
-          <a href="pages/widgets.html">
+          <a href="{{ route('author.edit', ['id' => Auth()->user()->id])}}">
             <i class="fa fa-user"></i> <span>PROFILE</span>
           </a>
         </li>

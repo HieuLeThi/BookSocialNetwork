@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Topic;
+use App\Comment;
 use App\Book;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CommentRequest;
 
-class TopicController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +18,10 @@ class TopicController extends Controller
      */
     public function index()
     {
-        // return view('frontend.home.showbookbytopic');
+        $comment = Comment::select('comments.*')
+                    ->where('post_id', '=', 7)
+                    ->get();
+        return view('user.index', compact('comment'));
     }
 
     /**
@@ -32,12 +37,17 @@ class TopicController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\CommentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
-        //
+        $cmt = Comment::create([
+            'user_id' => Auth::user()->id,
+            'content' => $request->content,
+            'post_id' => $request->id,
+        ]);
+        return redirect('/user');
     }
 
     /**
@@ -48,18 +58,7 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        $fields = [
-            'topics.id',
-            'topics.title',
-        ];
-        $book = Book::select('id', 'title','picture')
-                ->where('topic_id', '=', $id)
-                ->get();
-        $categories = Topic::select($fields)
-                    ->where('id', $id)
-                    ->firstOrFail();
-                    // dd($book);
-        return view('frontend.home.showbookbytopic', compact('book', 'categories'));
+        // 
     }
 
     /**
@@ -82,7 +81,7 @@ class TopicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd('vo chac vui');
     }
 
     /**
@@ -93,6 +92,8 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cmt = Comment::find($id);
+        $cmt->delete();
+        return redirect()->route('user.index');
     }
 }

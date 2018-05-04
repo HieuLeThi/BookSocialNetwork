@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Topic;
-use App\Book;
+use App\Friend;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
-class TopicController extends Controller
+class FriendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        // return view('frontend.home.showbookbytopic');
+        return view('user.listfrieds');
     }
 
     /**
@@ -26,7 +27,7 @@ class TopicController extends Controller
      */
     public function create()
     {
-        //
+        // dd('vo');
     }
 
     /**
@@ -37,7 +38,12 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $condition = ([
+            'user_id' => Auth::user()->id,
+            'friend_id' => $request->id,
+        ]);
+        $friend = Friend::updateOrCreate($condition, ['status' => '2']);
+        return $friend;
     }
 
     /**
@@ -48,18 +54,7 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        $fields = [
-            'topics.id',
-            'topics.title',
-        ];
-        $book = Book::select('id', 'title','picture')
-                ->where('topic_id', '=', $id)
-                ->get();
-        $categories = Topic::select($fields)
-                    ->where('id', $id)
-                    ->firstOrFail();
-                    // dd($book);
-        return view('frontend.home.showbookbytopic', compact('book', 'categories'));
+        // 
     }
 
     /**
@@ -70,7 +65,7 @@ class TopicController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 
     }
 
     /**

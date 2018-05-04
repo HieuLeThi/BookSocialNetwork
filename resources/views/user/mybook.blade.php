@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>my books</title>
+	<title>My Books page</title>
 	<link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-b4a91517aa00c2ede826962c83c1ea16.css" />
 	
 	<link rel="stylesheet" media="screen,print" href="https://s.gr-assets.com/assets/review/list-999f3695f560f96c8637b3d3bb2677dc.css" />
@@ -14,72 +14,7 @@
 </head>
 <body>
 	<div class="content">
-		<div class="siteHeader__topLine gr-box gr-box--withShadow">
-		<div class="siteHeader__contents">
-			<div class="siteHeader__topLevelItem siteHeader__topLevelItem--searchIcon">
-				<button class="siteHeader__searchIcon gr-iconButton" aria-label="Toggle search" type="button""></button>
-			</div>
-			<a href="/" class="siteHeader__logo" aria-label="Goodreads Home" title="Goodreads Home"></a>
-			<nav class="siteHeader__primaryNavInline">
-				<ul role="menu" class="siteHeader__menuList">
-					<li class="siteHeader__topLevelItem siteHeader__topLevelItem--home">
-						<a href="/" class="siteHeader__topLevelLink">Home</a></li>
-					<li class="siteHeader__topLevelItem">
-						<a href="/review/list/78270916" class="siteHeader__topLevelLink">My Books</a></li>
-				</ul>
-			</nav>
-			<div accept-charset="UTF-8" class="searchBox searchBox--navbar">
-				<form autocomplete="off" action="/search" class="searchBox__form" role="search" aria-label="Search for books to add to your shelves">
-				    <input class="searchBox__input searchBox__input--navbar" autocomplete="off" name="q" type="text" placeholder="Search books" aria-label="Search books" aria-controls="searchResults"/>
-				    <button type="submit" class="searchBox__icon--magnifyingGlass gr-iconButton searchBox__icon searchBox__icon--navbar" aria-label="Search"></button>
-				</form>
-			</div>
-			<div class="siteHeader__personal">
-				<ul class="personalNav">
-	    			<li class="personalNav__listItem">
-	      			<!-- <div> -->
-        				<div class="dropdown dropdown--notifications">
-					        <a class="dropdown__trigger dropdown__trigger--notifications dropdown__trigger--personalNav" href="/notifications" role="button" aria-haspopup="true" aria-expanded="false" title="Notifications">
-					            <span class="headerPersonalNav__icon
-					                       headerPersonalNav__icon--notifications" aria-label="Notifications">
-					            </span>
-					        </a>
-					    </div>
-		               
-                    <!-- </div> -->
-                	</li>
-                    <li class="personalNav__listItem">
-                    	<a href="/message/inbox" title="Messages" class="headerPersonalNav">
-                    		<span class="headerPersonalNav__icon headerPersonalNav__icon--inbox" aria-label="Inbox">
-                    		</span>
-                    	</a>
-                    </li>
-                    <li class="personalNav__listItem">
-                    	<a href="/friend" title="Friends" class="headerPersonalNav">
-                    		<span class="headerPersonalNav__icon headerPersonalNav__icon--friendRequests" aria-label="Friend Requests"></span>
-                   		</a>
-                    </li>
-                    <li class="personalNav__listItem">
-                    	<div class="dropdown dropdown--profileMenu" data-reactid=".7ozs989eyo.0.0.4.0.4.0">
-                    		<a class="dropdown__trigger dropdown__trigger--profileMenu dropdown__trigger--personalNav" href="/user/show/78270916-tom" role="button" aria-haspopup="true" aria-expanded="false" data-reactid=".7ozs989eyo.0.0.4.0.4.0.0">
-                    			<span class="headerPersonalNav__icon" data-reactid=".7ozs989eyo.0.0.4.0.4.0.0.0">
-                    				<img class="circularIcon circularIcon--border" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1519716830i/78270916._UY60_CR8,0,60,60_.jpg" alt="Tom" data-reactid=".7ozs989eyo.0.0.4.0.4.0.0.0.1"/>
-                    			</span>
-                    		</a>
-                    		<div class="dropdown__menu dropdown__menu--profileMenu gr-box gr-box--withShadowLarge" role="menu" data-reactid=".7ozs989eyo.0.0.4.0.4.0.1">
-                    			<div class="siteHeader__subNav siteHeader__subNav--profile gr-box gr-box--withShadowLarge" data-reactid=".7ozs989eyo.0.0.4.0.4.0.1.0">
-                    				<span class="siteHeader__subNavLink gr-h3 gr-h3--noMargin">
-                    					<div class="personalNavDrawer__profileAndLinksContainer">
-                    					</div>
-                    				</span>
-                    			</div>
-                    		</div>
-                    	</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-		</div>
+		@include('frontend.layouts.header')
 		<div class="mainContentContainer">
 	    	<div class="mainContent">
 	    		<div class="mainContentFloat">
@@ -106,16 +41,16 @@
 					        	<div id="side">
 					          		<div id="shelvesSection">
 					           	 		<h3>Bookshelves</h3>
-					            		<a class="selectedShelf" href="/review/list/78270916?shelf=%23ALL%23">All (6)</a>
+					            		<a class="selectedShelf" href="/review/list/78270916?shelf=%23ALL%23">All ({{$count1 + $count2 + $count3}})</a>
 					            		<div id="paginatedShelfList" class="stacked">
 						                	<div class="userShelf">
-						    					<a title="Tom&#39;s Read shelf" class="actionLinkLite" href="/review/list/78270916-tom?shelf=read">Read  &lrm;(1)</a>
+						    					<a title="Tom&#39;s Read shelf" class="actionLinkLite" href="{{ route('showbook.index', ['shelf'=>3])}}">Read  &lrm;({{$count3}})</a>
 						  					</div>
 						  					<div class="userShelf">
-						    					<a title="Tom&#39;s Currently Reading shelf" class="actionLinkLite" href="/review/list/78270916-tom?shelf=currently-reading">Currently Reading  &lrm;(3)</a>
+						    					<a title="Tom&#39;s Currently Reading shelf" class="actionLinkLite" href="{{ route('showbook.index', ['shelf'=>2])}}">Currently Reading  &lrm;({{$count2}})</a>
 						  					</div>
 								  			<div class="userShelf">
-								    			<a title="Tom&#39;s Want to Read shelf" class="actionLinkLite" href="/review/list/78270916-tom?shelf=to-read">Want to Read  &lrm;(2)</a>
+								    			<a title="Tom&#39;s Want to Read shelf" class="actionLinkLite" href="{{ route('showbook.index', ['shelf'=>1])}}">Want to Read  &lrm;({{$count1}})</a>
 								  			</div>
 					  					</div>
 					  				</div>
@@ -147,52 +82,42 @@
       								</tr>
       							</thead>
       							<tbody id="booksBody">
+      								@foreach($books as $book)
       								<tr id="review_2314565026" class="bookalike review" style="padding-left: 50px;">
       									<td class="field cover">
-									            <a href="/book/show/17243953-hi-koo">
-									            	<img alt="Hi, Koo!" id="cover_review_2314565026" src="https://images.gr-assets.com/books/1384382708s/17243953.jpg" />
+									            <a href="images/books/{{$book->picture}}">
+									            	<img alt="{{$book->title}}" width="55px" height="70px" src="images/books/{{$book->picture}}" />
 									            </a>
           								</td>
           								<td class="field title">
-          									<a href="#">Ahihi</a>
+          									<a href="{{route('showbook.show', ['id' => $book->id])}}">{{$book->title}}</a>
           								</td>
           								<td class="field author">
-          									<a href="#">Hi! Hieeu Le</a>
+          									<a href="#">{{$book->name_author}}</a>
           								</td>
           								<td class="field author" style="padding-left: 10px;">
+          									@if($book->status == 1)
+          									<a href="#">Want to read</a>
+          									@elseif ($book->status == 2)
+          									<a href="#">Currently reading</a>
+          									@elseif ($book->status == 3)
           									<a href="#">Read</a>
+          									@endif
           								</td>
           								<td class="field date_read">
-          									March 02, 2018
+          									{{ date( 'M, d - Y', strtotime($book->updated_at)) }}
           								</td>
           								<td class="field title" style="padding-left: 50px;">
-          									<button type="button" class="close">
-          									<span aria-hidden="true">&times;</span></button>
+          									<form method="POST" action="{{ route('showbook.destroy', $book->id) }}">
+          										{{ csrf_field() }}
+										        {{ method_field('DELETE') }}
+          										<button type="submit" class="close">
+          										<span aria-hidden="true">&times;</span></button>
+          									</form>
+          									
           								</td>
       								</tr>
-      								<tr id="review_2314565026" class="bookalike review" style="padding-left: 50px;">
-      									<td class="field cover">
-									            <a href="/book/show/17243953-hi-koo">
-									            	<img alt="Hi, Koo!" id="cover_review_2314565026" src="https://images.gr-assets.com/books/1384382708s/17243953.jpg" />
-									            </a>
-          								</td>
-          								<td class="field title">
-          									<a href="#">Hi! Hieeu Le</a>
-          								</td>
-          								<td class="field author">
-          									<a href="#">Hi! Hieeu Le</a>
-          								</td>
-          								<td class="field author" style="padding-left: 10px;">
-          									<a href="#">Read</a>
-          								</td>
-          								<td class="field date_read">
-          									March 02, 2018
-          								</td>
-          								<td class="field title" style="padding-left: 50px;">
-          									<button type="button" class="close">
-          									<span aria-hidden="true">&times;</span></button>
-          								</td>
-      								</tr>
+      								@endforeach
       							</tbody>
       						</table>
 					</div>

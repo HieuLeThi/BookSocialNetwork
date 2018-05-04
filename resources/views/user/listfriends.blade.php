@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Show book by topic</title>
+	<title>List friends</title>
 	<link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-b4a91517aa00c2ede826962c83c1ea16.css" />
 	
 	<link rel="stylesheet" media="screen,print" href="https://s.gr-assets.com/assets/review/list-999f3695f560f96c8637b3d3bb2677dc.css" />
@@ -22,20 +22,30 @@
                     
                     <div class="genreHeader">
                         <h1 class="left">
-                            {{ $categories->title}}
+                            Friends
                         </h1>
                     </div>
                     <br/>
-                    <div class="coverBigBox clearFloats bigBox" show_header="true"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/genres/new_releases/art">New Releases Tagged &quot; {{ $categories->title}} &quot;</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+                    <div class="coverBigBox clearFloats bigBox" show_header="true"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/genres/new_releases/art">New Releases Tagged &quot; REQUEST FRIENDS &quot;</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
 
                         <div class="coverRow">
-						@foreach($book as $boook)
                             <div class="leftAlignedImage bookBox">
 								<div class="coverWrapper">
-									<a href="{{ route('showbook.show', ['id' => $boook->id]) }}"><img alt="{{ $boook->title}}" title="" width="115" class="bookImage" src="../images/books/{{$boook->picture}}" /></a>
+									<a href="#"><img alt="Boneshaker" title="" width="115" class="bookImage" src="../images/books/MRoL8UZRvG2wSh2FABXFXx8EsE4PLwb4WtX7ctag.jpeg"></a>
+									<a href="#"><img alt="Boneshaker" title="" width="115" class="bookImage" src="../images/books/MRoL8UZRvG2wSh2FABXFXx8EsE4PLwb4WtX7ctag.jpeg"></a>
+									<a href="#"><img alt="Boneshaker" title="" width="115" class="bookImage" src="../images/books/MRoL8UZRvG2wSh2FABXFXx8EsE4PLwb4WtX7ctag.jpeg"></a>
 								</div>
 							</div>
-						@endforeach
+			            </div>
+		            </div>
+		            <div class="coverBigBox clearFloats bigBox" show_header="true"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/genres/new_releases/art">New Releases Tagged &quot; FRIENDS &quot;</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+
+                        <div class="coverRow">
+                            <div class="leftAlignedImage bookBox">
+								<div class="coverWrapper">
+									
+								</div>
+							</div>
 			            </div>
 		            </div>
                 </div>

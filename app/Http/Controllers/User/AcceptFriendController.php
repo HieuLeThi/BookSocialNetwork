@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Topic;
-use App\Book;
+use App\Friend;
+use Illuminate\Support\Facades\Auth;
 
-class TopicController extends Controller
+class AcceptFriendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        // return view('frontend.home.showbookbytopic');
+        //
     }
 
     /**
@@ -37,7 +37,12 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $accept = Friend::where('user_id', '=', $request->id) 
+                ->where('friend_id', '=', Auth::user()->id)
+                ->first();
+        $accept->status = '1';
+        $accept->save();
+        return redirect()->route('user.show', ['id' => $request->id]);
     }
 
     /**
@@ -48,18 +53,7 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        $fields = [
-            'topics.id',
-            'topics.title',
-        ];
-        $book = Book::select('id', 'title','picture')
-                ->where('topic_id', '=', $id)
-                ->get();
-        $categories = Topic::select($fields)
-                    ->where('id', $id)
-                    ->firstOrFail();
-                    // dd($book);
-        return view('frontend.home.showbookbytopic', compact('book', 'categories'));
+        //
     }
 
     /**

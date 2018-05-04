@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Topic;
-use App\Book;
+use App\Like;
+use Illuminate\Support\Facades\Auth;
 
-class TopicController extends Controller
+class LikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class TopicController extends Controller
      */
     public function index()
     {
-        // return view('frontend.home.showbookbytopic');
+        dd('ahihi');
+        return view('user.index');
     }
 
     /**
@@ -37,7 +38,12 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $condition = ([
+            'user_id' => Auth::user()->id,
+            'post_id' => $request->id,
+        ]);
+        $like = Like::updateOrCreate($condition, ['like' => '1']);
+        return $like;
     }
 
     /**
@@ -48,18 +54,7 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        $fields = [
-            'topics.id',
-            'topics.title',
-        ];
-        $book = Book::select('id', 'title','picture')
-                ->where('topic_id', '=', $id)
-                ->get();
-        $categories = Topic::select($fields)
-                    ->where('id', $id)
-                    ->firstOrFail();
-                    // dd($book);
-        return view('frontend.home.showbookbytopic', compact('book', 'categories'));
+        //
     }
 
     /**
@@ -93,6 +88,8 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteLike = Like::find($id);
+        $deleteLike->delete();
+        return $deleteLike;
     }
 }

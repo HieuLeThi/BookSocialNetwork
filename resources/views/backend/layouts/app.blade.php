@@ -94,7 +94,7 @@
   <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
   <!-- custom script -->
-  <script src="dist/js/adminlte.min.js"></script>
+  <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- <script src="dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->

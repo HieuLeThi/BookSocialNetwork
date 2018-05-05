@@ -37,4 +37,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Book', 'author', 'id');
     }
+    public function totalFriend()
+    {
+        return $this->hasMany('App\Friend')->where('status', 2);
+    }
+
+    public function totalPost()
+    {
+        return $this->hasMany('App\Post')->where('role_post', 1);
+    }
 }

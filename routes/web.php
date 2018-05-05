@@ -28,6 +28,13 @@ Route::group(['namespace' => 'Author', 'prefix' => 'author'], function(){
 	// Route::get('/', 'AuthorController@index')->name('author');
 	Route::resource('/books', 'BookController');
 });
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
+	Route::get('/', 'AdminController@index')->name('admin.index');
+	Route::resource('/users', 'UserController');
+	Route::resource('/authors', 'AuthorController');
+	Route::resource('/listbook', 'BookController');
+	Route::resource('/bookapproval', 'ApprovalController');
+});
 Route::resource('/author', 'Author\AuthorController');
 Route::group(['namespace' => 'User'], function(){
 	Route::resource('/user', 'UserController');

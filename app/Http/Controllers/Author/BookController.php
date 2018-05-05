@@ -57,6 +57,7 @@ class BookController extends Controller
     public function store(CreateBookRequest $request)
     {
         $bookFields = $request->all();
+        $bookFields['status'] = '0';
         $bookFields['author'] = Auth::user()->id;
         if ($request->hasFile('picture')) {
             $bookFields['picture'] = Image::update($request->picture);

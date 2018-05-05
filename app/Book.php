@@ -9,7 +9,7 @@ class Book extends Model
 {
     use SearchTrait;
     protected $fillable = [
-        'title', 'topic_id', 'author', 'description', 'more_description', 'isbn' ,'picture'
+        'title', 'topic_id', 'author', 'description', 'more_description', 'isbn' ,'picture', 'status'
     ];
 
     /**

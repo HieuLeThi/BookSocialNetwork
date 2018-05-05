@@ -341,7 +341,7 @@
 							</a>
 						
 							<div class="gr-mediaBox__desc gr-mediaBox__desc--clearfixOverflow" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1">
-								<div class="gr-book__title" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1"><a href="/book/show/34273236-little-fires-everywhere" class="gr-book__titleLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1.0">{{ $nb->title}}</a>
+								<div class="gr-book__title" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1"><a href="{{ route('showbook.show', ['id' => $nb->id]) }}" class="gr-book__titleLink gr-hyperlink gr-hyperlink--naked">{{ $nb->title}}</a>
 								</div>
 								<div class="gr-book__author" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2">
 									<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by</span>

@@ -128,9 +128,7 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
             $picture = Book::checkDefaultImage($book->picture);
-            if ($picture) {
-                Image::delete($picture);
-            }
+            
             $book->delete();
             return redirect()->route('books.index')->with('status', 'Delete book success!');
     }

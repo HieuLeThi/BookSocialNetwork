@@ -44,11 +44,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        LIST BOOKS BE APPROVAL
+        LIST BOOKS
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">Posts</li>
       </ol>
     </section>
     <section class="content">
@@ -62,36 +62,29 @@
                 <thead>
                  <tr>
                   <th>{{ __('No') }}</th>
-                  <th>{{ __('Title') }}</th>
-                  <th>{{ __('Author') }}</th>
-                  <th>{{ __('Picture') }}</th>
-                  <th>{{ __('Date Add') }}</th>
+                  <th>{{ __('User') }}</th>
+                  <th>{{ __('Book') }}</th>
+                  <th>{{ __('Content') }}</th>
+                  <th>{{ __('Total Like') }}</th>
                   <th>{{ __('Action') }}</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($books as $index => $book)
+                @foreach($posts as $index => $post)
                 <tr>
                   <td>{{ $index + 1}}</td>
-                  <td>{{ $book->title }}</td>
-                  <td>{{$book->name_author}}</td>
-                  <td><img src="../images/books/{{$book->picture}}" width="60px" height="80px"></td>
-                  <td>{{ date( 'd-M-Y', strtotime($book->created_at)) }}</td>
-                  <td><a href="#"><button style="color: red; border: 0; background:none;" title="update"><b><i class="fa fa-pencil-square-o"></i></b></button></a>
-                  <form class="inline">
-                        
-                    <button style="color: red; border: 0; background:none;" type="button" class="fa fa-check-circle btn-approval-item"
-                      data-title="{{ __('Confirm approval') }}"
-                      data-confirm="{{ __('Are you sure you want to approval') }} <strong>{{ $book->title }}</strong>">
-                    </button>
-                  </form> 
-                  <form class="inline">
-                        
-                    <button style="color: red; border: 0; background:none;" type="button" class="fa fa-trash-o btn-delete-item"
-                      data-title="{{ __('Confirm deletion') }}"
-                      data-confirm="{{ __('Are you sure you want to delete') }} <strong>{{ $book->title }}</strong>">
-                    </button>
-                  </form> 
+                  <td>{{$post->name_user}}</td>
+                  <td>{{$post->name_book}}</td>
+                  <td>{{$post->content}}</td>
+                  <td><center>{{count($post->like)}}</center></td>
+                  <td>
+                    <form class="inline">
+                          
+                          <button style="color: red; border: 0; background:none;" type="button" class="fa fa-trash-o btn-delete-item"
+                            data-title="{{ __('Confirm deletion') }}"
+                            data-confirm="{{ __('Are you sure you want to delete post by') }} <strong>{{$post->name_user}}</strong>">
+                          </button>
+                        </form> 
                   </td>
                 </tr>
                 @endforeach

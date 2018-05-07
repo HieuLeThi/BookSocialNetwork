@@ -6,7 +6,7 @@
 {{ __('AUTHOR') }} 
 @endsection 
 @section('side-bar') 
-<li class="active treeview">
+<li class="active">
           <a href="{{ route('author.index') }}">
             <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
           </a>

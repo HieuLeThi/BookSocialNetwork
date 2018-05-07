@@ -6,7 +6,7 @@
 {{ __('ADMIN') }} 
 @endsection 
 @section('side-bar') 
-        <li class="treeview">
+        <li>
           <a href="{{ route('admin.index') }}">
             <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
           </a>
@@ -38,6 +38,7 @@
             <li><a href="{{ route('bookapproval.index')}}"><i class="fa fa-circle-o"></i>BOOKS REQUIRE APPROVAL</a></li>
           </ul>
         </li>
+        <li><a href="{{ route('posts.index')}}"><i class="fa fa-book"></i> <span>POST</span></a></li>
 @endsection 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -64,7 +65,7 @@
                   <th>{{ __('Title') }}</th>
                   <th>{{ __('Author') }}</th>
                   <th>{{ __('Picture') }}</th>
-                  <th>{{ __('Date Add') }}</th>
+                  <th>{{ __('Total Rating') }}</th>
                   <th>{{ __('Action') }}</th>
                 </tr>
                 </thead>
@@ -75,7 +76,7 @@
                   <td>{{ $book->title }}</td>
                   <td>{{$book->name_author}}</td>
                   <td><img src="../images/books/{{$book->picture}}" width="60px" height="80px"></td>
-                  <td>{{ date( 'd-M-Y', strtotime($book->created_at)) }}</td>
+                  <td>1</td>
                   <td><a href="#"><button style="color: red; border: 0; background:none;" title="update"><b><i class="fa fa-pencil-square-o"></i></b></button></a>
                     <form class="inline">
                           

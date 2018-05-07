@@ -6,7 +6,7 @@
 {{ __('ADMIN') }} 
 @endsection 
 @section('side-bar') 
-        <li class="active treeview">
+        <li>
           <a href="{{ route('admin.index') }}">
             <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
           </a>
@@ -38,6 +38,7 @@
             <li><a href="{{ route('bookapproval.index')}}"><i class="fa fa-circle-o"></i>BOOKS REQUIRE APPROVAL</a></li>
           </ul>
         </li>
+        <li><a href="{{ route('posts.index')}}"><i class="fa fa-book"></i> <span>POST</span></a></li>
 @endsection 
 @section('content')
     <!-- Content Header (Page header) -->

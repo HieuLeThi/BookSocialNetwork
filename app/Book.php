@@ -30,4 +30,22 @@ class Book extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post', 'book_id');
+    }
+    /**
+     * Override parent boot and Call deleting borrows and comments
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($book) {
+            // $book->posts()->delete();
+            // $book->comments()->delete();
+        });
+    }
 }

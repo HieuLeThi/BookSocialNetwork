@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 use DB;
-use Friend;
-
-class UserController extends Controller
+use App\Post;
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +15,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User:: select('users.*')
-                ->where('role', '=', 3)
-                ->get(); 
-        // $totalFriend = Friend::where()
-        return view('backend.admin.users.index', compact('users'));
+        $fields = [
+            'posts.*',
+            DB::raw("(SELECT users.name FROM users where posts.user_id = users.id) AS name_user"),
+            DB::raw("(SELECT books.title FROM books where posts.book_id = books.id) AS name_book")            
+        ];
+        $posts = Post::select($fields)
+                ->where('role_post', '1')
+                ->get();
+        return view('backend.admin.posts.index', compact('posts'));
     }
 
     /**

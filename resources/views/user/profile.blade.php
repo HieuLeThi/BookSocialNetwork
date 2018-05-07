@@ -48,7 +48,7 @@
 									  		@elseif($friendCheck->status == '2')
 									  			<form style="display: inline" method="POST" action="{{ route('acceptFriend.store', ['id' =>$userProfile->id]) }}">
 					                				{{ csrf_field() }}
-									  				<button id="btn_ac_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 47px; background-color: red;"  type="submit">Tra loi loi moi di</button>
+									  				<button id="btn_ac_friend" class="gr-commentForm__submitButton gr-button gr-button--small" style="margin-left: 47px; background-color: red;"  type="submit">Accept Friend Request</button>
 									  			</form>
 							      				
 							      			@elseif($friendCheck->status == '1')

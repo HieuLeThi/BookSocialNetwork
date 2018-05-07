@@ -33,13 +33,14 @@ class Post extends Model
 
     public function like()
      {
-        return $this->hasMany('App\Like');
+        return $this->hasMany('App\Like')->where('like', 1);
      } 
      public function likeByUser()
      {
         return $this->hasMany('App\Like')->where('user_id', Auth::user()->id);
      } 
 
+    
     /**
      * Override parent boot and Call deleting borrows and comments
      *

@@ -234,7 +234,7 @@
 
 								           success:function(likeCreate){
 								           		$("#delete_like_{{$post->id}}").text("Like");
-								           		// $("un_user_like_{{$post->id}}").text("");
+								           		$("#un_user_like_{{$post->id}}").css('display', 'none');
 								           }
 								        });
 									});

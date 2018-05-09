@@ -28,6 +28,7 @@ class BookController extends Controller
             'statusbooks.status',
             'statusbooks.updated_at',
             DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
+            // DB::raw("(SELECT statusbooks.updated_at FROM statusbooks where books.id = statusbooks.book_id) AS date_add")
         ];
         $books = Book::join('statusbooks', 'books.id','=', 'statusbooks.book_id')
                 ->select($fields)

@@ -14,7 +14,7 @@
 		<div class="mainContentContainer">
 	    	<div class="mainContent">
 	    		<div class="mainContentFloat">
-	    			<div class="leftContainer" style="font-size: 15px">
+	    			<div class="leftContainer" style="font-size: 14px">
 		    			<div id="topcol" class="last col stacked">
 		    				<div id="imagecol" class="col">
 							  	<div class="bookCoverContainer">
@@ -129,38 +129,121 @@
 		    			</div>
 		    			<br>
 					</div>
-	    			
+					@if(isset($friendCheck))
+						@if($friendCheck->status == '1')
+						<div id="rightCol" class="last col">
+						  		<table id="books" class="table stacked" border="0">
+	      							<thead>
+	      								<tr id="booksHeader" class="tableList">
+	      									<th alt="cover" class="header field author" style="padding-left: 10px;">
+								                  <a href="/review/list/78270916?sort=cover">cover</a>
+								            </th>
+								            <th alt="title" class="header field title" style="">
+								                  <a href="/review/list/78270916?sort=title">title</a>
+								            </th>
+								            <th alt="author" class="header field author" style="">
+								                  <a href="/review/list/78270916?sort=author">author</a>
+								            </th>
+								            <th alt="shelves" class="header field author" style="padding-left: 10px;">
+								                  shelves
+								            </th>
+								           	<th alt="date_read" class="header field date_read" style="">
+							                  <a href="/review/list/78270916?sort=date_read">date read</a>
+							            	</th>
+	      								</tr>
+	      							</thead>
+	      							<tbody id="booksBody">
+	      								@foreach($books as $book)
+	      								<tr id="review_2314565026" class="bookalike review" style="padding-left: 50px;">
+	      									<td class="field cover" width="5px" style="margin-right: 20px">
+										            <a href="images/books/{{$book->picture}}">
+										            	<img alt="{{$book->title}}" width="55px" height="70px" src="../images/books/{{$book->picture}}" />
+										            </a>
+	          								</td>
+	          								<td class="field title">
+	          									<a href="{{route('showbook.show', ['id' => $book->id])}}">{{$book->title}}</a>
+	          								</td>
+	          								<td class="field author">
+	          									<a href="#">{{$book->name_author}}</a>
+	          								</td>
+	          								<td class="field author" style="padding-left: 10px;">
+	          									@if($book->status == 1)
+	          									<a href="#">Want to read</a>
+	          									@elseif ($book->status == 2)
+	          									<a href="#">Currently reading</a>
+	          									@elseif ($book->status == 3)
+	          									<a href="#">Read</a>
+	          									@endif
+	          								</td>
+	          								<td class="field date_read">
+	          									{{ date( 'M, d - Y', strtotime($book->updated_at)) }}
+	          								</td>
+	      								</tr>
+	      								@endforeach
+		      							</tbody>
+	      						</table>
+						</div>
+		    			@endif
+		    		@endif
+		    		@if(isset($statusFriend))
+						@if($statusFriend->status == '1')
+						<div id="rightCol" class="last col">
+						  		<table id="books" class="table stacked" border="0">
+	      							<thead>
+	      								<tr id="booksHeader" class="tableList">
+	      									<th alt="cover" class="header field author" style="padding-left: 10px;">
+								                  <a href="/review/list/78270916?sort=cover">cover</a>
+								            </th>
+								            <th alt="title" class="header field title" style="">
+								                  <a href="/review/list/78270916?sort=title">title</a>
+								            </th>
+								            <th alt="author" class="header field author" style="">
+								                  <a href="/review/list/78270916?sort=author">author</a>
+								            </th>
+								            <th alt="shelves" class="header field author" style="padding-left: 10px;">
+								                  shelves
+								            </th>
+								           	<th alt="date_read" class="header field date_read" style="">
+							                  <a href="/review/list/78270916?sort=date_read">date read</a>
+							            	</th>
+	      								</tr>
+	      							</thead>
+	      							<tbody id="booksBody">
+	      								@foreach($books as $book)
+	      								<tr id="review_2314565026" class="bookalike review" style="padding-left: 50px;">
+	      									<td class="field cover" width="5px" style="margin-right: 20px">
+										            <a href="images/books/{{$book->picture}}">
+										            	<img alt="{{$book->title}}" width="55px" height="70px" src="../images/books/{{$book->picture}}" />
+										            </a>
+	          								</td>
+	          								<td class="field title">
+	          									<a href="{{route('showbook.show', ['id' => $book->id])}}">{{$book->title}}</a>
+	          								</td>
+	          								<td class="field author">
+	          									<a href="#">{{$book->name_author}}</a>
+	          								</td>
+	          								<td class="field author" style="padding-left: 10px;">
+	          									@if($book->status == 1)
+	          									<a href="#">Want to read</a>
+	          									@elseif ($book->status == 2)
+	          									<a href="#">Currently reading</a>
+	          									@elseif ($book->status == 3)
+	          									<a href="#">Read</a>
+	          									@endif
+	          								</td>
+	          								<td class="field date_read">
+	          									{{ date( 'M, d - Y', strtotime($book->updated_at)) }}
+	          								</td>
+	      								</tr>
+	      								@endforeach
+		      							</tbody>
+	      						</table>
+						</div>
+		    			@endif
+		    		@endif
 	    		</div>
 	    	</div>
 	    </div>
 	</div>
-	<!-- <script>
-		$.ajaxSetup({
-
-								        headers: {
-
-								            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-								        }
-
-								    });
-
-								    $("#btn_ac_friend").click(function(e){
-								        e.preventDefault();
-								        var friend_id = $('.form-ac').attr('data-friend_id')
-								        var url = $('.form-ac').attr('linkadd');
-								        $.ajax({
-
-								           type:'POST',
-
-								           url:url,
-
-								           data: {'friend_id': friend_id},
-
-								           success:function(friend){
-								           	alert('okokoko');
-								        });
-
-									});
-	</script> -->
 </body>
 </html>

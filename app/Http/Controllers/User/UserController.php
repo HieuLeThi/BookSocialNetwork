@@ -32,14 +32,14 @@ class UserController extends Controller
                        ->join('statusbooks', 'statusbooks.book_id', '=', 'books.id')
                        ->where('statusbooks.user_id', '=', Auth::user()->id)->where('statusbooks.status','=', $status)
                        ->orderBy('updated_at', 'desc')
-                       ->limit(10)
+                       ->limit(2)
                        ->get();
         $categories = Topic::all();
         $wtr = Book::select($fields)
                        ->join('statusbooks', 'statusbooks.book_id', '=', 'books.id')
                        ->where('statusbooks.user_id', '=', Auth::user()->id)->where('statusbooks.status','=', 1)
                        ->orderBy('updated_at', 'desc')
-                       ->limit(10)
+                       ->limit(2)
                        ->get();
         $newbook = Book::select($fields)
                 ->orderBy('created_at', 'desc')
@@ -81,7 +81,20 @@ class UserController extends Controller
                     ->where('friend_id', '=', Auth::user()->id )
                     ->first();
                     // dd($friendCheck);
-        return view('user.profile', compact('userProfile', 'statusFriend', 'friendCheck'));
+        $fields = [
+            'books.id',
+            'books.title',
+            'books.author',
+            'books.picture',
+            'statusbooks.status',
+            'statusbooks.updated_at',
+            DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
+        ];
+        $books = Book::join('statusbooks', 'books.id','=', 'statusbooks.book_id')
+                ->select($fields)
+                ->where('statusbooks.user_id', '=', $id)
+                ->get();
+        return view('user.profile', compact('userProfile', 'statusFriend', 'friendCheck', 'books'));
     }
 
     /**

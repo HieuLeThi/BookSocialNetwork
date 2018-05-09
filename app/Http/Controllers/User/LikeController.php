@@ -16,8 +16,8 @@ class LikeController extends Controller
      */
     public function index()
     {
-        dd('ahihi');
-        return view('user.index');
+        // dd('ahihi');
+        // return view('user.index');
     }
 
     /**
@@ -42,8 +42,21 @@ class LikeController extends Controller
             'user_id' => Auth::user()->id,
             'post_id' => $request->id,
         ]);
-        $like = Like::updateOrCreate($condition, ['like' => '1']);
-        return $like;
+        $deleteLike = Like::select('likes.*')->where('user_id', '=', Auth::user()->id)->where('post_id', $request->id)->first();
+        $like = '1';
+        if (!empty($deleteLike)) {
+            if($deleteLike->like == 1) {
+            $like = '0';
+            }    
+        }
+        
+        // $like = Like::select('likes.*');
+        // $status = $like->like;
+        // kiem tra status
+        // $status == 1 ? 0 : 1;  
+
+        $likeCreate = Like::updateOrCreate($condition, ['like' => $like] );
+        return $likeCreate;
     }
 
     /**
@@ -60,12 +73,13 @@ class LikeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $post_id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Request $request, $id)
+    {   
+        // 
     }
 
     /**
@@ -77,7 +91,7 @@ class LikeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
     }
 
     /**
@@ -88,8 +102,6 @@ class LikeController extends Controller
      */
     public function destroy($id)
     {
-        $deleteLike = Like::find($id);
-        $deleteLike->delete();
-        return $deleteLike;
+        // 
     }
 }

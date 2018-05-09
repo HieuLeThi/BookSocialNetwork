@@ -3,18 +3,10 @@
 <head>
     <title>User Profile</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-b4a91517aa00c2ede826962c83c1ea16.css" />
-    
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-479eda3f659b065fab977d3b90262b48.css" /> -->
-	<link rel="stylesheet" media="screen,print" href="https://s.gr-assets.com/assets/review/list-999f3695f560f96c8637b3d3bb2677dc.css" />
+    <link rel="stylesheet" href="{{ URL::asset('frontend/css/profile.css')}}" />
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
-	<link rel="canonical" href="https://www.goodreads.com/review/list/78270916" />
-	<link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-802d4eb124676566447af5393fd9dbec.css" />
-	<link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/user/show-10c62542ecad15f674ee9e890dd870ce.css" />
-  	<link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/comment/comment_form2-615c1bf4ed9f18f72940c9ff8b7faaf6.css" />
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
 </head>
 <body>
 	<div class="content">

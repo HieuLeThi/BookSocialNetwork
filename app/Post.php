@@ -37,7 +37,7 @@ class Post extends Model
      } 
      public function likeByUser()
      {
-        return $this->hasMany('App\Like')->where('user_id', Auth::user()->id);
+        return $this->hasMany('App\Like')->where('user_id', Auth::user()->id)->where('like', 1);
      } 
 
     

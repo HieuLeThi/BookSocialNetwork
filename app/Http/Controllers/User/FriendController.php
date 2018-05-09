@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Friend;
 use App\User;
+use DB;
 use Illuminate\Support\Facades\Auth;
 
 class FriendController extends Controller
@@ -17,7 +18,26 @@ class FriendController extends Controller
      */
     public function index()
     {
-        return view('user.listfrieds');
+        $me = Auth::user()->id;
+        $friendRequest = Friend::select('friends.*')
+                        ->where('friend_id', '=', $me )
+                        ->where('status', '=', 2 )
+                        ->get();
+        $fields = [
+            'friends.*',
+            DB::raw("(SELECT users.name FROM users where friends.friend_id = users.id) AS name_friend"),
+            DB::raw("(SELECT users.avatar_url FROM users where friends.friend_id = users.id) AS avatar_friend")
+        ];
+        $friend = Friend::select($fields)
+                        ->where(function($query)
+                            {
+                                $query->where('friend_id', '=' ,Auth::user()->id)
+                                      ->orWhere('user_id','=' ,Auth::user()->id);
+                            })
+                        ->where('status', '=', 1 )
+                        ->get();
+        // dd($friend);
+        return view('user.listfriends', compact('friendRequest','friend'));
     }
 
     /**

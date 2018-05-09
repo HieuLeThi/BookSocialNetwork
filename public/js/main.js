@@ -31,7 +31,7 @@ $(document).ready(function () {
         var body = '<i>' + $(this).attr('data-confirm') + '</i>';
         $('#title-content').html(title);
         $('#body-content').html(body);
-        $('#confirm').modal('show');
+        $('#confirmAppr').modal('show');
         $('#approval-btn').one('click', function () {
             form.submit();
         })

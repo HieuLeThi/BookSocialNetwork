@@ -13,4 +13,8 @@ class Friend extends Model
 	protected $fillable = [
         'user_id', 'friend_id', 'status'
     ];
+    public function friendReq()
+	{
+    	return $this->belongsTo('App\User', 'user_id');
+	}
 }

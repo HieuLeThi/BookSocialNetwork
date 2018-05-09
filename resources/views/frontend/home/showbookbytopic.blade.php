@@ -2,15 +2,12 @@
 <html>
 <head>
 	<title>Show book by topic</title>
-	<link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-b4a91517aa00c2ede826962c83c1ea16.css" />
-	
-	<link rel="stylesheet" media="screen,print" href="https://s.gr-assets.com/assets/review/list-999f3695f560f96c8637b3d3bb2677dc.css" />
+	<script type="text/javascript" src="{{asset('scripts/jquery.rateit.min.js')}}"></script>
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('scripts/rateit.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
-  	<link rel="canonical" href="https://www.goodreads.com/review/list/78270916" />
-	<script src="https://s.gr-assets.com/assets/react_client_side/sprockets_dependencies-30f123719317f85caddeb01ca7b5493c.js"></script>
-	<script src="https://s.gr-assets.com/assets/react_client_side/external_dependencies-48241921bf.js"></script>
-	<script src="https://s.gr-assets.com/assets/react_client_side/home-41a67ed5b8.js"></script>
-
+	<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
+	<link rel="stylesheet" href="{{ URL::asset('frontend/css/showbook.css')}}" />
 </head>
 <body>
 	<div class="content">

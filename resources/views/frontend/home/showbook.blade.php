@@ -3,22 +3,16 @@
 <head>
     <title>Book show</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-  <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-b4a91517aa00c2ede826962c83c1ea16.css" />
-    
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-479eda3f659b065fab977d3b90262b48.css" /> -->
-	<link rel="stylesheet" media="screen,print" href="https://s.gr-assets.com/assets/review/list-999f3695f560f96c8637b3d3bb2677dc.css" />
+	<script type="text/javascript" src="{{asset('scripts/jquery.rateit.min.js')}}"></script>
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('scripts/rateit.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
-	  <link rel="canonical" href="https://www.goodreads.com/review/list/78270916" />
-	<script src="https://s.gr-assets.com/assets/react_client_side/sprockets_dependencies-30f123719317f85caddeb01ca7b5493c.js"></script>
-	<script src="https://s.gr-assets.com/assets/react_client_side/external_dependencies-48241921bf.js"></script>
-	<script src="https://s.gr-assets.com/assets/react_client_side/home-41a67ed5b8.js"></script>
-	<script src="https://use.fontawesome.com/079150a0fc.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
+	<link rel="stylesheet" href="{{ URL::asset('frontend/css/showbook.css')}}" />
 </head>
 <body>
 	<div class="content">
+
 		@include('frontend.layouts.header')
 		<div class="mainContentContainer">
 	    	<div class="mainContent">
@@ -90,7 +84,24 @@
 								        });
 								    });
 							</script>
-							<div id="metacol" class="last col" style="width: 435px;margin-left: 10px">
+							<script type="text/javascript">
+							$(document).ready(function(){
+							    // Check Radio-box
+							    $(".rating input:radio").attr("checked", false);
+
+							    $('.rating input').click(function () {
+							        $(".rating span").removeClass('checked');
+							        $(this).parent().addClass('checked');
+							    });
+
+							    $('input:radio').change(
+							      function(){
+							        var userRating = this.value;
+							        alert(userRating);
+							    }); 
+							});
+							</script>
+							<div id="metacol" class="last col" style="width: 425px;margin-left: 10px">
 								<h1 id="bookTitle" class="bookTitle" itemprop="name">
 								      {{ $book->title}}
 								</h1>
@@ -136,12 +147,15 @@
 								<br>
 								<div style="font-size: 17px;">
 									<span>Rate this book</span>
-									<i class="fa fa-star" style="color: yellow"></i>
-									<i class="fa fa-star" style="color: yellow"></i>
-									<i class="fa fa-star" style="color: yellow"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
+									
 									@if(Auth::check())
+										<div class="rating">
+									    <span><input type="radio" name="rating" id="str5" value="5"><label for="str5"></label></span>
+									    <span><input type="radio" name="rating" id="str4" value="4"><label for="str4"></label></span>
+									    <span><input type="radio" name="rating" id="str3" value="3"><label for="str3"></label></span>
+									    <span><input type="radio" name="rating" id="str2" value="2"><label for="str2"></label></span>
+									    <span><input type="radio" name="rating" id="str1" value="1"><label for="str1"></label></span>
+									</div>
 										<a id="add_review" style="margin-left: 70px;">Add a review</a>
 									@else
 										<a href="{{ route('home') }}" style="margin-left: 70px;">Add a review</a>

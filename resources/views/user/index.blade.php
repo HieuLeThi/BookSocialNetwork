@@ -3,18 +3,10 @@
 <head>
 	<title>home - user</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/gr/application-2a8fdf619e08c24d5212446dd0848b94.css" />
     <link rel="stylesheet" href="{{ URL::asset('frontend/css/home_user.css')}}" />
-    <link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/gr/application-e83211a8f70d3e6bb1ebad59d99d3736.css" />
-	<script src="https://s.gr-assets.com/assets/react_client_side/sprockets_dependencies-30f123719317f85caddeb01ca7b5493c.js"></script>
-	<script src="https://s.gr-assets.com/assets/react_client_side/external_dependencies-48241921bf.js"></script>
-	<script src="https://s.gr-assets.com/assets/react_client_side/home-41a67ed5b8.js"></script>
-	<script src="https://use.fontawesome.com/079150a0fc.js"></script>
-	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://s.gr-assets.com/assets/webfontloader-f2373eb97b67c818c1db5c9392e387af.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">	 -->
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+	<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
 
 </head>
 <body style="background: #f9f7f4">
@@ -34,7 +26,7 @@
 								</div>
 								<div class="gr-book__author">
 									<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by </span>
-									<a href="#" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked">{{$book->name_author}}</a>
+									<a href="{{route('user.show', ['id' => $book->author])}}" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked">{{$book->name_author}}</a>
 								</div>
 							</div>
 						</div>
@@ -165,7 +157,6 @@
 								@elseif(count($post->likeByUser) === 0)
 										<form data-post_id ="{{$post->id}}" class="form">
 											<button style="display: inline" id="btn_like_{{$post->id}}" class="gr-buttonAsLink">Like</button>
-											<button  style="display: none" id="btn_unlike_{{$post->id}}" class="gr-buttonAsLink">UnLike</button>
 										</form>	
 								@endif	
 								<script>
@@ -191,11 +182,10 @@
 
 								           data: {'post_id': post_id},
 
-								           success:function(like){
-								           	if(like.like == 1) {
+								           success:function(likeCreate){
+								           	if(likeCreate.like == 1) {
 									           	$('#user_like_{{$post->id}}').css('display','inline')
-									           	$('#btn_unlike_{{$post->id}}').css('display','inline')
-									           	$('#btn_like_{{$post->id}}').css('display','none')
+									           	$('#btn_like_{{$post->id}}').text("UnLike")
 									           	}
 								           	}
 								        });
@@ -209,7 +199,7 @@
 								</div>
 								<div class="likeInformation u-defaultType">
 									@if(count($post->likeByUser) === 1)
-										<span class="likeInformation__name" id="user_like_{{$post->id}}">You and </span>
+										<span style="display: inline" class="likeInformation__name"  id="un_user_like_{{$post->id}}">You and </span>
 										<a href="/user/show/5527956"  class="gr-hyperlink gr-hyperlink--bold likeInformation__name">{{$post->like->count() -1 }}</a>
 									@endif
 									<span class="likeInformation__name" id="user_like_{{$post->id}}" style="display: none">You and </span>
@@ -232,18 +222,20 @@
 									$("#delete_like_{{$post->id}}").click(function(e){
 								        e.preventDefault();
 								        var post_id = {{$post->id}};
+								        var url = window.location.origin + '/BookSocialNetwork/public/like?id=' + post_id;
 								        debugger;
-								        var url = window.location.origin + '/BookSocialNetwork/public/like/' + post_id;
 								        $.ajax({
 
-								           type:'DELETE',
+								           type:'POST',
 
 								           url:url,
 
-								           data: {'post_id': post_id},
+								           data: {'post_id': post_id },
 
-								           success:function(deleteLike){
-								           	alert('xoa');
+								           success:function(likeCreate){
+								           		$("#delete_like_{{$post->id}}").text("Like");
+								           		// $("un_user_like_{{$post->id}}").text("");
+								           }
 								        });
 									});
 
@@ -345,7 +337,7 @@
 								</div>
 								<div class="gr-book__author" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2">
 									<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by</span>
-									<a href="https://www.goodreads.com/author/show/164692.Celeste_Ng" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.1">{{ $nb->name_author}}</a>
+									<a href="{{route('user.show', ['id' => $nb->author])}}" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked">{{ $nb->name_author}}</a>
 								</div>
 							</div>
 						</div>

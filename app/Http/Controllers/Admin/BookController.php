@@ -17,10 +17,12 @@ class BookController extends Controller
     {
         $fields = [
             'books.*',
-            DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
+            DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author"),
+            DB::raw("(SELECT topics.title FROM topics where books.topic_id = topics.id) AS name_topic")
         ];
         $books = Book::select($fields)
                 ->where('status', '1')
+                ->orderBy('created_at', 'desc')
                 ->get();
         return view('backend.admin.books.index', compact('books'));
     }
@@ -77,7 +79,7 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
     }
 
     /**
@@ -88,6 +90,8 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::find($id);
+        $book->delete();
+        return redirect()->route('listbook.index')->with('status', 'Delete Book Success!');
     }
 }

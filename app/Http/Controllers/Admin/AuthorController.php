@@ -83,6 +83,8 @@ class AuthorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $user = User::find($id);
+        // $user->delete();
+        // return redirect()->route('authors.index')->with('status', 'Delete Author Success!');
     }
 }

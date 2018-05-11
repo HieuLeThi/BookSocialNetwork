@@ -18,6 +18,7 @@ class HomeController extends Controller
         		->where('role', '=', 2);
         $books = Book::select('books.*')
         		->orderBy('created_at', 'desc')
+                ->where('status', '1')
         		->limit(6)
         		->get();
         return view('frontend.home.index', compact('categories', 'authors', 'books'));

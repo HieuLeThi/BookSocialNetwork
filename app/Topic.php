@@ -10,6 +10,6 @@ class Topic extends Model
     
     public function relateBook()
     {
-    	return $this->hasMany('App\Book');
+    	return $this->hasMany('App\Book')->where('status', '1');
     }
 }

@@ -44,7 +44,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        LIST BOOKS
+        LIST POSTS
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -53,6 +53,14 @@
     </section>
     <section class="content">
       <div class="row">
+        <div class="col-xs-12">
+          <div class="col-sm-12">
+                @if (session('status'))
+                  <div class="alert alert-success">
+                      {{ session('status') }}
+                  </div>
+                @endif
+                </div>
         <div class="col-xs-12">
           <div class="box">
             <!-- /.box-header -->
@@ -78,13 +86,14 @@
                   <td>{{$post->content}}</td>
                   <td><center>{{count($post->like)}}</center></td>
                   <td>
-                    <form class="inline">
-                          
+                    <form method="POST" action="{{ route('posts.destroy', $post->id) }}" class="inline">
+                          {{ csrf_field() }}
+                          {{ method_field('DELETE') }}
                           <button style="color: red; border: 0; background:none;" type="button" class="fa fa-trash-o btn-delete-item"
                             data-title="{{ __('Confirm deletion') }}"
                             data-confirm="{{ __('Are you sure you want to delete post by') }} <strong>{{$post->name_user}}</strong>">
                           </button>
-                        </form> 
+                    </form> 
                   </td>
                 </tr>
                 @endforeach

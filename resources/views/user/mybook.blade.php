@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>My Books page</title>
-	<link rel="stylesheet" href="{{ URL::asset('frontend/css/mybook_1.css')}}" />
-	<link rel="stylesheet" href="{{ URL::asset('frontend/css/mybook_2.css')}}" />
+	<link rel="stylesheet" href="{{asset('frontend/css/mybooka.css')}}" />
+	<link rel="stylesheet" href="{{asset('frontend/css/mybook_2.css')}}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
 </head>
 <body>

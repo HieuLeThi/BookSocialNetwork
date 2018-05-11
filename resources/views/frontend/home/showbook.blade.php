@@ -220,26 +220,20 @@
 	        								<div class="reviewText stacked">
 	              								<span id="reviewTextContainer91338657" class="readable" style="font-size: 15px;">
 	            
-													<span id="freeTextContainer1229566540314906503">`` {{ $rv->content}} ``<br></span>
-													  
-
+													<span id="freeTextContainer1229566540314906503">`` {{ $rv->content}} ``</span>
 	          										</span>
-	        									</div>
-	      									<div class="reviewFooter uitext buttons">
-	    										<div class="updateActionLinks">
+													<div class="updateActionLinks">
 	    											@if(Auth::check())
 		    											@if($info_user->name == Auth::user()->name)
-			    											<button class="gr-commentForm__submitButton gr-button gr-button--small loadingLinkSpan" type="submit">Edit</button>
 			    											<form method="POST" action="{{ route('review.destroy', $rv->id) }}" style="display: inline;">
 										                          {{ csrf_field() }}
 										                          {{ method_field('DELETE') }}
-										                          <button class="gr-commentForm__submitButton gr-button gr-button--small" type="submit">Delete</button>
+										                          <button type="submit" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
 										                    </form>
 									                    @endif
 									                @endif
-	      											
-	   											 </div>
-											</div>
+	   											 	</div>
+	        									</div>
 											<div class="brown_comment" id="comments_form_review_91338657" style="display: none">
 												<textarea class="placeholder_text" onclick="expand_comment_form_for('review', 91338657, true, '')">Write a comment...</textarea>
 											</div>

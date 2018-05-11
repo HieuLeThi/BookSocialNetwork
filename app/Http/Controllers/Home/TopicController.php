@@ -54,11 +54,11 @@ class TopicController extends Controller
         ];
         $book = Book::select('id', 'title','picture')
                 ->where('topic_id', '=', $id)
+                ->where('status', '1')
                 ->get();
         $categories = Topic::select($fields)
                     ->where('id', $id)
                     ->firstOrFail();
-                    // dd($book);
         return view('frontend.home.showbookbytopic', compact('book', 'categories'));
     }
 

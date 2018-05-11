@@ -286,7 +286,7 @@
                               			<a class="gr-hyperlink gr-hyperlink--bold gr-user__profileLink" href="{{route('user.show', ['id' => $cmt->userComment->id])}}"" data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;social&quot;}">{{ $cmt->userComment->name }}</a>
                               			<div class="gr-comment__body">
                               				<div class="expandableHtml">
-                              					<span data-reactid=".1od8uww6bk0.2.0.$=1$Update_4730448877.0.1.2.2.1:$kca=2//comment/amzn1=1gr=1comment=1v1=14mSXlXrqBlHNjsqA0KN9ww.1.3.0.0">{{ $cmt->content }}</span>
+                              					<span>{{ $cmt->content }}</span>
                               				</div>
                               			</div>
                               		</div>

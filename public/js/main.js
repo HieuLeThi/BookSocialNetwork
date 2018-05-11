@@ -19,21 +19,27 @@ $(document).ready(function () {
             form.submit();
         })
     });
-});
-
-$(document).ready(function () {
-    /**
-     * Show delete confimation when click button delete
-     */
     $('.btn-approval-item').bind('click', function (e) {
         var form = $(this.form);
         var title = $(this).attr('data-title');
-        var body = '<i>' + $(this).attr('data-confirm') + '</i>';
-        $('#title-content').html(title);
-        $('#body-content').html(body);
+        var body = $(this).attr('data-confirm');
+        $('#title-p-content').html(title);
+        $('#body-p-content').html(body);
         $('#confirmAppr').modal('show');
-        $('#approval-btn').one('click', function () {
+        $('#btn-approval').one('click', function () {
+            form.submit();
+        })
+    });
+    $('.btn-detail-item').bind('click', function (e) {
+        var form = $(this.form);
+        var title = $(this).attr('data-title');
+        var body = $(this).attr('data-confirm');
+        $('#title-d-content').html(title);
+        $('#body-d-content').html(body);
+        $('#detail').modal('show');
+        $('#btn-approval').one('click', function () {
             form.submit();
         })
     });
 });
+

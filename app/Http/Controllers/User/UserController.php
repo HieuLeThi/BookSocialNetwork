@@ -42,6 +42,7 @@ class UserController extends Controller
                        ->limit(2)
                        ->get();
         $newbook = Book::select($fields)
+                ->where('status', '1')
                 ->orderBy('created_at', 'desc')
                 ->limit(2)
                 ->get();

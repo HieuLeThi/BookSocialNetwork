@@ -53,10 +53,18 @@
     </section>
     <section class="content">
       <div class="row">
+         <div class="col-sm-12">
+                @if (session('status'))
+                  <div class="alert alert-success">
+                      {{ session('status') }}
+                  </div>
+                @endif
+                </div>
         <div class="col-xs-12">
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
+              @include('backend.layouts.modal')
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                  <tr>
@@ -77,8 +85,69 @@
                   <td><center>{{count($user->totalFriend)}}</center></td>
                   <td><center>{{count($user->totalPost)}}</center></td>
                   <td><center>
-                    <button style="color: red; border: 0; background:none;" id="btnBlock.0" data-toggle="modal" title="Detail" data-target="#showProfile" onclick="showProfile(&quot;1&quot;)"><i class="fa fa-info-circle"></i></button>
-                    <button style="color: red; border: 0; background:none;" id="btnBlock.0" data-toggle="modal" title="Block" data-target="#" onclick="blockUser(&quot;1&quot;,&quot;1&quot;)"><i class="fa fa-lock"></i></button></center></td>
+                    <button style="color: red; border: 0; background:none;" title="detail" type="button" class="fa fa-info-circle btn-detail-item"
+                      data-title="{{ __('DETAIL AUTHORS') }}"
+                      data-confirm='
+                        <div class="row" style="margin-left:20px">
+                          <div class="row" style="margin-top:0px">
+                            <div class="control-label col-sm-3">
+                                <h7 style="font-size:16px; margin-top:5px;"><b>Name</b></h7>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>{{$user->name}}</p>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-top:15px">
+                              <div class="control-label col-sm-3">
+                                  <h7 style="font-size:16px; margin-top:5px;"><b>Gender</b></h7>
+                              </div>
+                              <div class="col-sm-9">
+                                @if($user->gender == NULL)
+                                  <p>None</p>
+                                @elseif ($user->gender == 1)
+                                  <p>Female</p>
+                                @elseif ($user->gender == 2)
+                                  <p>Male</p>
+                                @endif
+                              </div>
+                          </div> 
+                          <div class="row" style="margin-top:15px">
+                              <div class="control-label col-sm-3">
+                                  <h7 style="font-size:16px; margin-top:5px;"><b>Email</b></h7>
+                              </div>
+                              <div class="col-sm-9">
+                                  <p>{{$user->email}}</p>
+                              </div>
+                          </div> 
+                          <div class="row" style="margin-top:15px">
+                            <div class="control-label col-sm-3">
+                                <h7 style="font-size:16px; margin-top:5px;"><b>Total Posts</b></h7>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>{{count($user->totalPost)}}</p>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-top:15px">
+                              <div class="control-label col-sm-3">
+                                  <h7 style="font-size:16px; margin-top:5px;"><b>Avatar</b></h7>
+                              </div>
+                              <div class="col-sm-9">
+                                <img src="{{$user->avatar_url}}" width="60px" height="80px">  
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:15px">
+                            <div class="control-label col-sm-3">
+                                <h7 style="font-size:16px; margin-top:5px;"><b>Liking</b></h7>
+                            </div>
+                            <div class="col-sm-8">
+                                <p>{{$user->liking}}</p>
+                            </div>
+                          </div>   
+                        </div>
+                      '>
+                    </button>
+                    <button style="color: red; border: 0; background:none;" id="btnBlock.4" data-toggle="modal" title="Block" data-target="#"><i class="fa fa-lock"></i></button>
+                    </center></td>
                 </tr>
                 @endforeach
                 </tbody>

@@ -53,6 +53,14 @@
     </section>
     <section class="content">
       <div class="row">
+        <div class="col-sm-12">
+                @if (session('status'))
+                  <div class="alert alert-success">
+                      {{ session('status') }}
+                  </div>
+                @endif
+                </div>
+        <div class="col-xs-12">
         <div class="col-xs-12">
           <div class="box">
             <!-- /.box-header -->
@@ -77,10 +85,11 @@
                   <td>{{$book->name_author}}</td>
                   <td><img src="../images/books/{{$book->picture}}" width="60px" height="80px"></td>
                   <td>1</td>
-                  <td><a href="#"><button style="color: red; border: 0; background:none;" title="update"><b><i class="fa fa-pencil-square-o"></i></b></button></a>
-                    <form class="inline">
-                          
-                          <button style="color: red; border: 0; background:none;" type="button" class="fa fa-trash-o btn-delete-item"
+                  <td>
+                    <form method="POST" action="{{ route('listbook.destroy', $book->id) }}" class="inline">
+                          {{ csrf_field() }}
+                          {{ method_field('DELETE') }}
+                          <button style="color: red; border: 0; background:none;" type="button" title="delete" class="fa fa-trash-o btn-delete-item"
                             data-title="{{ __('Confirm deletion') }}"
                             data-confirm="{{ __('Are you sure you want to delete') }} <strong>{{ $book->title }}</strong>">
                           </button>

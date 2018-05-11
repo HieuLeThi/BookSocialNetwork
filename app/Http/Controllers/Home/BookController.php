@@ -29,11 +29,13 @@ class BookController extends Controller
             'statusbooks.updated_at',
             DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
             // DB::raw("(SELECT statusbooks.updated_at FROM statusbooks where books.id = statusbooks.book_id) AS date_add")
+
         ];
         $books = Book::join('statusbooks', 'books.id','=', 'statusbooks.book_id')
                 ->select($fields)
                 ->where('statusbooks.user_id', '=', Auth::user()->id)
                 ->get();
+                // dd($books);
         $count1 = StatusBook::where('status', '=', 1) 
                 ->where('user_id', '=', Auth::user()->id)->count();
         $count2 = StatusBook::where('status', '=', 2) 

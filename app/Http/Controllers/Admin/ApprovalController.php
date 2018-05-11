@@ -17,10 +17,12 @@ class ApprovalController extends Controller
     {
         $fields = [
             'books.*',
-            DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
+            DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author"),
+            DB::raw("(SELECT topics.title FROM topics where books.topic_id = topics.id) AS name_topic")
         ];
         $books = Book::select($fields)
                 ->where('status', '0')
+                ->orderBy('created_at', 'desc')
                 ->get();
         return view('backend.admin.books.bookapproval', compact('books'));
     }
@@ -77,7 +79,10 @@ class ApprovalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::find($id);
+        $book->status = '1';
+        $book->save();
+        return redirect()->route('bookapproval.index')->with('status', 'Approval Book Success!');
     }
 
     /**
@@ -88,6 +93,8 @@ class ApprovalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::find($id);
+        $book->delete();
+        return redirect()->route('bookapproval.index')->with('status', 'Delete Book Success!');
     }
 }

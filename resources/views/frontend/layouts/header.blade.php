@@ -24,6 +24,7 @@
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    right: 1px;
 }
 
 .dropdown-content a {
@@ -43,9 +44,9 @@
 				<button class="siteHeader__searchIcon gr-iconButton" aria-label="Toggle search" type="button""></button>
             </div>
             @if(Auth::check())
-                <a href="{{ route('user.index')}}" class="siteHeader__primaryNavInline"><h3 style="color: #81593d; font-style: cursive; margin-top:10px">ReadBook</h3></a>
+                <a href="{{ route('user.index')}}" class="siteHeader__primaryNavInline"><h3 style="color: #81593d; font-style: cursive; margin-top:10px; font-size: 24px;">ReadBook</h3></a>
             @else
-                <a href="{{ route('home')}}" class="siteHeader__primaryNavInline"><h3 style="color: #81593d; font-style: cursive; margin-top:10px">ReadBook</h3></a>
+                <a href="{{ route('home')}}" class="siteHeader__primaryNavInline"><h3 style="color: #81593d;  font-size: 24px; font-style: cursive; margin-top:10px">ReadBook</h3></a>
             @endif            
 			<nav class="siteHeader__primaryNavInline">
 				<ul role="menu" class="siteHeader__menuList">
@@ -80,12 +81,12 @@
 			<div class="siteHeader__personal">
 				<ul class="personalNav">
                 @if(Auth::check())
-                    <li class="personalNav__listItem">
+                    <!-- <li class="personalNav__listItem">
                     	<a href="/message/inbox" title="Messages" class="headerPersonalNav">
                     		<span class="headerPersonalNav__icon headerPersonalNav__icon--inbox" aria-label="Inbox">
                     		</span>
                     	</a>
-                    </li>
+                    </li> -->
                     <li class="personalNav__listItem">
                     	<a href="{{ route('friend.index')}}" title="Friends" class="headerPersonalNav">
                     		<span class="headerPersonalNav__icon headerPersonalNav__icon--friendRequests" aria-label="Friend Requests"></span>

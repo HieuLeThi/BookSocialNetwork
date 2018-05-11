@@ -21,6 +21,7 @@ class PostController extends Controller
         $bookSearch = Book::select('books.*')
                     ->where('title', request('search'))
                     ->orWhere('title', 'like', '%' . request('search') . '%')
+                    ->where('status', '=' ,'1')
                     ->orderby('created_at', 'desc')
                     ->get();
         return view('frontend.home.showbookbysearch', compact('bookSearch'));

@@ -181,6 +181,7 @@
 		    			<div id='lazy_loadable_view'>
 			    			<div class="h2Container gradientHeaderContainer">
 			    				<h2 class="brownBackground">Reviews</h2>
+
 			    			</div>
 		    				
 		    			</div>
@@ -235,18 +236,19 @@
 	    				<div class=" clearFloats bigBox">
 	    					<div class="h2Container gradientHeaderContainer">
 	    						<h2 class="brownBackground">
-	    							<a href="/author/list/221253.Cherie_Priest">other books in the series</a>
+	    							<a href="/author/list/221253.Cherie_Priest">other books in the series '{{$bookByTopic->title}}' </a>
 	    						</h2>
 	    					</div>
 	    					<div class="bigBoxBody">
 	    						<div class="bigBoxContent containerWithHeaderContent">
 	    							<br>
-							        
+							        @foreach($bookByTopic->relateBook as $rl)
 							        <div class="js-tooltipTrigger tooltipTrigger">
-							          <a href="/book/show/7911067-dreadnought">
-							          	<img id="more_book_7911067" alt="Dreadnought (The Clockwork Century, #2)" title="Dreadnought (The Clockwork Century, #2)" width="50" src="https://images.gr-assets.com/books/1389139447m/7911067.jpg" />
+							          <a href="{}">
+							          	<img id="more_book_7911067" alt="{{$rl->title}}" title="{{$rl->title}}" width="50" src="../images/books/{{$rl->picture}}" />
 							          </a>
 							        </div>
+									@endforeach
     							</div>
     						</div>
     					</div>

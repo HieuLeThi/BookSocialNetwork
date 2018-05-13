@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Book;
 use App\Post;
+use App\Topic;
 use DB;
 use App\Rating;
 use App\StatusBook;
@@ -92,8 +93,6 @@ class BookController extends Controller
             DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author"),
             DB::raw("(SELECT users.avatar_url FROM users where books.author = users.id) AS avatar_author"),
             DB::raw("(SELECT users.liking FROM users where books.author = users.id) AS liking_author")
-            // DB::raw("(COUNT(book.id) FROM books WHRE book.author = users.id) AS count_book_author")
-
         ];
         $book = Book::select($fields)
                 ->where('id', $id)
@@ -102,6 +101,9 @@ class BookController extends Controller
                 ->where('book_id', '=', $id)
                 ->orderBy('created_at', 'desc')
                 ->get();
+        $bookByTopic = Topic::select('topics.*')
+                    ->where('id', $book->topic_id)
+                    ->firstOrFail();
         $countRating = Rating::where('rating', '1')->where('book_id', $id)->count();
         $ratingByUser = Rating::where('rating', '1')->where('book_id', $id)->where('user_id', Auth::user()->id)->get();
         if(isset(Auth::user()->id)) {
@@ -110,7 +112,7 @@ class BookController extends Controller
                     ->where('user_id', '=', Auth::user()->id )
                     ->first();   
         }
-        return view('frontend.home.showbook', compact('book', 'review','bookRole', 'countRating', 'ratingByUser'));
+        return view('frontend.home.showbook', compact('book', 'review','bookRole', 'countRating', 'ratingByUser', 'bookByTopic'));
     }
 
     /**

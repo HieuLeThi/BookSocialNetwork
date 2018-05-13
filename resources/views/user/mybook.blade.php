@@ -3,8 +3,10 @@
 <head>
 	<title>My Books page</title>
 	<link rel="stylesheet" href="{{asset('frontend/css/mybooka.css')}}" />
+	  <!-- <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-b6d05e04f0a745bb03b7b8e6e4c8901a.css" /> -->
 	<link rel="stylesheet" href="{{asset('frontend/css/mybook_2.css')}}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
+
 </head>
 <body>
 	<div class="content">

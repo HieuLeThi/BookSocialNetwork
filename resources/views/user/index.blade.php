@@ -7,6 +7,8 @@
 	<!-- <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">	 -->
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
 	<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
 <body style="background: #f9f7f4">
@@ -96,22 +98,22 @@
 											{{ date( 'h:i a d-m', strtotime($post->created_at)) }}</time></a>
 								</small>
 								<div class="gr-newsfeedItem__socialBookUpdateDetails">
-								<div class="gr-metaText u-marginBottomXSmall">
-									<span class="u-marginRightTiny">
-										<span>Rating </span>
-										<div class="communityRating u-inlineBlock" aria-label="Rated 3.00 of 5">
-											<span>
-												<div class="communityRating__starsWrapper communityRating__starsWrapper--medium">
-													<div class="communityRating__stars communityRating__stars--medium" style="width:60%;" aria-label="Rated 3.00 of 5">
+									@if(count($puser->hasRating) > 0)
+										@foreach($puser->hasRating as $rate)
+											@if($rate->book_id == $pbook->id)
+											<div class="gr-metaText u-marginBottomXSmall">
+												<span class="u-marginRightTiny">
+													<span>Rating</span>
+													<div class="communityRating u-inlineBlock">
+														<span>
+															<i class="fa fa-heart" style="font-size:13px;color:red"></i>
+														</span>
 													</div>
-												</div>
-											</span>
-										</div>
-									</span>
-								</div>
-								<div class="gr-metaText">
-									<span">Read in Feb 2018</span>
-								</div>
+												</span>
+											</div>
+											@endif
+										@endforeach
+									@endif
 								<div class="gr-newsfeedItem__reviewText">
 									<div class="expandableHtml">
 										<span>{{ $post->content}}</span>
@@ -131,11 +133,18 @@
 										<div class="gr-book__additionalContent">
 											<div data-tracking-dfp="true" data-tracking-pmet="{&quot;click_type&quot;:&quot;wtr_button&quot;}">
 
+											<div class="userRating" style="margin-left: 0px; width: 160px">
+												<small class="userRating__label">Total Rating: <strong>{{ $pbook->rate->count()}}</strong></small>
+												<div class="userRating__starsWrapper" tabindex="0" role="group">
+													<small class="userRating__label fa fa-heart" style="font-size:13px;color:red;"></small>
+												</div>
+											</div>
 											<div class="userRating" style="margin-left: 0px;">
 												<small class="userRating__label">Public at:</small>
 												<div class="userRating__starsWrapper" tabindex="0" role="group">
 													<small class="userRating__label">{{ date( 'd-m-Y', strtotime($pbook->created_at)) }}</small>
 												</div>
+												
 											</div>
 												<div class="u-marginTopXSmall gr-book__description">
 													<span>{{ $pbook->description}}</span>

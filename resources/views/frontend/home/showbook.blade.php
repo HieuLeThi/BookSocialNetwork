@@ -3,17 +3,17 @@
 <head>
     <title>Book show</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-	<script type="text/javascript" src="{{asset('scripts/jquery.rateit.min.js')}}"></script>
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{ URL::asset('scripts/rateit.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
 	<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
 	<link rel="stylesheet" href="{{ URL::asset('frontend/css/showbook.css')}}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="content">
 
 		@include('frontend.layouts.header')
+		
 		<div class="mainContentContainer">
 	    	<div class="mainContent">
 	    		<div class="mainContentFloat">
@@ -23,7 +23,7 @@
 							  	<div class="bookCoverContainer">
 								    <div class="bookCoverPrimary">
 								          <a rel="nofollow" itemprop="image" href="../images/books/{{$book->picture}}">
-								          	<img id="coverImage" alt="Boneshaker (The Clockwork Century, #1)" src="../images/books/{{$book->picture}}" />
+								          	<img id="coverImage" alt="" src="../images/books/{{$book->picture}}" />
 								          </a>
 								    </div>
 							    </div>
@@ -84,28 +84,10 @@
 								        });
 								    });
 							</script>
-							<script type="text/javascript">
-							$(document).ready(function(){
-							    // Check Radio-box
-							    $(".rating input:radio").attr("checked", false);
-
-							    $('.rating input').click(function () {
-							        $(".rating span").removeClass('checked');
-							        $(this).parent().addClass('checked');
-							    });
-
-							    $('input:radio').change(
-							      function(){
-							        var userRating = this.value;
-							        alert(userRating);
-							    }); 
-							});
-							</script>
 							<div id="metacol" class="last col" style="width: 425px;margin-left: 10px">
 								<h1 id="bookTitle" class="bookTitle" itemprop="name">
 								      {{ $book->title}}
 								</h1>
-
 								<div id="bookAuthors" class="stacked">
 								  <span class='by smallText'>by</span>
 									<span itemprop='author' itemscope='' itemtype='http://schema.org/Person'>
@@ -146,19 +128,24 @@
 								</script>
 								<br>
 								<div style="font-size: 17px;">
-									<span>Rate this book</span>
-									
+
 									@if(Auth::check())
-										<div class="rating">
-									    <span><input type="radio" name="rating" id="str5" value="5"><label for="str5"></label></span>
-									    <span><input type="radio" name="rating" id="str4" value="4"><label for="str4"></label></span>
-									    <span><input type="radio" name="rating" id="str3" value="3"><label for="str3"></label></span>
-									    <span><input type="radio" name="rating" id="str2" value="2"><label for="str2"></label></span>
-									    <span><input type="radio" name="rating" id="str1" value="1"><label for="str1"></label></span>
-									</div>
-										<a id="add_review" style="margin-left: 70px;">Add a review</a>
+										
+										<a id="add_review">Add a review</a>
+										<span style="padding: 0px 10px; margin-left: 70px">{{$countRating}} people</span>
+										@if(count($ratingByUser) > 0)
+										<form method="POST" style="display: inline;" action="{{ route('rating.store', ['id' => $book->id]) }}" data-book_id = "{{$book->id}}">
+											{{ csrf_field() }}
+											<button class="gr-buttonAsLink"><i class="fa fa-heart" style="font-size:18px;color:red"></i></button>
+										</form>
+										@else 
+										<form method="POST" style="display: inline;" action="{{ route('rating.store', ['id' => $book->id]) }}" data-book_id = "{{$book->id}}">
+											{{ csrf_field() }}
+											<button class="gr-buttonAsLink"><i class="fa fa-heart" style="font-size:18px;color:black"></i></button>
+										</form>
+										@endif
 									@else
-										<a href="{{ route('home') }}" style="margin-left: 70px;">Add a review</a>
+										<a href="{{ route('home') }}">Add a review</a>
 									@endif
 								</div>
 								<br>

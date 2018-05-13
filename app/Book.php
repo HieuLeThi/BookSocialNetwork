@@ -30,7 +30,10 @@ class Book extends Model
     {
         return $this->belongsTo('App\User');
     }
-
+    public function rate()
+    {
+        return $this->hasMany('App\Rating', 'book_id')->where('rating', '1');
+    }
     public function posts()
     {
         return $this->hasMany('App\Post', 'book_id');

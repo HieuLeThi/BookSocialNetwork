@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Book;
 use App\Post;
 use DB;
+use App\Rating;
 use App\StatusBook;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,7 +54,7 @@ class BookController extends Controller
      */
     public function create(Request $request)
     {
-        dd($request); 
+        // dd($request); 
     }
 
     /**
@@ -101,13 +102,15 @@ class BookController extends Controller
                 ->where('book_id', '=', $id)
                 ->orderBy('created_at', 'desc')
                 ->get();
+        $countRating = Rating::where('rating', '1')->where('book_id', $id)->count();
+        $ratingByUser = Rating::where('rating', '1')->where('book_id', $id)->where('user_id', Auth::user()->id)->get();
         if(isset(Auth::user()->id)) {
         $bookRole = StatusBook::select('status')
                     ->where('book_id', '=', $id) 
                     ->where('user_id', '=', Auth::user()->id )
                     ->first();   
         }
-        return view('frontend.home.showbook', compact('book', 'review','bookRole'));
+        return view('frontend.home.showbook', compact('book', 'review','bookRole', 'countRating', 'ratingByUser'));
     }
 
     /**

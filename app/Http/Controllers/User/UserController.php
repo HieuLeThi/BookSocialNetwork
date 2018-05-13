@@ -22,7 +22,6 @@ class UserController extends Controller
 {
     public function index()
     {   
-        date_default_timezone_set('Asia/Ho_Chi_Minh');
     	$fields = [
             'books.*',
             DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")

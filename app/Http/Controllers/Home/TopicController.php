@@ -16,7 +16,8 @@ class TopicController extends Controller
      */
     public function index()
     {
-        // return view('frontend.home.showbookbytopic');
+        $allBook = Book::all()->where('status', 1);
+        return view('frontend.home.showallbook', compact('allBook'));
     }
 
     /**

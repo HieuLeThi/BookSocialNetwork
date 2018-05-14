@@ -78,7 +78,7 @@
 		  				<div class="fieldPara">
 						    <div id="homePageSignupBlurb">
 						      By clicking “Sign up”
-						      I agree to the Goodreads
+						      I agree to the ReadBook
 						      <a target="_blank" href="/about/terms">Terms of Service</a>
 						      and confirm that I am at least 13 years old.
 						    </div>
@@ -112,12 +112,9 @@
 				        <div class="discoveryBoxDiscovery sourceBooks4">
 				          <div class="discoverySourceBooks">
 				            <p class="discoverySourceActionText">List Top Books Rating ...</p>
-				              <a  style="margin-right:25px" href="/book/show/1137215.Boneshaker"><img alt="Boneshaker by Cherie Priest" title="Boneshaker by Cherie Priest" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1433161048m/1137215.jpg"></a>
-				              <a href="/book/show/142296.The_Anubis_Gates"><img alt="The Anubis Gates by Tim Powers" title="The Anubis Gates by Tim Powers" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1344409006m/142296.jpg"></a>
-				              <a href="/book/show/7670800-clementine"><img alt="Clementine by Cherie Priest" title="Clementine by Cherie Priest" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1277163268m/7670800.jpg"></a>
-				              <a href="/book/show/8253037-the-buntline-special"><img alt="The Buntline Special by Mike Resnick" title="The Buntline Special by Mike Resnick" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1284431932m/8253037.jpg"></a>
-											<a href="/book/show/8253037-the-buntline-special"><img alt="The Buntline Special by Mike Resnick" title="The Buntline Special by Mike Resnick" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1442953450l/420297.jpg"></a>
-											<a href="/book/show/8253037-the-buntline-special"><img alt="The Buntline Special by Mike Resnick" title="The Buntline Special by Mike Resnick" width="80" class="bookImgSimilar" src="https://images.gr-assets.com/books/1442953450l/420297.jpg"></a>
+				              @foreach($topBooks as $bookRating)
+				              	<a href="{{ route('showbook.show', ['id' =>$bookRating->id])}}"><img alt="{{$bookRating->title}}" title="{{$bookRating->title}}" width="80" class="bookImgSimilar" src="images/books/{{ $bookRating->picture}}"></a>
+				              @endforeach
 				          </div>
 				          
 				        </div>
@@ -129,6 +126,13 @@
 				              @endforeach
 				          </div>
 				        </div>
+				        <!-- <div class="discoveryBoxDiscovery sourceBooks4"> -->
+				          <div class="discoverySourceBooks" style="margin-left: 20px">
+				            <p class="discoverySourceActionText"><a href="{{ route('topics.index') }}">All Books ...</p>
+				             
+				          </div>
+				          
+				        <!-- </div> -->
 				    </div>
 			      	<div id="browseBox">
 			        	<h2>Search and browse books</h2>

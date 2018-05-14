@@ -30,7 +30,6 @@ class BookController extends Controller
             'statusbooks.status',
             'statusbooks.updated_at',
             DB::raw("(SELECT users.name FROM users where books.author = users.id) AS name_author")
-            // DB::raw("(SELECT statusbooks.updated_at FROM statusbooks where books.id = statusbooks.book_id) AS date_add")
 
         ];
         $books = Book::join('statusbooks', 'books.id','=', 'statusbooks.book_id')
@@ -105,8 +104,8 @@ class BookController extends Controller
                     ->where('id', $book->topic_id)
                     ->firstOrFail();
         $countRating = Rating::where('rating', '1')->where('book_id', $id)->count();
-        $ratingByUser = Rating::where('rating', '1')->where('book_id', $id)->where('user_id', Auth::user()->id)->get();
         if(isset(Auth::user()->id)) {
+        $ratingByUser = Rating::where('rating', '1')->where('book_id', $id)->where('user_id', Auth::user()->id)->get();
         $bookRole = StatusBook::select('status')
                     ->where('book_id', '=', $id) 
                     ->where('user_id', '=', Auth::user()->id )

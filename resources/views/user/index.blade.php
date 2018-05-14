@@ -217,7 +217,7 @@
 									@endif
 									
 									
-									<span>other people liked this</span>
+									<span>people liked this</span>
 								</div>
 								<script>
 									$.ajaxSetup({
@@ -332,28 +332,34 @@
 						@endforeach
 			        </div>
 			    <section class='gr-homePageRailContainer u-paddingBottomMedium' style="border-top: 1px solid #D8D8D8;padding-top: 16px;">
-				<section class="currentlyReadingShelf">
-					<h3 class="gr-h3 gr-h3--noTopMargin">New Books</h3>
-						@foreach($newbook as $nb)
-						<div class="gr-mediaBox gr-book--medium gr-book">
+					<section class="currentlyReadingShelf">
+						<h3 class="gr-h3 gr-h3--noTopMargin">New Books</h3>
+							@foreach($newbook as $nb)
+							<div class="gr-mediaBox gr-book--medium gr-book">
 
-							<a href="{{ route('showbook.show', ['id' => $nb->id]) }}">
-								<img alt="{{ $nb->title}}" class="gr-mediaBox__media gr-book__image" src="images/books/{{ $nb->picture}}"/>
-							</a>
-						
-							<div class="gr-mediaBox__desc gr-mediaBox__desc--clearfixOverflow" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1">
-								<div class="gr-book__title" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1"><a href="{{ route('showbook.show', ['id' => $nb->id]) }}" class="gr-book__titleLink gr-hyperlink gr-hyperlink--naked">{{ $nb->title}}</a>
-								</div>
-								<div class="gr-book__author" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2">
-									<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by</span>
-									<a href="{{route('user.show', ['id' => $nb->author])}}" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked">{{ $nb->name_author}}</a>
+								<a href="{{ route('showbook.show', ['id' => $nb->id]) }}">
+									<img alt="{{ $nb->title}}" class="gr-mediaBox__media gr-book__image" src="images/books/{{ $nb->picture}}"/>
+								</a>
+							
+								<div class="gr-mediaBox__desc gr-mediaBox__desc--clearfixOverflow" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1">
+									<div class="gr-book__title" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.1"><a href="{{ route('showbook.show', ['id' => $nb->id]) }}" class="gr-book__titleLink gr-hyperlink gr-hyperlink--naked">{{ $nb->title}}</a>
+									</div>
+									<div class="gr-book__author" data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2">
+										<span data-reactid=".1yh1fdqpgxs.0.1.$=1$34273236.1.2.0">by</span>
+										<a href="{{route('user.show', ['id' => $nb->author])}}" class="gr-book__authorLink gr-hyperlink gr-hyperlink--naked">{{ $nb->name_author}}</a>
+									</div>
 								</div>
 							</div>
-						</div>
-			
-						@endforeach
+				
+							@endforeach
+					</section>
+					<hr>
+					<section class="currentlyReadingShelf">
+						<h3 class="gr-h3 gr-h3--noTopMargin"><a href="{{route('topics.index')}}" style="color: black">ALL Books</h3>
+							
+					</section>
 				</section>
-			</section>
+
 			</div>
 		</div>
 		

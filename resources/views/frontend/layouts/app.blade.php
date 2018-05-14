@@ -9,8 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/img68cf3.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/css/mystyle.css')}}">
-	<link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/gr/pages/home/signed_out_hp-ed7a599d7709f2dfe7104a2c8d31cd9d.css" />	
-
 </head>
 <body>
 	@yield('content')

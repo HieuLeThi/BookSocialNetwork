@@ -41,5 +41,8 @@ $(document).ready(function () {
             form.submit();
         })
     });
+    $('#btn-add-category').bind('click', function (e) {
+    $('#add-category').modal('show');
+    });
 });
 

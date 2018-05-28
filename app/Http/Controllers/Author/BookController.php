@@ -10,6 +10,7 @@ use App\Http\Requests\CreateBookRequest;
 use App\Http\Requests\EditBookRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Libraries\Image;
+use DB;
 
 class BookController extends Controller
 {
@@ -24,6 +25,8 @@ class BookController extends Controller
             'books.id',
             'books.title',
             'books.picture',
+            'books.status',
+            // DB::raw('COUNT(ratings.book_id) AS total_ratinged'),
             // Time read
             //  total_rating'),
         ];
@@ -33,6 +36,8 @@ class BookController extends Controller
             // ->groupBy('books.id')
             ->where('books.author', '=', $author)
             ->paginate(config('define.books.limit_rows'));
+        // $rating = $
+         
        return view('backend.author.listbook', compact('books'));
     }
 

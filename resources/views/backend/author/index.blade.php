@@ -30,14 +30,14 @@
           <span class="info-box-icon bg-aqua"><i class="ion ion-ios-book-outline"></i></span>
           <div class="info-box-content">
             <span class="info-box-text">{{ __('books') }}</span>
-            <span class="info-box-number">3</span>
-            <a href="#" class="small-box-footer">{{ __('more_info') }}
+            <span class="info-box-number">{{ $totalBook }}</span>
+            <a href="{{ route('books.index')}}" class="small-box-footer">{{ __('more_info') }}
               <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <!-- <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
           <span class="info-box-icon bg-red"><i class="ion ion-ios-bookmarks"></i></span>
           <div class="info-box-content">
@@ -48,7 +48,7 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 <!-- /.content -->

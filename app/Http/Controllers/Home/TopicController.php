@@ -27,7 +27,8 @@ class TopicController extends Controller
      */
     public function create()
     {
-        //
+        // dd('test add categori');
+        // return redirect()->route('books.create');
     }
 
     /**

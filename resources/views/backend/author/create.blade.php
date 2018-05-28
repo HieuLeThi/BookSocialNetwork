@@ -6,7 +6,7 @@
 {{ __('AUTHOR') }} 
 @endsection 
 @section('side-bar') 
-<li class="active">
+<li class="active treeview">
           <a href="{{ route('author.index') }}">
             <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
           </a>
@@ -40,81 +40,72 @@
       <div class="row">
         <div class="col-md-12">
           <div class="box box-primary">
-            <form action="{{route('books.store')}}" role="form" method="POST" enctype="multipart/form-data">
-              {{ csrf_field() }}
-              <div class="box-body" style="margin: 0px 15px 0px 15px">
-                
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-xs-12">
-                          <label for="exampleInputTitle">{{ __('Title') }}</label>
-                          <input type="text" class="form-control" name="title" placeholder="{{ __('Title') }}" value="{!! old('title') !!}">
-                          @if($errors->first('title')) 
-                            <span class="text-danger">{{ $errors->first('title') }}</span>
-                          @endif
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-xs-4">
-                          <label>{{ __('List Topics') }}</label>
-                          <select class="form-control" name="topic_id" >
-                            @foreach ($categories as $category)
-                              <option value="{{ $category->id }}">{{ $category->title }}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                        <div class="col-xs-3" style="margin-top: 23px;">
-                          <div class="col-xs-1" style="padding-left: 0px">
-                            <a href="#"> 
-                              <button class="btn btn-danger" title="Add new book" onclick="loadSubject()"><b><i class="fa fa-plus"></i></b></button>
-                            </a>
+              <div class="" style="margin: 0px 15px 0px 15px">
+                @include('backend.layouts.add_category')
+                <p style="margin: 10px 15px 10px 910px" type="button" class="btn btn-danger" title="Add new category" id="btn-add-category" ><b><i class="fa fa-plus"></i></b> Add New Category</p>
+              <form action="{{route('books.store')}}" role="form" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <label for="exampleInputTitle">{{ __('Title') }}</label>
+                            <input type="text" class="form-control" name="title" placeholder="{{ __('Title') }}" value="{!! old('title') !!}">
+                            @if($errors->first('title')) 
+                              <span class="text-danger">{{ $errors->first('title') }}</span>
+                            @endif
                           </div>
-                          <div class="col-xs-8" style="margin-top: 7px; padding-left: 25px;">Add new topic</div>
-                        </div>
-                        <div class="col-xs-4">
-                          <label for="exampleInputIDDonator">{{ __('ISBN') }}</label>
-                          <input type="text" class="form-control" name="isbn" placeholder="{{ __('Place ISBN') }}" value="{!! old('isbn') !!}">
-                          @if($errors->first('isbn')) 
-                            <span class="text-danger">{{ $errors->first('isbn') }}</span>
-                          @endif
                         </div>
                       </div>
-                    </div>
-                    <div class="form-group">
-                          <label for="exampleInputTitle">{{ __('Description') }}</label>
-                          <input type="text" class="form-control" name="description" placeholder="{{ __('Place text here') }}" value="{!! old('description') !!}">
-                          @if($errors->first('description')) 
-                            <span class="text-danger">{{ $errors->first('description') }}</span>
-                          @endif
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <label>{{ __('List Topics') }}</label>
+                            <select class="form-control" name="topic_id" >
+                              @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <div class="col-xs-6">
+                            <label for="exampleInputIDDonator">{{ __('ISBN') }}</label>
+                            <input type="text" class="form-control" name="isbn" placeholder="{{ __('Place ISBN') }}" value="{!! old('isbn') !!}">
+                            @if($errors->first('isbn')) 
+                              <span class="text-danger">{{ $errors->first('isbn') }}</span>
+                            @endif
+                          </div>
                         </div>
-                    <div class="form-group">
-                      <label for="exampleInputDescription">{{ __('More Description') }}</label>
-                      <textarea rows="8" class="textarea form-control" placeholder="Place some text here" name="more_description">{!! old('more_description') !!}</textarea>
-                      @if($errors->first('more_description')) 
-                            <span class="text-danger">{{ $errors->first('more_description') }}</span>
-                          @endif
+                      </div>
+                      <div class="form-group">
+                            <label for="exampleInputTitle">{{ __('Description') }}</label>
+                            <input type="text" class="form-control" name="description" placeholder="{{ __('Place text here') }}" value="{!! old('description') !!}">
+                            @if($errors->first('description')) 
+                              <span class="text-danger">{{ $errors->first('description') }}</span>
+                            @endif
+                          </div>
+                      <div class="form-group">
+                        <label for="exampleInputDescription">{{ __('More Description') }}</label>
+                        <textarea rows="8" class="textarea form-control" placeholder="Place some text here" name="more_description">{!! old('more_description') !!}</textarea>
+                        @if($errors->first('more_description')) 
+                              <span class="text-danger">{{ $errors->first('more_description') }}</span>
+                            @endif
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputFile">{{ __('Picture') }}</label>
+                        <input type="file" name="picture" value="{!! old('picture') !!}">
+                        @if($errors->first('picture')) 
+                          <span class="text-danger">{{ $errors->first('picture') }}</span>
+                        @endif
+                      </div>
+                    </div>
+                    <div style="margin: 0px 25px 20px 15px">
+                      <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+                      <button type="button" class="btn btn-primary" onclick="window.history.back();">{{ __('Back') }}</button>
                     </div>
                   </div>
-                </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">{{ __('Picture') }}</label>
-                    <input type="file" name="picture" value="{!! old('picture') !!}">
-                    @if($errors->first('picture')) 
-                      <span class="text-danger">{{ $errors->first('picture') }}</span>
-                    @endif
-                  </div>
-                </div>
-                <div>
-                </div>
-              <div class="box-footer" style="margin: 0px 15px 0px 15px">
-                <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
-                <button type="button" class="btn btn-primary" onclick="window.history.back();">{{ __('Back') }}</button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>

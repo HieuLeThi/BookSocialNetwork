@@ -128,7 +128,7 @@
 				        </div>
 				        <!-- <div class="discoveryBoxDiscovery sourceBooks4"> -->
 				          <div class="discoverySourceBooks" style="margin-left: 20px">
-				            <p class="discoverySourceActionText"><a href="{{ route('topics.index') }}">All Books ...</p>
+				            <a href="{{route('topics.index')}}" class="discoverySourceActionText">All Books ...</a>
 				             
 				          </div>
 				          

@@ -34,8 +34,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 	Route::resource('/authors', 'AuthorController');
 	Route::resource('/listbook', 'BookController');
 	Route::resource('/bookapproval', 'ApprovalController');
+	Route::resource('/posts', 'PostController');
 });
 Route::resource('/author', 'Author\AuthorController');
+Route::group(['namespace' => 'Author'], function(){
+	Route::post('addCategories', 'AddCategoryController@createCategory')->name('addCategories');
+});
 Route::group(['namespace' => 'User'], function(){
 	Route::resource('/user', 'UserController');
 });
@@ -46,3 +50,8 @@ Route::resource('comment', 'User\CommentController');
 Route::resource('friend', 'User\FriendController');
 Route::resource('acceptFriend', 'User\AcceptFriendController');
 Route::resource('like', 'User\LikeController');
+Route::resource('rating', 'User\RatingController');
+
+Route::get('/test', function() {
+	return view('test');
+});

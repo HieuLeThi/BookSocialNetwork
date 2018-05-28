@@ -18,7 +18,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        return view('backend.author.index');
+        $author = Auth::user()->id;
+        $totalBook = Book::where('author', '=', $author)->count();
+        return view('backend.author.index', compact('totalBook'));
     }
 
     /**
@@ -28,7 +30,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**

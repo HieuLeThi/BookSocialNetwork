@@ -73,9 +73,9 @@
                   <th>{{ __('No') }}</th>
                   <th>{{ __('Name') }}</th>
                   <th>{{ __('Picture') }}</th>
-                  <th>{{ __('Times Read')}}</th>
-                  <th>{{ __('Time Reading') }}</th>
+                  <!-- <th>{{ __('Times Read')}}</th> -->
                   <th>{{ __('Rating') }}</th>
+                  <th>{{ __('Status') }}</th>
                   <th>{{ __('Action')}}</th>
                 </tr>
               </thead>
@@ -85,9 +85,12 @@
                   <td>{{ $index + $books->firstItem() }}</td>
                   <td>{{ $book->title}}</td>
                   <td><img width="50px" height="70px" src="../images/books/{{ $book->picture}}"></td>
-                  <td>3</td>
-                  <td>5</td>
-                  <td>3.5</td>
+                  <!-- <td>3</td> -->
+                  <td>{{ count($book->rate)}}</td>
+                  <td> @if($book->status == 1) Public 
+                        @else  None 
+                        @endif
+                  </td>
                   <td>
                     <a href="{{ route('books.edit', $book->id) }}"><button style="color: red; border: 0; background:none;" title="update"><b><i class="fa fa-pencil-square-o"></i></b></button></a>
                     <form method="POST" action="{{ route('books.destroy', $book->id) }}" class="inline">

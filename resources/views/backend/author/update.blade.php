@@ -40,6 +40,9 @@
       <div class="row">
         <div class="col-md-12">
           <div class="box box-primary">
+            <div class="" style="margin: 0px 15px 0px 15px">
+                @include('backend.layouts.add_category')
+                <p style="margin: 10px 15px 10px 910px" type="button" class="btn btn-danger" title="Add new category" id="btn-add-category" ><b><i class="fa fa-plus"></i></b> Add New Category</p>
             <form action="{{route('books.update', $book->id)}}" role="form" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
@@ -60,7 +63,7 @@
                     </div>
                     <div class="form-group">
                       <div class="row">
-                        <div class="col-xs-4">
+                        <div class="col-xs-6">
                           <label>{{ __('List Topics') }}</label>
                           <select class="form-control" name="topic_id" >
                           @foreach($categories as $category)
@@ -68,15 +71,7 @@
                           @endforeach
                           </select>
                         </div>
-                        <div class="col-xs-3" style="margin-top: 23px;">
-                          <div class="col-xs-1" style="padding-left: 0px">
-                            <a href="#"> 
-                              <button class="btn btn-danger" title="Add new topic" onclick="loadSubject()"><b><i class="fa fa-plus"></i></b></button>
-                            </a>
-                          </div>
-                          <div class="col-xs-8" style="margin-top: 7px; padding-left: 25px;">Add new topic</div>
-                        </div>
-                        <div class="col-xs-4">
+                        <div class="col-xs-6">
                           <label for="exampleInputIDDonator">{{ __('ISBN') }}</label>
                           <input type="text" class="form-control" name="isbn" placeholder="{{ __('Place ISBN') }}" value="{{ $book->isbn }}">
                           @if($errors->first('isbn')) 
@@ -114,11 +109,12 @@
                 </div>
                 <div>
                 </div>
-              <div class="box-footer" style="margin: 0px 15px 0px 15px">
+              <div class="" style="margin: 0px 25px 20px 15px">
                 <button type="submit" class="btn btn-primary">{{ __('Edit') }}</button>
                 <button type="button" class="btn btn-primary" onclick="window.history.back();">{{ __('Back') }}</button>
               </div>
             </form>
+          </div>
           </div>
         </div>
       </div>

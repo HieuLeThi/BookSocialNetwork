@@ -75,12 +75,10 @@ class UserController extends Controller
                     ->where('friend_id', '=', $id) 
                     ->where('user_id', '=', Auth::user()->id )
                     ->first();  
-                    // dd($statusFriend);
         $friendCheck = Friend::select('status')
                     ->where('user_id', '=', $id) 
                     ->where('friend_id', '=', Auth::user()->id )
                     ->first();
-                    // dd($friendCheck);
         $fields = [
             'books.id',
             'books.title',

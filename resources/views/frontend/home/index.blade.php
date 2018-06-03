@@ -104,7 +104,7 @@
 					    <h2>What are your friends reading?</h2>
 					    <p class="u-defaultType">
 					      Chances are your friends are discussing their favorite
-					      (and least favorite) books on Goodreads.
+					      (and least favorite) books on ReadBook.
 					    </p>
 					</div>
 				    <div id="discoveryBox">
@@ -174,7 +174,7 @@
 						    	@endforeach
 							  </div>
 							  <div class="listTitle">
-							    <a href="/list/show/11.Best_Crime_Mystery_Books">{{ $author->name}}</a>
+							    <a href="#">{{ $author->name}}</a>
 							  </div>
 							</div>
 							@endif
@@ -200,10 +200,10 @@
 					<a rel="nofollow" href="{{ route('home')}}">author</a>
 					</li>
 					<li>
-					<a rel="nofollow" href="#">about us</a>
+					<a rel="nofollow" href="{{ route('home')}}">about us</a>
 					</li>
 					<li>
-					<a rel="nofollow" href="/jobs">privacy</a>
+					<a rel="nofollow" href="{{ route('home')}}">privacy</a>
 					</li>
 				</ul>
 			</div>

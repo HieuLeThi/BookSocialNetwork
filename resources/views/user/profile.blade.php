@@ -124,7 +124,6 @@
 	      								@endif
 	      								<p>{{ $userProfile->liking}}</p>
 								    </div>
-	      							
 							</div>
 		    			</div>
 		    			<br>

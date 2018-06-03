@@ -36,7 +36,6 @@ class BookController extends Controller
                 ->select($fields)
                 ->where('statusbooks.user_id', '=', Auth::user()->id)
                 ->get();
-                // dd($books);
         $count1 = StatusBook::where('status', '=', 1) 
                 ->where('user_id', '=', Auth::user()->id)->count();
         $count2 = StatusBook::where('status', '=', 2) 
@@ -44,6 +43,30 @@ class BookController extends Controller
         $count3 = StatusBook::where('status', '=', 3) 
                 ->where('user_id', '=', Auth::user()->id)->count();
         // $shelf = $request->shelf ? $request->shelf : '';
+                // dd();
+        // switch ($shelf) {
+        //     case 1:
+        //         $books = Book::join('statusbooks', 'books.id','=', 'statusbooks.book_id')
+        //                     ->select($fields)
+        //                     ->where('statusbooks.user_id', '=', Auth::user()->id)
+        //                     ->where('statusbooks.status','=', 1)
+        //                     ->get();
+        //         break;
+        //     case 2:
+        //         $books = Book::join('statusbooks', 'books.id','=', 'statusbooks.book_id')
+        //                     ->select($fields)
+        //                     ->where('statusbooks.user_id', '=', Auth::user()->id)
+        //                     ->where('statusbooks.status','=', 2)
+        //                     ->get();
+        //         break;
+        //     case 3:
+        //     $books = Book::join('statusbooks', 'books.id','=', 'statusbooks.book_id')
+        //                 ->select($fields)
+        //                 ->where('statusbooks.user_id', '=', Auth::user()->id)
+        //                 ->where('statusbooks.status','=', )
+        //                 ->get();
+        //     break;
+        // }
         return view('user.mybook', compact('books', 'count1', 'count3', 'count2'));
     }
 

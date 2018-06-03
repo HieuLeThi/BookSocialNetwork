@@ -36,7 +36,7 @@ class User extends Authenticatable
     }
     public function bookByAuthor()
     {
-        return $this->hasMany('App\Book', 'author', 'id') ->where('status', '1');
+        return $this->hasMany('App\Book', 'author', 'id') ->where('status', '1')->limit(4);
     }
     public function totalFriend()
     {

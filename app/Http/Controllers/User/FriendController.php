@@ -36,7 +36,6 @@ class FriendController extends Controller
                             })
                         ->where('status', '=', 1 )
                         ->get();
-        // dd($friend);
         return view('user.listfriends', compact('friendRequest','friend'));
     }
 

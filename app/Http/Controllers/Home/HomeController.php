@@ -34,7 +34,6 @@ class HomeController extends Controller
                         ->groupBy('books.id')
                         ->orderBy('average_rating', 'desc')
                         ->get();
-                        // dd($topBooks);
         return view('frontend.home.index', compact('categories', 'authors', 'books', 'topBooks'));
     }
 }

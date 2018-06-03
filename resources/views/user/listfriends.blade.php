@@ -38,9 +38,7 @@
 
 								          <div class="friendInfo">
 								            <a class="userLink" href="{{ route('user.show', ['id' => $friendRq->user_id]) }}">{{$friendRq->friendReq->name}}</a>
-								            <br>
-								            <a href="/review/list/78309217">2 books</a> |
-								            <br>
+								            
 								          </div>
 				        				<div class="clear"></div>
 			        				</div>
@@ -67,9 +65,6 @@
 
 								          <div class="friendInfo">
 								            <a class="userLink" href="{{route('user.show', ['id' => $fr->friend_id])}}">{{$fr->name_friend}}</a>
-								            <br>
-								            <a href="/review/list/78309217">2 books</a> |
-								            <br>
 								          </div>
 				        				<div class="clear"></div>
 			        				</div>
@@ -79,9 +74,6 @@
 
 								          <div class="friendInfo">
 								            <a class="userLink" href="{{route('user.show', ['id' => $fr->user_id])}}">{{ $fr->friendReq->name}}</a>
-								            <br>
-								            <a href="/review/list/78309217">2 books</a> |
-								            <br>
 								          </div>
 				        				<div class="clear"></div>
 			        				</div>

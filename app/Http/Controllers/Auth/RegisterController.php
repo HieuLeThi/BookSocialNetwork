@@ -43,14 +43,6 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    // public function register(Request $request)
-    // {
-    //     if($request->check_author = 1) {
-    //         $role = '2';
-    //     }
-    //     else $role = '3';
-    // }
-
     public function store(RegisterRequest $request)
     {
         $arrUrl = asset('images/users/user_default.png');
@@ -66,20 +58,6 @@ class RegisterController extends Controller
             'avatar_url' => $arrUrl,
         ]
         );
-        // $check_account = $user['role'];
-        //     switch ($check_account) {
-        //     case 1:
-        //         return redirect('/admin');
-        //         break;
-        //     case 2: 
-        //         return redirect('/author'); 
-        //         break;
-        //     case 3: 
-        //         return redirect('/user'); 
-        //         break;
-        //     default:
-        //         break;
-        //     }
         return redirect('/')->with('status', 'Sign up success! Login now');
     }
 

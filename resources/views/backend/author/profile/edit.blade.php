@@ -54,9 +54,7 @@
               <p class="text-muted text-center">Author</p>
 
               <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Followers</b> <a class="pull-right">1,322</a>
-                </li>
+                
                 <li class="list-group-item">
                   <b>Books</b> <a class="pull-right" href="{{ route('books.index')}}" >{{ $book }}</a>
                 </li>

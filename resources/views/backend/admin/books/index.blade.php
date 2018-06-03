@@ -48,7 +48,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">List Books</li>
       </ol>
     </section>
     <section class="content">
@@ -84,7 +84,7 @@
                   <td>{{ $book->title }}</td>
                   <td>{{$book->name_author}}</td>
                   <td><img src="../images/books/{{$book->picture}}" width="60px" height="80px"></td>
-                  <td>1</td>
+                  <td>{{ count($book-> rate)}}</td>
                   <td>
                     <form method="POST" action="{{ route('listbook.destroy', $book->id) }}" class="inline">
                           {{ csrf_field() }}
